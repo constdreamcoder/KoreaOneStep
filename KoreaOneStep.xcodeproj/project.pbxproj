@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0024F2E62B9B42B200799623 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2E52B9B42B200799623 /* SnapKit */; };
+		0024F2E82B9B42B200799623 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2E72B9B42B200799623 /* SnapKit-Dynamic */; };
+		0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2EA2B9B42C200799623 /* Kingfisher */; };
+		0024F2EE2B9B42D100799623 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2ED2B9B42D100799623 /* Alamofire */; };
+		0024F2F02B9B42D100799623 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2EF2B9B42D100799623 /* AlamofireDynamic */; };
+		0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F2F92B9B45B600799623 /* TabBarViewController.swift */; };
+		0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F2FE2B9B464A00799623 /* MainViewController.swift */; };
+		0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3002B9B465200799623 /* BookmarkViewController.swift */; };
+		0024F3032B9B465900799623 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3022B9B465900799623 /* SettingViewController.swift */; };
+		0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */; };
 		00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C3D2B99840900C2A76E /* AppDelegate.swift */; };
 		00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */; };
-		00FD1C422B99840900C2A76E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C412B99840900C2A76E /* ViewController.swift */; };
 		00FD1C452B99840900C2A76E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C432B99840900C2A76E /* Main.storyboard */; };
 		00FD1C472B99840A00C2A76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C462B99840A00C2A76E /* Assets.xcassets */; };
 		00FD1C4A2B99840A00C2A76E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C482B99840A00C2A76E /* LaunchScreen.storyboard */; };
@@ -17,10 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0024F2F92B9B45B600799623 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0024F2FE2B9B464A00799623 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0024F3002B9B465200799623 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		0024F3022B9B465900799623 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerConfiguration.swift; sourceTree = "<group>"; };
 		00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreaOneStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FD1C3D2B99840900C2A76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		00FD1C412B99840900C2A76E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		00FD1C442B99840900C2A76E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00FD1C462B99840A00C2A76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00FD1C492B99840A00C2A76E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,12 +46,81 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */,
+				0024F2EE2B9B42D100799623 /* Alamofire in Frameworks */,
+				0024F2F02B9B42D100799623 /* AlamofireDynamic in Frameworks */,
+				0024F2E62B9B42B200799623 /* SnapKit in Frameworks */,
+				0024F2E82B9B42B200799623 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0024F2F12B9B438D00799623 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0024F2F92B9B45B600799623 /* TabBarViewController.swift */,
+				0024F2FB2B9B45D700799623 /* Main */,
+				0024F2FC2B9B45E000799623 /* Bookmark */,
+				0024F2FD2B9B45ED00799623 /* Setting */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0024F2F32B9B43A600799623 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0024F2F42B9B43AD00799623 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0024F2F52B9B43B500799623 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0024F2FB2B9B45D700799623 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0024F2FE2B9B464A00799623 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0024F2FC2B9B45E000799623 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				0024F3002B9B465200799623 /* BookmarkViewController.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		0024F2FD2B9B45ED00799623 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				0024F3022B9B465900799623 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		0024F3062B9B4DF100799623 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		00FD1C312B99840900C2A76E = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +143,11 @@
 			children = (
 				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
 				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
-				00FD1C412B99840900C2A76E /* ViewController.swift */,
+				0024F3062B9B4DF100799623 /* Protocols */,
+				0024F2F52B9B43B500799623 /* Extensions */,
+				0024F2F42B9B43AD00799623 /* ViewModels */,
+				0024F2F32B9B43A600799623 /* Models */,
+				0024F2F12B9B438D00799623 /* Scenes */,
 				00FD1C432B99840900C2A76E /* Main.storyboard */,
 				00FD1C462B99840A00C2A76E /* Assets.xcassets */,
 				00FD1C482B99840A00C2A76E /* LaunchScreen.storyboard */,
@@ -86,6 +172,13 @@
 			dependencies = (
 			);
 			name = KoreaOneStep;
+			packageProductDependencies = (
+				0024F2E52B9B42B200799623 /* SnapKit */,
+				0024F2E72B9B42B200799623 /* SnapKit-Dynamic */,
+				0024F2EA2B9B42C200799623 /* Kingfisher */,
+				0024F2ED2B9B42D100799623 /* Alamofire */,
+				0024F2EF2B9B42D100799623 /* AlamofireDynamic */,
+			);
 			productName = KoreaOneStep;
 			productReference = 00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +207,11 @@
 				Base,
 			);
 			mainGroup = 00FD1C312B99840900C2A76E;
+			packageReferences = (
+				0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 00FD1C3B2B99840900C2A76E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -142,9 +240,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00FD1C422B99840900C2A76E /* ViewController.swift in Sources */,
+				0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */,
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
+				0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */,
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
+				0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */,
+				0024F3032B9B465900799623 /* SettingViewController.swift in Sources */,
+				0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +475,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0024F2E52B9B42B200799623 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		0024F2E72B9B42B200799623 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		0024F2EA2B9B42C200799623 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		0024F2ED2B9B42D100799623 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		0024F2EF2B9B42D100799623 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 00FD1C322B99840900C2A76E /* Project object */;
 }
