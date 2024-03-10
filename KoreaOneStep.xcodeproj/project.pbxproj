@@ -17,6 +17,9 @@
 		0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3002B9B465200799623 /* BookmarkViewController.swift */; };
 		0024F3032B9B465900799623 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3022B9B465900799623 /* SettingViewController.swift */; };
 		0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */; };
+		0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */; };
+		0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */; };
+		0081E89C2B9DB10E00EF615D /* SettingTableViewCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */; };
 		00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C3D2B99840900C2A76E /* AppDelegate.swift */; };
 		00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */; };
 		00FD1C452B99840900C2A76E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C432B99840900C2A76E /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 		0024F3002B9B465200799623 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		0024F3022B9B465900799623 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerConfiguration.swift; sourceTree = "<group>"; };
+		0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
+		0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCellTitle.swift; sourceTree = "<group>"; };
 		00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreaOneStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FD1C3D2B99840900C2A76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 		0024F2F52B9B43B500799623 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -117,8 +124,17 @@
 			isa = PBXGroup;
 			children = (
 				0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */,
+				0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0081E89A2B9DB0E100EF615D /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		00FD1C312B99840900C2A76E = {
@@ -143,6 +159,7 @@
 			children = (
 				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
 				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
+				0081E89A2B9DB0E100EF615D /* Enums */,
 				0024F3062B9B4DF100799623 /* Protocols */,
 				0024F2F52B9B43B500799623 /* Extensions */,
 				0024F2F42B9B43AD00799623 /* ViewModels */,
@@ -241,12 +258,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */,
+				0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */,
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
 				0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */,
+				0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */,
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
 				0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */,
 				0024F3032B9B465900799623 /* SettingViewController.swift in Sources */,
 				0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */,
+				0081E89C2B9DB10E00EF615D /* SettingTableViewCellTitle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
