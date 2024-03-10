@@ -4,6 +4,39 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="g4E-LO-WUG">
+            <objects>
+                <viewController id="OG5-dF-TWD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iej-9s-3lE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzs-HL-JAK">
+                                <rect key="frame" x="162" y="364" width="50" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="pencil.tip.crop.circle.badge.minus" catalog="system"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6r4-zY-RqZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bTd-H3-qZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66" y="-52"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pencil.tip.crop.circle.badge.minus" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
