@@ -15,6 +15,7 @@ final class FilterViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        // TODO: - HeaderView Identifier 문자열 리터털을 변수로 바꾸기
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "customHeader")
         tableView.register(FilterTableViewCell.self, forCellReuseIdentifier: FilterTableViewCell.identifier)
         

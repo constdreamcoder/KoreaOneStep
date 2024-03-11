@@ -26,7 +26,14 @@
 		0081E8AB2B9DD8E400EF615D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8AA2B9DD8E400EF615D /* FilterViewController.swift */; };
 		0081E8AE2B9DE05000EF615D /* TTGTags in Frameworks */ = {isa = PBXBuildFile; productRef = 0081E8AD2B9DE05000EF615D /* TTGTags */; };
 		0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */; };
+		00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */; };
 		00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */; };
+		00F77AC92B9EE55D00A6A2E0 /* BookmarkHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77AC82B9EE55D00A6A2E0 /* BookmarkHeaderView.swift */; };
+		00F77ACB2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */; };
+		00F77ACF2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77ACE2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift */; };
+		00F77AD12B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77AD02B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift */; };
+		00F77AD42B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77AD32B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift */; };
+		00F77ADB2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77ADA2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift */; };
 		00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C3D2B99840900C2A76E /* AppDelegate.swift */; };
 		00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */; };
 		00FD1C452B99840900C2A76E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C432B99840900C2A76E /* Main.storyboard */; };
@@ -50,7 +57,14 @@
 		0081E8A72B9DC71100EF615D /* UITableViewCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellConfiguration.swift; sourceTree = "<group>"; };
 		0081E8AA2B9DD8E400EF615D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewSection.swift; sourceTree = "<group>"; };
+		00F77AC82B9EE55D00A6A2E0 /* BookmarkHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkHeaderView.swift; sourceTree = "<group>"; };
+		00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewSection.swift; sourceTree = "<group>"; };
+		00F77ACE2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewConfiguration.swift; sourceTree = "<group>"; };
+		00F77AD02B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkHeaderViewCell.swift; sourceTree = "<group>"; };
+		00F77AD32B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellConfiguration.swift; sourceTree = "<group>"; };
+		00F77ADA2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Extension.swift"; sourceTree = "<group>"; };
 		00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreaOneStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FD1C3D2B99840900C2A76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */,
+				00F77ADA2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -128,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				0024F3002B9B465200799623 /* BookmarkViewController.swift */,
+				00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */,
+				00F77AD22B9EED9D00A6A2E0 /* BookmarkFirstSectionTableViewCell */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -146,6 +163,8 @@
 				0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */,
 				0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */,
 				0081E8A72B9DC71100EF615D /* UITableViewCellConfiguration.swift */,
+				00F77ACE2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift */,
+				00F77AD32B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -182,8 +201,18 @@
 			children = (
 				0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */,
 				00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */,
+				00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		00F77AD22B9EED9D00A6A2E0 /* BookmarkFirstSectionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				00F77AC82B9EE55D00A6A2E0 /* BookmarkHeaderView.swift */,
+				00F77AD02B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift */,
+			);
+			path = BookmarkFirstSectionTableViewCell;
 			sourceTree = "<group>";
 		};
 		00FD1C312B99840900C2A76E = {
@@ -353,16 +382,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00F77ADB2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift in Sources */,
 				0081E8AB2B9DD8E400EF615D /* FilterViewController.swift in Sources */,
+				00F77AC92B9EE55D00A6A2E0 /* BookmarkHeaderView.swift in Sources */,
 				0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */,
+				00F77ACB2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift in Sources */,
 				0081E8A32B9DC11500EF615D /* SearchViewController.swift in Sources */,
 				0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */,
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
+				00F77AD42B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift in Sources */,
+				00F77ACF2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift in Sources */,
 				00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */,
+				00F77AD12B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift in Sources */,
 				0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */,
 				0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */,
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
 				0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */,
+				00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */,
 				0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */,
 				0024F3032B9B465900799623 /* SettingViewController.swift in Sources */,
 				0081E8A62B9DC68200EF615D /* SearchTableViewCell.swift in Sources */,
