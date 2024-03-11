@@ -70,12 +70,9 @@ extension SearchTableViewCell: UITableViewCellConfiguration {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(16.0)
         }
-        
     }
     
     func configureUI() {
         
     }
 }
-
-

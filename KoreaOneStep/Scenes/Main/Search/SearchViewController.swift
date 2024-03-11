@@ -14,7 +14,6 @@ final class SearchViewController: UIViewController {
         let searchBar = UISearchBar()
         searchBar.searchTextField.leftView = nil
         searchBar.searchTextField.backgroundColor = .customWhite
-        searchBar.becomeFirstResponder()
         return searchBar
     }()
     
@@ -37,6 +36,12 @@ final class SearchViewController: UIViewController {
         configureConstraints()
         configureUI()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        searchBar.becomeFirstResponder()
+    }
 }
 
 extension SearchViewController {
@@ -45,7 +50,9 @@ extension SearchViewController {
     }
     
     @objc func rightBarButtonItemTapped() {
-        print(#function)
+        let filterVC = FilterViewController()
+        let filterNav = UINavigationController(rootViewController: filterVC)
+        present(filterNav, animated: true)
     }
 }
 
