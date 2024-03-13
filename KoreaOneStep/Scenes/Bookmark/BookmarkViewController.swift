@@ -41,6 +41,7 @@ final class BookmarkViewController: UIViewController {
 extension BookmarkViewController: UIViewControllerConfiguration {
     func configureNavigationBar() {
         navigationItem.title = navigationController?.tabBarItem.title
+        navigationItem.backButtonTitle = ""
     }
     
     func configureConstraints() {
@@ -81,7 +82,10 @@ extension BookmarkViewController: UICollectionViewConfiguration {
 }
 
 extension BookmarkViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension BookmarkViewController: UICollectionViewDataSource {
@@ -89,7 +93,6 @@ extension BookmarkViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BookmarkHeaderView.identifier, for: indexPath) as? BookmarkHeaderView else { return UICollectionViewCell() }
         return header
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

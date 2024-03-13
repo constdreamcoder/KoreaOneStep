@@ -33,7 +33,7 @@ extension MainViewController: UIViewControllerConfiguration {
     func configureNavigationBar() {
         navigationController?.navigationBar.isHidden = true
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        navigationItem.backButtonTitle = ""
     }
     
     func configureConstraints() {

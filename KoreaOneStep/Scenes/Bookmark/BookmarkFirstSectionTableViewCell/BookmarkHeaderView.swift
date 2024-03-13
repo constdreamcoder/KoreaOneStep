@@ -42,7 +42,7 @@ final class BookmarkHeaderView: UICollectionReusableView {
     }
 }
 
-extension BookmarkHeaderView: UITableViewCellConfiguration {
+extension BookmarkHeaderView: UICollectionViewCellConfiguration {
     func configureConstraints() {
         [
             headerLabel,

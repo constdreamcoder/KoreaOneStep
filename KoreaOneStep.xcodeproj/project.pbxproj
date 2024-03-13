@@ -17,6 +17,14 @@
 		0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3002B9B465200799623 /* BookmarkViewController.swift */; };
 		0024F3032B9B465900799623 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3022B9B465900799623 /* SettingViewController.swift */; };
 		0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */; };
+		005E57192BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */; };
+		005E571B2BA010B0005CD618 /* RegionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */; };
+		005E571D2BA0190E005CD618 /* DetailTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E571C2BA0190E005CD618 /* DetailTableViewSection.swift */; };
+		005E57202BA01CB5005CD618 /* PhoneNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E571F2BA01CB5005CD618 /* PhoneNumberTableViewCell.swift */; };
+		005E57222BA01F9F005CD618 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E57212BA01F9F005CD618 /* AddressTableViewCell.swift */; };
+		005E57242BA02466005CD618 /* ServiceProvidedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E57232BA02466005CD618 /* ServiceProvidedTableViewCell.swift */; };
+		005E572C2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E572B2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift */; };
+		005E572E2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E572D2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift */; };
 		0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */; };
 		0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */; };
 		0081E89C2B9DB10E00EF615D /* SettingTableViewCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */; };
@@ -27,6 +35,7 @@
 		0081E8AE2B9DE05000EF615D /* TTGTags in Frameworks */ = {isa = PBXBuildFile; productRef = 0081E8AD2B9DE05000EF615D /* TTGTags */; };
 		0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */; };
 		00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */; };
+		00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */; };
 		00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */; };
 		00F77AC92B9EE55D00A6A2E0 /* BookmarkHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77AC82B9EE55D00A6A2E0 /* BookmarkHeaderView.swift */; };
 		00F77ACB2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */; };
@@ -49,6 +58,14 @@
 		0024F3002B9B465200799623 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		0024F3022B9B465900799623 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerConfiguration.swift; sourceTree = "<group>"; };
+		005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
+		005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailTableViewCell.swift; sourceTree = "<group>"; };
+		005E571C2BA0190E005CD618 /* DetailTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewSection.swift; sourceTree = "<group>"; };
+		005E571F2BA01CB5005CD618 /* PhoneNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableViewCell.swift; sourceTree = "<group>"; };
+		005E57212BA01F9F005CD618 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		005E57232BA02466005CD618 /* ServiceProvidedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidedTableViewCell.swift; sourceTree = "<group>"; };
+		005E572B2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidedInternalCollectionViewCell.swift; sourceTree = "<group>"; };
+		005E572D2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidedDetailTableViewCell.swift; sourceTree = "<group>"; };
 		0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCellTitle.swift; sourceTree = "<group>"; };
@@ -58,6 +75,7 @@
 		0081E8AA2B9DD8E400EF615D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
+		00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewSection.swift; sourceTree = "<group>"; };
 		00F77AC82B9EE55D00A6A2E0 /* BookmarkHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkHeaderView.swift; sourceTree = "<group>"; };
 		00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewSection.swift; sourceTree = "<group>"; };
@@ -103,6 +121,7 @@
 				0024F2FB2B9B45D700799623 /* Main */,
 				0024F2FC2B9B45E000799623 /* Bookmark */,
 				0024F2FD2B9B45ED00799623 /* Setting */,
+				00DFE3BC2B9F4519005BF9D6 /* Detail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -126,6 +145,7 @@
 			children = (
 				0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */,
 				00F77ADA2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift */,
+				005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,6 +189,27 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		005E571E2BA01CA2005CD618 /* DetailTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */,
+				005E571F2BA01CB5005CD618 /* PhoneNumberTableViewCell.swift */,
+				005E57212BA01F9F005CD618 /* AddressTableViewCell.swift */,
+				005E57252BA02994005CD618 /* ServiceProvided */,
+				005E572D2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift */,
+			);
+			path = DetailTableViewCells;
+			sourceTree = "<group>";
+		};
+		005E57252BA02994005CD618 /* ServiceProvided */ = {
+			isa = PBXGroup;
+			children = (
+				005E57232BA02466005CD618 /* ServiceProvidedTableViewCell.swift */,
+				005E572B2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift */,
+			);
+			path = ServiceProvided;
+			sourceTree = "<group>";
+		};
 		0081E89A2B9DB0E100EF615D /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,8 +243,18 @@
 				0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */,
 				00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */,
 				00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */,
+				005E571C2BA0190E005CD618 /* DetailTableViewSection.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		00DFE3BC2B9F4519005BF9D6 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */,
+				005E571E2BA01CA2005CD618 /* DetailTableViewCells */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		00F77AD22B9EED9D00A6A2E0 /* BookmarkFirstSectionTableViewCell */ = {
@@ -382,21 +433,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005E571B2BA010B0005CD618 /* RegionDetailTableViewCell.swift in Sources */,
+				005E572C2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift in Sources */,
 				00F77ADB2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift in Sources */,
 				0081E8AB2B9DD8E400EF615D /* FilterViewController.swift in Sources */,
 				00F77AC92B9EE55D00A6A2E0 /* BookmarkHeaderView.swift in Sources */,
 				0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */,
 				00F77ACB2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift in Sources */,
+				005E571D2BA0190E005CD618 /* DetailTableViewSection.swift in Sources */,
 				0081E8A32B9DC11500EF615D /* SearchViewController.swift in Sources */,
+				005E57222BA01F9F005CD618 /* AddressTableViewCell.swift in Sources */,
 				0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */,
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
 				00F77AD42B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift in Sources */,
+				005E57202BA01CB5005CD618 /* PhoneNumberTableViewCell.swift in Sources */,
 				00F77ACF2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift in Sources */,
 				00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */,
 				00F77AD12B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift in Sources */,
 				0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */,
 				0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */,
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
+				005E57192BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
+				005E572E2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift in Sources */,
+				005E57242BA02466005CD618 /* ServiceProvidedTableViewCell.swift in Sources */,
+				00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */,
 				0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */,
 				00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */,
 				0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */,
