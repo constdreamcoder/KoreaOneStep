@@ -10,11 +10,7 @@
 		0015DE6A2BA19363002CA32C /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 0015DE692BA19363002CA32C /* FloatingPanel */; };
 		0015DE6C2BA19592002CA32C /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6B2BA19592002CA32C /* ContentViewController.swift */; };
 		0015DE6F2BA19CCE002CA32C /* SearchResultListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */; };
-		0024F2E62B9B42B200799623 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2E52B9B42B200799623 /* SnapKit */; };
-		0024F2E82B9B42B200799623 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2E72B9B42B200799623 /* SnapKit-Dynamic */; };
 		0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2EA2B9B42C200799623 /* Kingfisher */; };
-		0024F2EE2B9B42D100799623 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2ED2B9B42D100799623 /* Alamofire */; };
-		0024F2F02B9B42D100799623 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2EF2B9B42D100799623 /* AlamofireDynamic */; };
 		0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F2F92B9B45B600799623 /* TabBarViewController.swift */; };
 		0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F2FE2B9B464A00799623 /* MainViewController.swift */; };
 		0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3002B9B465200799623 /* BookmarkViewController.swift */; };
@@ -24,6 +20,8 @@
 		00287F4D2BA2D44800B56A15 /* FilteringCategoryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */; };
 		00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F502BA2DDC300B56A15 /* FilteringOrder.swift */; };
 		0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051C2A22BA3516E0094D4BC /* TourType.swift */; };
+		0051C2A62BA35B6C0094D4BC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0051C2A52BA35B6C0094D4BC /* SnapKit */; };
+		0051C2A92BA35BD80094D4BC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0051C2A82BA35BD80094D4BC /* Alamofire */; };
 		005E57192BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */; };
 		005E571B2BA010B0005CD618 /* RegionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */; };
 		005E571D2BA0190E005CD618 /* DetailTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E571C2BA0190E005CD618 /* DetailTableViewSection.swift */; };
@@ -122,11 +120,9 @@
 			files = (
 				0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */,
 				0015DE6A2BA19363002CA32C /* FloatingPanel in Frameworks */,
-				0024F2EE2B9B42D100799623 /* Alamofire in Frameworks */,
-				0024F2F02B9B42D100799623 /* AlamofireDynamic in Frameworks */,
+				0051C2A62BA35B6C0094D4BC /* SnapKit in Frameworks */,
+				0051C2A92BA35BD80094D4BC /* Alamofire in Frameworks */,
 				0081E8AE2B9DE05000EF615D /* TTGTags in Frameworks */,
-				0024F2E62B9B42B200799623 /* SnapKit in Frameworks */,
-				0024F2E82B9B42B200799623 /* SnapKit-Dynamic in Frameworks */,
 				59C03BE6C333BA2CA5EC9571 /* Pods_KoreaOneStep.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,13 +460,11 @@
 			);
 			name = KoreaOneStep;
 			packageProductDependencies = (
-				0024F2E52B9B42B200799623 /* SnapKit */,
-				0024F2E72B9B42B200799623 /* SnapKit-Dynamic */,
 				0024F2EA2B9B42C200799623 /* Kingfisher */,
-				0024F2ED2B9B42D100799623 /* Alamofire */,
-				0024F2EF2B9B42D100799623 /* AlamofireDynamic */,
 				0081E8AD2B9DE05000EF615D /* TTGTags */,
 				0015DE692BA19363002CA32C /* FloatingPanel */,
+				0051C2A52BA35B6C0094D4BC /* SnapKit */,
+				0051C2A82BA35BD80094D4BC /* Alamofire */,
 			);
 			productName = KoreaOneStep;
 			productReference = 00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */;
@@ -501,11 +495,11 @@
 			);
 			mainGroup = 00FD1C312B99840900C2A76E;
 			packageReferences = (
-				0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0081E8AC2B9DE05000EF615D /* XCRemoteSwiftPackageReference "TTGTagCollectionView" */,
 				0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				0051C2A42BA35B6C0094D4BC /* XCRemoteSwiftPackageReference "SnapKit" */,
+				0051C2A72BA35BD80094D4BC /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 00FD1C3B2B99840900C2A76E /* Products */;
 			projectDirPath = "";
@@ -843,14 +837,6 @@
 				minimumVersion = 2.8.2;
 			};
 		};
-		0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
 		0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -859,7 +845,15 @@
 				minimumVersion = 7.11.0;
 			};
 		};
-		0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		0051C2A42BA35B6C0094D4BC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		0051C2A72BA35BD80094D4BC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -883,30 +877,20 @@
 			package = 0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */;
 			productName = FloatingPanel;
 		};
-		0024F2E52B9B42B200799623 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		0024F2E72B9B42B200799623 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
 		0024F2EA2B9B42C200799623 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		0024F2ED2B9B42D100799623 /* Alamofire */ = {
+		0051C2A52BA35B6C0094D4BC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			package = 0051C2A42BA35B6C0094D4BC /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
-		0024F2EF2B9B42D100799623 /* AlamofireDynamic */ = {
+		0051C2A82BA35BD80094D4BC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
+			package = 0051C2A72BA35BD80094D4BC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		0081E8AD2B9DE05000EF615D /* TTGTags */ = {
 			isa = XCSwiftPackageProductDependency;
