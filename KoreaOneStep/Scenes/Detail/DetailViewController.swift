@@ -65,6 +65,8 @@ extension DetailViewController {
 
 extension DetailViewController: UIViewControllerConfiguration {
     func configureNavigationBar() {
+        navigationController?.navigationBar.isHidden = false
+        
         navigationItem.title = "우가우가 한식당"
         
         navigationController?.navigationBar.tintColor = .customBlack

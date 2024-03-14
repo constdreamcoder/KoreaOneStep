@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0015DE6A2BA19363002CA32C /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 0015DE692BA19363002CA32C /* FloatingPanel */; };
+		0015DE6C2BA19592002CA32C /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6B2BA19592002CA32C /* ContentViewController.swift */; };
+		0015DE6F2BA19CCE002CA32C /* SearchResultListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */; };
 		0024F2E62B9B42B200799623 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2E52B9B42B200799623 /* SnapKit */; };
 		0024F2E82B9B42B200799623 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2E72B9B42B200799623 /* SnapKit-Dynamic */; };
 		0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2EA2B9B42C200799623 /* Kingfisher */; };
@@ -17,6 +20,10 @@
 		0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3002B9B465200799623 /* BookmarkViewController.swift */; };
 		0024F3032B9B465900799623 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3022B9B465900799623 /* SettingViewController.swift */; };
 		0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */; };
+		00287F4B2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F4A2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift */; };
+		00287F4D2BA2D44800B56A15 /* FilteringCategoryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */; };
+		00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F502BA2DDC300B56A15 /* FilteringOrder.swift */; };
+		0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051C2A22BA3516E0094D4BC /* TourType.swift */; };
 		005E57192BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */; };
 		005E571B2BA010B0005CD618 /* RegionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */; };
 		005E571D2BA0190E005CD618 /* DetailTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E571C2BA0190E005CD618 /* DetailTableViewSection.swift */; };
@@ -36,6 +43,9 @@
 		0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */; };
 		00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */; };
 		00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */; };
+		00F59C992BA1E70100CE49C4 /* ContentTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F59C982BA1E70100CE49C4 /* ContentTableViewSection.swift */; };
+		00F59C9D2BA1E94700CE49C4 /* AmbientSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F59C9C2BA1E94700CE49C4 /* AmbientSettingsTableViewCell.swift */; };
+		00F59C9F2BA1F25600CE49C4 /* AccordionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F59C9E2BA1F25600CE49C4 /* AccordionTableViewCell.swift */; };
 		00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */; };
 		00F77AC92B9EE55D00A6A2E0 /* BookmarkHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77AC82B9EE55D00A6A2E0 /* BookmarkHeaderView.swift */; };
 		00F77ACB2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */; };
@@ -53,11 +63,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0015DE6B2BA19592002CA32C /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListTableViewCell.swift; sourceTree = "<group>"; };
 		0024F2F92B9B45B600799623 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0024F2FE2B9B464A00799623 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0024F3002B9B465200799623 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		0024F3022B9B465900799623 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerConfiguration.swift; sourceTree = "<group>"; };
+		00287F4A2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingDistanceStackView.swift; sourceTree = "<group>"; };
+		00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringCategoryStackView.swift; sourceTree = "<group>"; };
+		00287F502BA2DDC300B56A15 /* FilteringOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringOrder.swift; sourceTree = "<group>"; };
+		0051C2A22BA3516E0094D4BC /* TourType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourType.swift; sourceTree = "<group>"; };
 		005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
 		005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailTableViewCell.swift; sourceTree = "<group>"; };
 		005E571C2BA0190E005CD618 /* DetailTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewSection.swift; sourceTree = "<group>"; };
@@ -76,6 +92,9 @@
 		0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		00F59C982BA1E70100CE49C4 /* ContentTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewSection.swift; sourceTree = "<group>"; };
+		00F59C9C2BA1E94700CE49C4 /* AmbientSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbientSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		00F59C9E2BA1F25600CE49C4 /* AccordionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionTableViewCell.swift; sourceTree = "<group>"; };
 		00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewSection.swift; sourceTree = "<group>"; };
 		00F77AC82B9EE55D00A6A2E0 /* BookmarkHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkHeaderView.swift; sourceTree = "<group>"; };
 		00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewSection.swift; sourceTree = "<group>"; };
@@ -102,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */,
+				0015DE6A2BA19363002CA32C /* FloatingPanel in Frameworks */,
 				0024F2EE2B9B42D100799623 /* Alamofire in Frameworks */,
 				0024F2F02B9B42D100799623 /* AlamofireDynamic in Frameworks */,
 				0081E8AE2B9DE05000EF615D /* TTGTags in Frameworks */,
@@ -114,6 +134,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0015DE6D2BA19CA6002CA32C /* FloatingPanel */ = {
+			isa = PBXGroup;
+			children = (
+				0015DE6B2BA19592002CA32C /* ContentViewController.swift */,
+				00F59C9B2BA1E79D00CE49C4 /* AmbientSettings */,
+				00F59C9A2BA1E78E00CE49C4 /* SearchList */,
+			);
+			path = FloatingPanel;
+			sourceTree = "<group>";
+		};
 		0024F2F12B9B438D00799623 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				0024F2FE2B9B464A00799623 /* MainViewController.swift */,
+				0015DE6D2BA19CA6002CA32C /* FloatingPanel */,
 				0081E8A42B9DC66C00EF615D /* Search */,
 			);
 			path = Main;
@@ -187,6 +218,83 @@
 				00F77AD32B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		00287F4E2BA2D6C300B56A15 /* AccordionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				00F59C9E2BA1F25600CE49C4 /* AccordionTableViewCell.swift */,
+				00287F4F2BA2D6C900B56A15 /* SubViews */,
+			);
+			path = AccordionTableViewCell;
+			sourceTree = "<group>";
+		};
+		00287F4F2BA2D6C900B56A15 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				00287F4A2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift */,
+				00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		00287F522BA323E700B56A15 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				00287F582BA3248500B56A15 /* FloatingPanel */,
+				00287F532BA3241600B56A15 /* Search */,
+				0051C2A22BA3516E0094D4BC /* TourType.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		00287F532BA3241600B56A15 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				00287F542BA3242B00B56A15 /* Filter */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		00287F542BA3242B00B56A15 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		00287F552BA3244A00B56A15 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				005E571C2BA0190E005CD618 /* DetailTableViewSection.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		00287F562BA3245500B56A15 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		00287F572BA3246100B56A15 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		00287F582BA3248500B56A15 /* FloatingPanel */ = {
+			isa = PBXGroup;
+			children = (
+				00287F502BA2DDC300B56A15 /* FilteringOrder.swift */,
+				00F59C982BA1E70100CE49C4 /* ContentTableViewSection.swift */,
+			);
+			path = FloatingPanel;
 			sourceTree = "<group>";
 		};
 		005E571E2BA01CA2005CD618 /* DetailTableViewCells */ = {
@@ -240,10 +348,10 @@
 		0081E8B42B9E155300EF615D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */,
-				00F77AA62B9EBC1200A6A2E0 /* FilterTableViewSection.swift */,
-				00F77ACA2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift */,
-				005E571C2BA0190E005CD618 /* DetailTableViewSection.swift */,
+				00287F522BA323E700B56A15 /* Main */,
+				00287F572BA3246100B56A15 /* Bookmark */,
+				00287F562BA3245500B56A15 /* Setting */,
+				00287F552BA3244A00B56A15 /* Detail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -255,6 +363,23 @@
 				005E571E2BA01CA2005CD618 /* DetailTableViewCells */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		00F59C9A2BA1E78E00CE49C4 /* SearchList */ = {
+			isa = PBXGroup;
+			children = (
+				0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */,
+			);
+			path = SearchList;
+			sourceTree = "<group>";
+		};
+		00F59C9B2BA1E79D00CE49C4 /* AmbientSettings */ = {
+			isa = PBXGroup;
+			children = (
+				00F59C9C2BA1E94700CE49C4 /* AmbientSettingsTableViewCell.swift */,
+				00287F4E2BA2D6C300B56A15 /* AccordionTableViewCell */,
+			);
+			path = AmbientSettings;
 			sourceTree = "<group>";
 		};
 		00F77AD22B9EED9D00A6A2E0 /* BookmarkFirstSectionTableViewCell */ = {
@@ -345,6 +470,7 @@
 				0024F2ED2B9B42D100799623 /* Alamofire */,
 				0024F2EF2B9B42D100799623 /* AlamofireDynamic */,
 				0081E8AD2B9DE05000EF615D /* TTGTags */,
+				0015DE692BA19363002CA32C /* FloatingPanel */,
 			);
 			productName = KoreaOneStep;
 			productReference = 00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */;
@@ -379,6 +505,7 @@
 				0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0024F2EC2B9B42D100799623 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0081E8AC2B9DE05000EF615D /* XCRemoteSwiftPackageReference "TTGTagCollectionView" */,
+				0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 00FD1C3B2B99840900C2A76E /* Products */;
 			projectDirPath = "";
@@ -433,14 +560,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00287F4D2BA2D44800B56A15 /* FilteringCategoryStackView.swift in Sources */,
 				005E571B2BA010B0005CD618 /* RegionDetailTableViewCell.swift in Sources */,
 				005E572C2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift in Sources */,
+				00287F4B2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift in Sources */,
 				00F77ADB2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift in Sources */,
 				0081E8AB2B9DD8E400EF615D /* FilterViewController.swift in Sources */,
+				00F59C9F2BA1F25600CE49C4 /* AccordionTableViewCell.swift in Sources */,
 				00F77AC92B9EE55D00A6A2E0 /* BookmarkHeaderView.swift in Sources */,
 				0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */,
 				00F77ACB2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift in Sources */,
 				005E571D2BA0190E005CD618 /* DetailTableViewSection.swift in Sources */,
+				00F59C992BA1E70100CE49C4 /* ContentTableViewSection.swift in Sources */,
+				00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */,
 				0081E8A32B9DC11500EF615D /* SearchViewController.swift in Sources */,
 				005E57222BA01F9F005CD618 /* AddressTableViewCell.swift in Sources */,
 				0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */,
@@ -452,13 +584,17 @@
 				00F77AD12B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift in Sources */,
 				0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */,
 				0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */,
+				0015DE6C2BA19592002CA32C /* ContentViewController.swift in Sources */,
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
 				005E57192BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
 				005E572E2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift in Sources */,
+				0015DE6F2BA19CCE002CA32C /* SearchResultListTableViewCell.swift in Sources */,
+				00F59C9D2BA1E94700CE49C4 /* AmbientSettingsTableViewCell.swift in Sources */,
 				005E57242BA02466005CD618 /* ServiceProvidedTableViewCell.swift in Sources */,
 				00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */,
 				0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */,
 				00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */,
+				0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */,
 				0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */,
 				0024F3032B9B465900799623 /* SettingViewController.swift in Sources */,
 				0081E8A62B9DC68200EF615D /* SearchTableViewCell.swift in Sources */,
@@ -699,6 +835,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 		0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -734,6 +878,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0015DE692BA19363002CA32C /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
 		0024F2E52B9B42B200799623 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0024F2E42B9B42B200799623 /* XCRemoteSwiftPackageReference "SnapKit" */;

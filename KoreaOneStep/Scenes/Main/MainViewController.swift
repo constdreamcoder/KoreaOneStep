@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import FloatingPanel
+import TTGTags
 
 final class MainViewController: UIViewController {
     
@@ -19,13 +21,71 @@ final class MainViewController: UIViewController {
         
         return searchBar
     }()
-
+    
+    lazy var tourTypeListView: TTGTextTagCollectionView = {
+        let tourTypeListView = TTGTextTagCollectionView()
+        
+        tourTypeListView.alignment = .left
+        tourTypeListView.delegate = self
+        
+        tourTypeListView.selectionLimit = 1
+            
+        tourTypeListView.scrollDirection = .horizontal
+        tourTypeListView.showsHorizontalScrollIndicator = false
+        
+        tourTypeListView.contentInset = UIEdgeInsets(top: 2, left: 16, bottom: 2, right: 16)
+        return tourTypeListView
+    }()
+    
+    private lazy var floatingPanelController: FloatingPanelController = {
+        let floatingPC = FloatingPanelController()
+        
+        floatingPC.delegate = self
+        
+        let contentVC = ContentViewController()
+        let contentNav = UINavigationController(rootViewController: contentVC)
+        floatingPC.set(contentViewController: contentNav)
+        floatingPC.track(scrollView: contentVC.tableView)
+        floatingPC.addPanel(toParent: self)
+        floatingPC.isRemovalInteractionEnabled = false
+        return floatingPC
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavigationBar()
         configureConstraints()
         configureUI()
+        addTourType()
+        showFloatingPanel()
+    }
+    
+    // TODO: - 이 부분이 어떻게 동작하는지 다시 살펴보기
+    private func showFloatingPanel() {
+        floatingPanelController.show(animated: false) {
+            self.floatingPanelController.didMove(toParent: self)
+        }
+    }
+    
+    private func addTourType() {
+        TourType.allCases.forEach { tourType in
+            let content = TTGTextTagStringContent()
+            content.text = tourType.rawValue
+            content.textColor = .customBlack
+            content.textFont = .systemFont(ofSize: 16.0)
+            
+            let style = TTGTextTagStyle()
+            style.cornerRadius = 16.0
+            style.backgroundColor = .customWhite
+            style.extraSpace = .init(width: 16.0, height: 16.0)
+            
+            let textTag = TTGTextTag(content: content, style: style)
+            
+            tourTypeListView.addTag(textTag)
+        }
+        
+        tourTypeListView.reload()
     }
 }
 
@@ -38,11 +98,18 @@ extension MainViewController: UIViewControllerConfiguration {
     
     func configureConstraints() {
         [
-            searchBar
+            searchBar,
+            tourTypeListView
         ].forEach { view.addSubview($0) }
-        
+                
         searchBar.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16.0)
+        }
+        
+        tourTypeListView.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -58,4 +125,16 @@ extension MainViewController: UISearchBarDelegate {
         searchNav.modalPresentationStyle = .fullScreen
         present(searchNav, animated: false)
     }
+}
+
+extension MainViewController: TTGTextTagCollectionViewDelegate {
+    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
+        tag.selected = false
+        guard let content = tag.content as? TTGTextTagStringContent else { return }
+        print(index, content.text)
+    }
+}
+
+extension MainViewController: FloatingPanelControllerDelegate {
+    
 }

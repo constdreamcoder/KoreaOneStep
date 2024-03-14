@@ -67,6 +67,7 @@ extension FilterTableViewCell: TTGTextTagCollectionViewDelegate {
     
     private func addTags() {
         tagListView.removeAllTags()
+        
         for i in 0..<tagList.count {
             let content = TTGTextTagStringContent()
             content.text = tagList[i]

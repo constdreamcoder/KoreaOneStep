@@ -37,6 +37,7 @@ final class TabBarViewController: UITabBarController {
         )
         
         tabBar.tintColor = .black
+        tabBar.backgroundColor = .customWhite
         
         setViewControllers([mainNav, bookmarkNav, settingNav], animated: false)
     }
