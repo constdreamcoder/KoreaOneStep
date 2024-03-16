@@ -1,5 +1,5 @@
 //
-//  SearchingDistanceStackView.swift
+//  FilteringDistanceStackView.swift
 //  KoreaOneStep
 //
 //  Created by SUCHAN CHANG on 3/14/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchingDistanceStackView: UIStackView {
+final class FilteringDistanceStackView: UIStackView {
     
     private let searchDistance = FilteringOrder.FilteringDistance.allCases
     

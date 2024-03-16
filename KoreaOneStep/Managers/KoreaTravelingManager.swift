@@ -19,6 +19,7 @@ final class KoreaTravelingManager {
         latitude: Double,
         longitude: Double,
         radius: Int = FilteringOrder.FilteringDistance.oneKiloMeter.rawValue,
+        arrange: String = FilteringOrder.title.sortingCode,
         completionHandler: @escaping ([LBItem]) -> Void
     ) {
         let urlString = "\(baseURL)/locationBasedList1"
@@ -31,7 +32,7 @@ final class KoreaTravelingManager {
             "MobileOS": "IOS", // OS 구분 : IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC(기타)
             "MobileApp": "AppTest", // 서비스명(어플명)
             "listYN": "Y", // 목록구분(Y=목록, N=개수)
-            "arrange": "O", // 정렬구분(A=제목순, C=수정일순, D=생성일순, E=거리순) 대표이미지가반드시있는정렬 (O=제목순, Q=수정일순, R=생성일순,S=거리순)
+            "arrange": arrange, // 정렬구분(A=제목순, C=수정일순, D=생성일순, E=거리순) 대표이미지가반드시있는정렬 (O=제목순, Q=수정일순, R=생성일순,S=거리순)
             "mapX": "\(longitude)", // GPS X좌표(WGS84 경도좌표)
             "mapY": "\(latitude)", // GPS Y좌표(WGS84 위도좌표)
             "radius": "\(radius)", // 거리반경(단위:m) , Max값 20000m=20Km

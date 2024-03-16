@@ -31,9 +31,9 @@ final class ContentViewController: UIViewController {
     
     private var isAmbientSettingsSectionOpened = false
     
-    private var selectedSearchingDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
+    private var selectedFilteringDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
     private var filteringButtonList: [UIButton] = []
-    private var selectedFilteringCategory: String = FilteringOrder.allCases[0].rawValue
+    private var selectedFilteringCategory: FilteringOrder = FilteringOrder.allCases[0]
     
     private var mainViewModel: MainViewModel?
     
@@ -65,7 +65,7 @@ final class ContentViewController: UIViewController {
         configureNavigationBar()
     }
     
-    private func selectFilterDistance(slider: UISlider) -> FilteringOrder.FilteringDistance {
+    private func selectFilteringDistance(slider: UISlider) -> FilteringOrder.FilteringDistance {
         let value = slider.value
         
         if value <= 1.0 {
@@ -115,14 +115,14 @@ extension ContentViewController {
     }
     
     @objc func sliderValueChanged(_ slider: UISlider) {
-        self.selectedSearchingDistance = selectFilterDistance(slider: slider)
+        self.selectedFilteringDistance = selectFilteringDistance(slider: slider)
         
         print(slider.value)
         
         tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.allCases[0].rawValue)], with: .none)
         
         guard let mainViewModel = mainViewModel else { return }
-        mainViewModel.inputSearchingDistance.value = (self.userLocationInfo, self.selectedSearchingDistance)
+        mainViewModel.inputFilteringDistance.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
     @objc func filteringCategoryTapped(_ button: UIButton) {
@@ -135,7 +135,10 @@ extension ContentViewController {
                 let filteringCategoryName = buttonTitle.components(separatedBy: " • ")[1]
                 attributedString.addAttribute(.foregroundColor, value: UIColor.customBlack, range: ((buttonTitle) as NSString).range(of: filteringCategoryName))
                 button.setAttributedTitle(attributedString, for: .normal)
-                self.selectedFilteringCategory = filteringCategoryName
+                
+                if let selectedFilteringCategory = FilteringOrder(rawValue: filteringCategoryName) {
+                    self.selectedFilteringCategory = selectedFilteringCategory
+                }
             } else {
                 guard let buttonTitle = $0.title(for: .normal) else { return }
                 let attributedString = NSMutableAttributedString(string: buttonTitle)
@@ -145,6 +148,9 @@ extension ContentViewController {
         }
         
         tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.allCases[0].rawValue)], with: .none)
+        
+        guard let mainViewModel = mainViewModel else { return }
+        mainViewModel.inputFilteringOrder.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
 }
 
@@ -204,9 +210,9 @@ extension ContentViewController: UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AmbientSettingsTableViewCell.identifier) as? AmbientSettingsTableViewCell else { return UITableViewCell() }
                 cell.selectionStyle = .none
                 cell.settingButton.addTarget(self, action: #selector(settingButtonTapped), for: .touchUpInside)
-                let title = "\(selectedSearchingDistance.getDistanceStringWithUnit) 반경 \(selectedFilteringCategory)"
+                let title = "\(selectedFilteringDistance.getDistanceStringWithUnit) 반경 \(selectedFilteringCategory.rawValue)"
                 cell.settingButton.setTitle(title, for: .normal)
-                cell.setSettingButtonAttributedTitle(selectedSearchingDistance, selectedFilteringCategory)
+                cell.setSettingButtonAttributedTitle(selectedFilteringDistance, selectedFilteringCategory)
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AccordionTableViewCell.identifier) as? AccordionTableViewCell else { return UITableViewCell() }

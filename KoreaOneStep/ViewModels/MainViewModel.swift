@@ -10,7 +10,8 @@ import CoreLocation
 
 final class MainViewModel: NSObject {
     let inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
-    let inputSearchingDistance: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance)> = Observable((nil, .oneKiloMeter))
+    let inputFilteringDistance: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance, FilteringOrder)> = Observable((nil, .oneKiloMeter, .title))
+    let inputFilteringOrder: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance, FilteringOrder)> = Observable((nil, .oneKiloMeter, .title))
     
     let outputLocationBasedTouristDestinationList: Observable<[LBItem]> = Observable([])
     let outputUserCurrentLocationInfo: Observable<CLLocationCoordinate2D?> = Observable(nil)
@@ -45,13 +46,28 @@ final class MainViewModel: NSObject {
             }
         }
         
-        inputSearchingDistance.bind { coordinate, searchingDistance in
+        inputFilteringDistance.bind { coordinate, filteringDistance, filteringOrder in
             guard let coordinate = coordinate else { return  }
             
             KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
                 latitude: coordinate.latitude,
                 longitude: coordinate.longitude,
-                radius: searchingDistance.rawValue
+                radius: filteringDistance.rawValue,
+                arrange: filteringOrder.sortingCode
+            ) { [weak self] touristDestinationList in
+                guard let weakSelf = self else { return }
+                weakSelf.outputLocationBasedTouristDestinationList.value = touristDestinationList
+            }
+        }
+        
+        inputFilteringOrder.bind { coordinate, filteringDistance, filteringOrder in
+            guard let coordinate = coordinate else { return  }
+
+            KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude,
+                radius: filteringDistance.rawValue,
+                arrange: filteringOrder.sortingCode
             ) { [weak self] touristDestinationList in
                 guard let weakSelf = self else { return }
                 weakSelf.outputLocationBasedTouristDestinationList.value = touristDestinationList

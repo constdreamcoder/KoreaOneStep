@@ -16,7 +16,7 @@
 		0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3002B9B465200799623 /* BookmarkViewController.swift */; };
 		0024F3032B9B465900799623 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3022B9B465900799623 /* SettingViewController.swift */; };
 		0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */; };
-		00287F4B2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F4A2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift */; };
+		00287F4B2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F4A2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift */; };
 		00287F4D2BA2D44800B56A15 /* FilteringCategoryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */; };
 		00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F502BA2DDC300B56A15 /* FilteringOrder.swift */; };
 		0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051C2A22BA3516E0094D4BC /* TourType.swift */; };
@@ -75,7 +75,7 @@
 		0024F3002B9B465200799623 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		0024F3022B9B465900799623 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerConfiguration.swift; sourceTree = "<group>"; };
-		00287F4A2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingDistanceStackView.swift; sourceTree = "<group>"; };
+		00287F4A2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDistanceStackView.swift; sourceTree = "<group>"; };
 		00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringCategoryStackView.swift; sourceTree = "<group>"; };
 		00287F502BA2DDC300B56A15 /* FilteringOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringOrder.swift; sourceTree = "<group>"; };
 		0051C2A22BA3516E0094D4BC /* TourType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourType.swift; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 		00287F4F2BA2D6C900B56A15 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				00287F4A2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift */,
+				00287F4A2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift */,
 				00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */,
 			);
 			path = SubViews;
@@ -594,7 +594,7 @@
 				00287F4D2BA2D44800B56A15 /* FilteringCategoryStackView.swift in Sources */,
 				005E571B2BA010B0005CD618 /* RegionDetailTableViewCell.swift in Sources */,
 				005E572C2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift in Sources */,
-				00287F4B2BA2C1EA00B56A15 /* SearchingDistanceStackView.swift in Sources */,
+				00287F4B2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift in Sources */,
 				00F77ADB2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift in Sources */,
 				0081E8AB2B9DD8E400EF615D /* FilterViewController.swift in Sources */,
 				00F59C9F2BA1F25600CE49C4 /* AccordionTableViewCell.swift in Sources */,

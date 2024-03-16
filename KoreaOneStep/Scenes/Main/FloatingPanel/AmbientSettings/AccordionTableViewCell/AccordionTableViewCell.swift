@@ -10,7 +10,7 @@ import SnapKit
 
 final class AccordionTableViewCell: UITableViewCell {
     
-    let searchingDistanceStackView = SearchingDistanceStackView()
+    let filteringDistanceStackView = FilteringDistanceStackView()
 
     let ambienDistanceSliderView: UISlider = {
         let slider = UISlider()
@@ -37,24 +37,24 @@ final class AccordionTableViewCell: UITableViewCell {
 extension AccordionTableViewCell: UITableViewCellConfiguration {
     func configureConstraints() {
         [
-            searchingDistanceStackView,
+            filteringDistanceStackView,
             ambienDistanceSliderView,
             filteringCategoryStackView
         ].forEach { contentView.addSubview($0) }
         
-        searchingDistanceStackView.snp.makeConstraints {
+        filteringDistanceStackView.snp.makeConstraints {
             $0.top.equalTo(contentView.safeAreaLayoutGuide).offset(16.0)
             $0.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16.0)
         }
         
         ambienDistanceSliderView.snp.makeConstraints {
-            $0.top.equalTo(searchingDistanceStackView.snp.bottom).offset(8.0)
+            $0.top.equalTo(filteringDistanceStackView.snp.bottom).offset(8.0)
             $0.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16.0)
         }
         
         filteringCategoryStackView.snp.makeConstraints {
             $0.top.equalTo(ambienDistanceSliderView.snp.bottom).offset(8.0)
-            $0.leading.equalTo(searchingDistanceStackView)
+            $0.leading.equalTo(filteringDistanceStackView)
             $0.bottom.equalTo(contentView.safeAreaLayoutGuide)
         }
     }

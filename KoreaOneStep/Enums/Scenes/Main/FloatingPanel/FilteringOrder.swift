@@ -12,6 +12,19 @@ enum FilteringOrder: String, CaseIterable {
     case updatedDate = "수정일순"
     case createdDate = "생성일순"
     case distance = "거리순"
+        
+    var sortingCode: String {
+        switch self {
+        case .title:
+            return "O"
+        case .updatedDate:
+            return "Q"
+        case .createdDate:
+            return "R"
+        case .distance:
+            return "S"
+        }
+    }
     
     enum FilteringDistance: Int, CaseIterable {
         case oneHundredMeter = 100
