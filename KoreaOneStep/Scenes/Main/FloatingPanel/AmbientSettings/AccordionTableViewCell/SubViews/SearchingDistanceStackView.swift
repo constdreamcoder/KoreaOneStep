@@ -26,7 +26,7 @@ final class SearchingDistanceStackView: UIStackView {
         distribution = .equalCentering
         alignment = .center
         
-        searchDistance.forEach { addArrangedSubview(labelGenerator(text: $0.rawValue)) }
+        searchDistance.forEach { addArrangedSubview(labelGenerator(text: $0.getDistanceStringWithUnit)) }
     }
     
     private func labelGenerator(text: String) -> UILabel {

@@ -13,12 +13,21 @@ enum FilteringOrder: String, CaseIterable {
     case createdDate = "생성일순"
     case distance = "거리순"
     
-    enum FilteringDistance: String, CaseIterable {
-        case oneHundredMeter = "100m"
-        case threeHundredMeters = "300m"
-        case fiveHundredMeters = "500m"
-        case oneKiloMeter = "1km"
-        case threeKiloMeters = "3km"
-        case fiveKiloMeters = "5km"
+    enum FilteringDistance: Int, CaseIterable {
+        case oneHundredMeter = 100
+        case threeHundredMeters = 300
+        case fiveHundredMeters = 500
+        case oneKiloMeter = 1000
+        case threeKiloMeters = 3000
+        case fiveKiloMeters = 5000
+        
+        var getDistanceStringWithUnit: String {
+            switch self {
+            case .oneHundredMeter, .threeHundredMeters, .fiveHundredMeters:
+                return "\(self.rawValue)m"
+            case .oneKiloMeter, .threeKiloMeters, .fiveKiloMeters:
+                return "\(self.rawValue/1000)km"
+            }
+        }
     }
 }

@@ -22,6 +22,7 @@ final class MainViewController: UIViewController {
         return searchBar
     }()
     
+    // TODO: - Floating Panel 위치에 따라 안보이게 처리하기
     lazy var tourTypeListView: TTGTextTagCollectionView = {
         let tourTypeListView = TTGTextTagCollectionView()
         
@@ -42,7 +43,7 @@ final class MainViewController: UIViewController {
         
         floatingPC.delegate = self
         
-        let contentVC = ContentViewController()
+        let contentVC = ContentViewController(mainViewModel: viewModel)
         let contentNav = UINavigationController(rootViewController: contentVC)
         floatingPC.set(contentViewController: contentNav)
         floatingPC.track(scrollView: contentVC.tableView)
@@ -51,6 +52,8 @@ final class MainViewController: UIViewController {
         return floatingPC
     }()
     
+    private let viewModel = MainViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +61,8 @@ final class MainViewController: UIViewController {
         configureConstraints()
         configureUI()
         addTourType()
-        showFloatingPanel()
+        showFloatingPanel()  
+        binding()
     }
     
     // TODO: - 이 부분이 어떻게 동작하는지 다시 살펴보기
@@ -86,6 +90,10 @@ final class MainViewController: UIViewController {
         }
         
         tourTypeListView.reload()
+    }
+    
+    private func binding() {
+        viewModel.inputViewDidLoadTrigger.value = ()
     }
 }
 

@@ -77,10 +77,10 @@ extension AmbientSettingsTableViewCell: UITableViewCellConfiguration {
         contentView.backgroundColor = .customWhite
     }
     
-    func setSettingButtonAttributedTitle(_ selectedSearchingDistance: String, _ selectedFilteringCategory: String) {
+    func setSettingButtonAttributedTitle(_ selectedSearchingDistance: FilteringOrder.FilteringDistance, _ selectedFilteringCategory: String) {
         guard let buttonTitle = settingButton.title(for: .normal) else { return }
         let attributedString = NSMutableAttributedString(string: buttonTitle)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.customLightBlue, range: ((buttonTitle) as NSString).range(of: selectedSearchingDistance))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.customLightBlue, range: ((buttonTitle) as NSString).range(of: selectedSearchingDistance.getDistanceStringWithUnit))
         attributedString.addAttribute(.foregroundColor, value: UIColor.customLightBlue, range: ((buttonTitle) as NSString).range(of: selectedFilteringCategory))
         settingButton.setAttributedTitle(attributedString, for: .normal)
     }

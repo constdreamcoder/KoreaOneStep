@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class ContentViewController: UIViewController {
     
@@ -29,15 +30,30 @@ final class ContentViewController: UIViewController {
     
     private var isAmbientSettingsSectionOpened = false
     
-    private var selectedSearchingDistance: String = FilteringOrder.FilteringDistance.allCases[3].rawValue
+    private var selectedSearchingDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
     private var filteringButtonList: [UIButton] = []
     private var selectedFilteringCategory: String = FilteringOrder.allCases[0].rawValue
+    
+    private var mainViewModel: MainViewModel?
+    
+    private var locationBasedTouristDestinationList: [LBItem] = []
+    
+    init(mainViewModel: MainViewModel) {
+        self.mainViewModel = mainViewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureConstraints()
         configureUI()
+        binding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,27 +62,37 @@ final class ContentViewController: UIViewController {
         configureNavigationBar()
     }
     
-    private func selectFilterDistance(slider: UISlider) -> String {
+    private func selectFilterDistance(slider: UISlider) -> FilteringOrder.FilteringDistance {
         let value = slider.value
         
         if value <= 1.0 {
             slider.value = 0.0
-            return FilteringOrder.FilteringDistance.allCases[0].rawValue
+            return FilteringOrder.FilteringDistance.allCases[0]
         } else if value > 1.0 && value <= 3.0 {
             slider.value = 2.0
-            return FilteringOrder.FilteringDistance.allCases[1].rawValue
+            return FilteringOrder.FilteringDistance.allCases[1]
         } else if value > 3.0 && value <= 5.0 {
             slider.value = 4.0
-            return FilteringOrder.FilteringDistance.allCases[2].rawValue
+            return FilteringOrder.FilteringDistance.allCases[2]
         } else if value > 5.0 && value <= 7.0 {
             slider.value = 6.0
-            return FilteringOrder.FilteringDistance.allCases[3].rawValue
+            return FilteringOrder.FilteringDistance.allCases[3]
         } else if value > 7.0 && value <= 9.0 {
             slider.value = 8.0
-            return FilteringOrder.FilteringDistance.allCases[4].rawValue
+            return FilteringOrder.FilteringDistance.allCases[4]
         } else {
             slider.value = 10.0
-            return FilteringOrder.FilteringDistance.allCases[5].rawValue
+            return FilteringOrder.FilteringDistance.allCases[5]
+        }
+    }
+    
+    private func binding() {
+        guard let mainViewModel = mainViewModel else { return }
+        
+        mainViewModel.outputLocationBasedTouristDestinationList.bind { [weak self] locationBasedTouristDestinationList in
+            guard let weakSelf = self else { return }
+            weakSelf.locationBasedTouristDestinationList = locationBasedTouristDestinationList
+            weakSelf.tableView.reloadSections([ContentTableViewSection.allCases[1].rawValue], with: .none)
         }
     }
 }
@@ -156,7 +182,7 @@ extension ContentViewController: UITableViewDataSource {
                 return 1
             }
         }
-        return 10
+        return locationBasedTouristDestinationList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -165,7 +191,7 @@ extension ContentViewController: UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AmbientSettingsTableViewCell.identifier) as? AmbientSettingsTableViewCell else { return UITableViewCell() }
                 cell.selectionStyle = .none
                 cell.settingButton.addTarget(self, action: #selector(settingButtonTapped), for: .touchUpInside)
-                let title = "\(selectedSearchingDistance) 반경 \(selectedFilteringCategory)"
+                let title = "\(selectedSearchingDistance.getDistanceStringWithUnit) 반경 \(selectedFilteringCategory)"
                 cell.settingButton.setTitle(title, for: .normal)
                 cell.setSettingButtonAttributedTitle(selectedSearchingDistance, selectedFilteringCategory)
                 return cell
@@ -183,6 +209,16 @@ extension ContentViewController: UITableViewDataSource {
         }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultListTableViewCell.identifier) as? SearchResultListTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
+        
+        let locationBasedTouristDestination = locationBasedTouristDestinationList[indexPath.row]
+        
+        let regionImageURL = URL(string: locationBasedTouristDestination.firstimage)
+        let placeholderImage = UIImage(systemName: "photo")
+        cell.regionImageView.kf.setImage(with: regionImageURL, placeholder: placeholderImage)
+        cell.regionNameLabel.text = locationBasedTouristDestination.title
+        cell.distanceLabel.text = "\(locationBasedTouristDestination.dist.convertStringToDistanceWithIntType)m"
+        cell.telephoneNumberLabel.text = locationBasedTouristDestination.tel == "" ? "전화번호 미기재" : locationBasedTouristDestination.tel
+    
         return cell
     }
 }

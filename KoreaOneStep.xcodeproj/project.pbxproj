@@ -30,6 +30,14 @@
 		005E57242BA02466005CD618 /* ServiceProvidedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E57232BA02466005CD618 /* ServiceProvidedTableViewCell.swift */; };
 		005E572C2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E572B2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift */; };
 		005E572E2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E572D2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift */; };
+		0063D5F72BA531640081B59D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5F62BA531640081B59D /* MainViewModel.swift */; };
+		0063D5F92BA531E50081B59D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5F82BA531E50081B59D /* Observable.swift */; };
+		0063D5FD2BA5356B0081B59D /* KoreaTravelingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5FC2BA5356B0081B59D /* KoreaTravelingManager.swift */; };
+		0063D5FF2BA536680081B59D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5FE2BA536680081B59D /* APIKeys.swift */; };
+		007323F62BA5892C001B0A2E /* LocationBasedTourismInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */; };
+		007323F82BA5A119001B0A2E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F72BA5A119001B0A2E /* String+Extension.swift */; };
+		007323FB2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323FA2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift */; };
+		007323FD2BA5E621001B0A2E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323FC2BA5E621001B0A2E /* LocationManager.swift */; };
 		0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */; };
 		0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */; };
 		0081E89C2B9DB10E00EF615D /* SettingTableViewCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */; };
@@ -80,6 +88,14 @@
 		005E57232BA02466005CD618 /* ServiceProvidedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidedTableViewCell.swift; sourceTree = "<group>"; };
 		005E572B2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidedInternalCollectionViewCell.swift; sourceTree = "<group>"; };
 		005E572D2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidedDetailTableViewCell.swift; sourceTree = "<group>"; };
+		0063D5F62BA531640081B59D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		0063D5F82BA531E50081B59D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		0063D5FC2BA5356B0081B59D /* KoreaTravelingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaTravelingManager.swift; sourceTree = "<group>"; };
+		0063D5FE2BA536680081B59D /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBasedTourismInformationModel.swift; sourceTree = "<group>"; };
+		007323F72BA5A119001B0A2E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		007323FA2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationExampleViewController.swift; sourceTree = "<group>"; };
+		007323FC2BA5E621001B0A2E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCellTitle.swift; sourceTree = "<group>"; };
@@ -155,6 +171,7 @@
 		0024F2F32B9B43A600799623 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,6 +179,8 @@
 		0024F2F42B9B43AD00799623 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0063D5FA2BA532670081B59D /* Base */,
+				0063D5F62BA531640081B59D /* MainViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -172,6 +191,7 @@
 				0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */,
 				00F77ADA2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift */,
 				005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */,
+				007323F72BA5A119001B0A2E /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -314,6 +334,31 @@
 			path = ServiceProvided;
 			sourceTree = "<group>";
 		};
+		0063D5FA2BA532670081B59D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0063D5F82BA531E50081B59D /* Observable.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		0063D5FB2BA535290081B59D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0063D5FC2BA5356B0081B59D /* KoreaTravelingManager.swift */,
+				007323FC2BA5E621001B0A2E /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		007323F92BA5BE37001B0A2E /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				007323FA2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift */,
+			);
+			path = Reference;
+			sourceTree = "<group>";
+		};
 		0081E89A2B9DB0E100EF615D /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,18 +454,21 @@
 		00FD1C3C2B99840900C2A76E /* KoreaOneStep */ = {
 			isa = PBXGroup;
 			children = (
+				007323F92BA5BE37001B0A2E /* Reference */,
 				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
 				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
 				0081E89A2B9DB0E100EF615D /* Enums */,
 				0024F3062B9B4DF100799623 /* Protocols */,
 				0024F2F52B9B43B500799623 /* Extensions */,
 				0024F2F42B9B43AD00799623 /* ViewModels */,
+				0063D5FB2BA535290081B59D /* Managers */,
 				0024F2F32B9B43A600799623 /* Models */,
 				0024F2F12B9B438D00799623 /* Scenes */,
 				00FD1C432B99840900C2A76E /* Main.storyboard */,
 				00FD1C462B99840A00C2A76E /* Assets.xcassets */,
 				00FD1C482B99840A00C2A76E /* LaunchScreen.storyboard */,
 				00FD1C4B2B99840A00C2A76E /* Info.plist */,
+				0063D5FE2BA536680081B59D /* APIKeys.swift */,
 			);
 			path = KoreaOneStep;
 			sourceTree = "<group>";
@@ -569,11 +617,14 @@
 				00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */,
 				0081E8A32B9DC11500EF615D /* SearchViewController.swift in Sources */,
 				005E57222BA01F9F005CD618 /* AddressTableViewCell.swift in Sources */,
+				007323FB2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift in Sources */,
 				0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */,
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
 				00F77AD42B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift in Sources */,
 				005E57202BA01CB5005CD618 /* PhoneNumberTableViewCell.swift in Sources */,
 				00F77ACF2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift in Sources */,
+				0063D5F92BA531E50081B59D /* Observable.swift in Sources */,
+				0063D5FF2BA536680081B59D /* APIKeys.swift in Sources */,
 				00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */,
 				00F77AD12B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift in Sources */,
 				0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */,
@@ -582,19 +633,24 @@
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
 				005E57192BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
 				005E572E2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift in Sources */,
+				007323FD2BA5E621001B0A2E /* LocationManager.swift in Sources */,
 				0015DE6F2BA19CCE002CA32C /* SearchResultListTableViewCell.swift in Sources */,
+				007323F62BA5892C001B0A2E /* LocationBasedTourismInformationModel.swift in Sources */,
 				00F59C9D2BA1E94700CE49C4 /* AmbientSettingsTableViewCell.swift in Sources */,
 				005E57242BA02466005CD618 /* ServiceProvidedTableViewCell.swift in Sources */,
 				00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */,
 				0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */,
 				00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */,
 				0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */,
+				0063D5F72BA531640081B59D /* MainViewModel.swift in Sources */,
+				007323F82BA5A119001B0A2E /* String+Extension.swift in Sources */,
 				0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */,
 				0024F3032B9B465900799623 /* SettingViewController.swift in Sources */,
 				0081E8A62B9DC68200EF615D /* SearchTableViewCell.swift in Sources */,
 				0081E8A82B9DC71100EF615D /* UITableViewCellConfiguration.swift in Sources */,
 				0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */,
 				0081E89C2B9DB10E00EF615D /* SettingTableViewCellTitle.swift in Sources */,
+				0063D5FD2BA5356B0081B59D /* KoreaTravelingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

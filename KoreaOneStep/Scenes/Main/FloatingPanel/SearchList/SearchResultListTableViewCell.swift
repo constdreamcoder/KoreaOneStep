@@ -13,9 +13,9 @@ final class SearchResultListTableViewCell: UITableViewCell {
     let regionImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo")
-        imageView.tintColor = .customBlack
+        imageView.tintColor = .customDarkGray
         imageView.contentMode = .scaleToFill
-        imageView.backgroundColor = .customLightBlue
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
