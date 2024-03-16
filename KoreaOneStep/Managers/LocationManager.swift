@@ -88,6 +88,7 @@ extension LocationManager: CLLocationManagerDelegate {
         case .restricted:
             print("restricted")
         case .denied:
+            // TODO: - Alert 창으로 권한을 줄 수 있는 설정창으로 이동하는 트리거 구현하기
             print("denied")
         @unknown default:
             print("Error")

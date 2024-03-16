@@ -10,8 +10,10 @@ import CoreLocation
 
 final class MainViewModel: NSObject {
     let inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
+    let inputSearchingDistance: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance)> = Observable((nil, .oneKiloMeter))
     
     let outputLocationBasedTouristDestinationList: Observable<[LBItem]> = Observable([])
+    let outputUserCurrentLocationInfo: Observable<CLLocationCoordinate2D?> = Observable(nil)
         
     override init() {
         super.init()
@@ -32,12 +34,27 @@ final class MainViewModel: NSObject {
                     return
                 }
                 
+                weakSelf.outputUserCurrentLocationInfo.value = coordinate
+                
                 KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
                     latitude: coordinate.latitude,
                     longitude: coordinate.longitude
                 ) { touristDestinationList in
                     weakSelf.outputLocationBasedTouristDestinationList.value = touristDestinationList
                 }
+            }
+        }
+        
+        inputSearchingDistance.bind { coordinate, searchingDistance in
+            guard let coordinate = coordinate else { return  }
+            
+            KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude,
+                radius: searchingDistance.rawValue
+            ) { [weak self] touristDestinationList in
+                guard let weakSelf = self else { return }
+                weakSelf.outputLocationBasedTouristDestinationList.value = touristDestinationList
             }
         }
     }

@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import CoreLocation
 
 final class ContentViewController: UIViewController {
     
@@ -37,6 +38,8 @@ final class ContentViewController: UIViewController {
     private var mainViewModel: MainViewModel?
     
     private var locationBasedTouristDestinationList: [LBItem] = []
+    
+    private var userLocationInfo: CLLocationCoordinate2D?
     
     init(mainViewModel: MainViewModel) {
         self.mainViewModel = mainViewModel
@@ -91,8 +94,15 @@ final class ContentViewController: UIViewController {
         
         mainViewModel.outputLocationBasedTouristDestinationList.bind { [weak self] locationBasedTouristDestinationList in
             guard let weakSelf = self else { return }
+            
             weakSelf.locationBasedTouristDestinationList = locationBasedTouristDestinationList
             weakSelf.tableView.reloadSections([ContentTableViewSection.allCases[1].rawValue], with: .none)
+        }
+        
+        mainViewModel.outputUserCurrentLocationInfo.bind { [weak self] coordinate in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.userLocationInfo = coordinate
         }
     }
 }
@@ -110,6 +120,9 @@ extension ContentViewController {
         print(slider.value)
         
         tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.allCases[0].rawValue)], with: .none)
+        
+        guard let mainViewModel = mainViewModel else { return }
+        mainViewModel.inputSearchingDistance.value = (self.userLocationInfo, self.selectedSearchingDistance)
     }
     
     @objc func filteringCategoryTapped(_ button: UIButton) {

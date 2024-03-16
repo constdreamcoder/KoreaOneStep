@@ -18,6 +18,7 @@ final class KoreaTravelingManager {
     func fetchLocationBasedTourismInformation(
         latitude: Double,
         longitude: Double,
+        radius: Int = FilteringOrder.FilteringDistance.oneKiloMeter.rawValue,
         completionHandler: @escaping ([LBItem]) -> Void
     ) {
         let urlString = "\(baseURL)/locationBasedList1"
@@ -33,7 +34,7 @@ final class KoreaTravelingManager {
             "arrange": "O", // 정렬구분(A=제목순, C=수정일순, D=생성일순, E=거리순) 대표이미지가반드시있는정렬 (O=제목순, Q=수정일순, R=생성일순,S=거리순)
             "mapX": "\(longitude)", // GPS X좌표(WGS84 경도좌표)
             "mapY": "\(latitude)", // GPS Y좌표(WGS84 위도좌표)
-            "radius": "1000", // 거리반경(단위:m) , Max값 20000m=20Km
+            "radius": "\(radius)", // 거리반경(단위:m) , Max값 20000m=20Km
             "_type": "json", // 응답메세지 형식 : REST방식의 URL호출 시 json값 추가(디폴트 응답메세지 형식은XML)
             "contentTypeId": "" // 관광타입(12:관광지, 14:문화시설, 15:축제공연행사, 25:여행코스, 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점) ID
         ]

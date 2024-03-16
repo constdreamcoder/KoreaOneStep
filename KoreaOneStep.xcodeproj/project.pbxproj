@@ -36,7 +36,6 @@
 		0063D5FF2BA536680081B59D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5FE2BA536680081B59D /* APIKeys.swift */; };
 		007323F62BA5892C001B0A2E /* LocationBasedTourismInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */; };
 		007323F82BA5A119001B0A2E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F72BA5A119001B0A2E /* String+Extension.swift */; };
-		007323FB2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323FA2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift */; };
 		007323FD2BA5E621001B0A2E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323FC2BA5E621001B0A2E /* LocationManager.swift */; };
 		0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */; };
 		0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */; };
@@ -94,7 +93,6 @@
 		0063D5FE2BA536680081B59D /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBasedTourismInformationModel.swift; sourceTree = "<group>"; };
 		007323F72BA5A119001B0A2E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		007323FA2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationExampleViewController.swift; sourceTree = "<group>"; };
 		007323FC2BA5E621001B0A2E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
@@ -179,7 +177,7 @@
 		0024F2F42B9B43AD00799623 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				0063D5FA2BA532670081B59D /* Base */,
+				0063D5FA2BA532670081B59D /* CommunicationBase */,
 				0063D5F62BA531640081B59D /* MainViewModel.swift */,
 			);
 			path = ViewModels;
@@ -257,9 +255,9 @@
 		00287F522BA323E700B56A15 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				0051C2A22BA3516E0094D4BC /* TourType.swift */,
 				00287F582BA3248500B56A15 /* FloatingPanel */,
 				00287F532BA3241600B56A15 /* Search */,
-				0051C2A22BA3516E0094D4BC /* TourType.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -334,12 +332,12 @@
 			path = ServiceProvided;
 			sourceTree = "<group>";
 		};
-		0063D5FA2BA532670081B59D /* Base */ = {
+		0063D5FA2BA532670081B59D /* CommunicationBase */ = {
 			isa = PBXGroup;
 			children = (
 				0063D5F82BA531E50081B59D /* Observable.swift */,
 			);
-			path = Base;
+			path = CommunicationBase;
 			sourceTree = "<group>";
 		};
 		0063D5FB2BA535290081B59D /* Managers */ = {
@@ -349,14 +347,6 @@
 				007323FC2BA5E621001B0A2E /* LocationManager.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		007323F92BA5BE37001B0A2E /* Reference */ = {
-			isa = PBXGroup;
-			children = (
-				007323FA2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift */,
-			);
-			path = Reference;
 			sourceTree = "<group>";
 		};
 		0081E89A2B9DB0E100EF615D /* Enums */ = {
@@ -454,7 +444,6 @@
 		00FD1C3C2B99840900C2A76E /* KoreaOneStep */ = {
 			isa = PBXGroup;
 			children = (
-				007323F92BA5BE37001B0A2E /* Reference */,
 				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
 				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
 				0081E89A2B9DB0E100EF615D /* Enums */,
@@ -617,7 +606,6 @@
 				00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */,
 				0081E8A32B9DC11500EF615D /* SearchViewController.swift in Sources */,
 				005E57222BA01F9F005CD618 /* AddressTableViewCell.swift in Sources */,
-				007323FB2BA5BE4F001B0A2E /* CoreLocationExampleViewController.swift in Sources */,
 				0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */,
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
 				00F77AD42B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift in Sources */,
