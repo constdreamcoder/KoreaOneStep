@@ -14,6 +14,8 @@ final class RegionDetailTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo")
         imageView.contentMode = .scaleToFill
+        imageView.tintColor = .customDarkGray
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     

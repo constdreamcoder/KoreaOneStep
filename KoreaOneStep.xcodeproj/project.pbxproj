@@ -10,6 +10,9 @@
 		0015DE6A2BA19363002CA32C /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 0015DE692BA19363002CA32C /* FloatingPanel */; };
 		0015DE6C2BA19592002CA32C /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6B2BA19592002CA32C /* ContentViewController.swift */; };
 		0015DE6F2BA19CCE002CA32C /* SearchResultListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */; };
+		001D3E982BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D3E972BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift */; };
+		001D3E9A2BA6E2AD00065C83 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D3E992BA6E2AD00065C83 /* DetailViewModel.swift */; };
+		001D3E9C2BA6F4D100065C83 /* ProvidedImpairmentAidServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D3E9B2BA6F4D100065C83 /* ProvidedImpairmentAidServicesModel.swift */; };
 		0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2EA2B9B42C200799623 /* Kingfisher */; };
 		0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F2F92B9B45B600799623 /* TabBarViewController.swift */; };
 		0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F2FE2B9B464A00799623 /* MainViewController.swift */; };
@@ -70,6 +73,9 @@
 /* Begin PBXFileReference section */
 		0015DE6B2BA19592002CA32C /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListTableViewCell.swift; sourceTree = "<group>"; };
+		001D3E972BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristDestionationCommonInformationModel.swift; sourceTree = "<group>"; };
+		001D3E992BA6E2AD00065C83 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		001D3E9B2BA6F4D100065C83 /* ProvidedImpairmentAidServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidedImpairmentAidServicesModel.swift; sourceTree = "<group>"; };
 		0024F2F92B9B45B600799623 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0024F2FE2B9B464A00799623 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0024F3002B9B465200799623 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */,
+				001D3E972BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift */,
+				001D3E9B2BA6F4D100065C83 /* ProvidedImpairmentAidServicesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 			children = (
 				0063D5FA2BA532670081B59D /* CommunicationBase */,
 				0063D5F62BA531640081B59D /* MainViewModel.swift */,
+				001D3E992BA6E2AD00065C83 /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -592,6 +601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00287F4D2BA2D44800B56A15 /* FilteringCategoryStackView.swift in Sources */,
+				001D3E9C2BA6F4D100065C83 /* ProvidedImpairmentAidServicesModel.swift in Sources */,
 				005E571B2BA010B0005CD618 /* RegionDetailTableViewCell.swift in Sources */,
 				005E572C2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift in Sources */,
 				00287F4B2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift in Sources */,
@@ -604,6 +614,7 @@
 				005E571D2BA0190E005CD618 /* DetailTableViewSection.swift in Sources */,
 				00F59C992BA1E70100CE49C4 /* ContentTableViewSection.swift in Sources */,
 				00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */,
+				001D3E9A2BA6E2AD00065C83 /* DetailViewModel.swift in Sources */,
 				0081E8A32B9DC11500EF615D /* SearchViewController.swift in Sources */,
 				005E57222BA01F9F005CD618 /* AddressTableViewCell.swift in Sources */,
 				0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */,
@@ -624,6 +635,7 @@
 				007324012BA613D2001B0A2E /* APIKeys.swift in Sources */,
 				0015DE6F2BA19CCE002CA32C /* SearchResultListTableViewCell.swift in Sources */,
 				007323F62BA5892C001B0A2E /* LocationBasedTourismInformationModel.swift in Sources */,
+				001D3E982BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift in Sources */,
 				00F59C9D2BA1E94700CE49C4 /* AmbientSettingsTableViewCell.swift in Sources */,
 				005E57242BA02466005CD618 /* ServiceProvidedTableViewCell.swift in Sources */,
 				00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */,

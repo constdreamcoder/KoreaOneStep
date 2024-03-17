@@ -48,7 +48,7 @@ final class MainViewModel: NSObject {
             }
         }
         
-        // TODO: - 리팩토링하기
+        // TODO: - 리팩토링하기: inputFilteringOrder와 합치기
         inputFilteringDistance.bind { coordinate, filteringDistance, filteringOrder in
             guard let coordinate = coordinate else { return  }
             
@@ -63,7 +63,7 @@ final class MainViewModel: NSObject {
             }
         }
         
-        // TODO: - 리팩토링하기
+        // TODO: - 리팩토링하기: inputFilteringDistance와 합치기
         inputFilteringOrder.bind { coordinate, filteringDistance, filteringOrder in
             guard let coordinate = coordinate else { return  }
 

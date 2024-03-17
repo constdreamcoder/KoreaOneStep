@@ -7,10 +7,11 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 struct cellData {
-    var opened = Bool()
-    var sectionData = [String]()
+    var opened: Bool
+    var sectionData: [String]
 }
 
 final class DetailViewController: UIViewController {
@@ -33,9 +34,19 @@ final class DetailViewController: UIViewController {
         return tableView
     }()
     
+    var contentTitle: String?
+    var contentId: String?
+    var contentTypeId: String?
+    
+    private var viewModel = DetailViewModel()
+    
     private var selectedService: DetailTableViewSection.ServiceDetailSection = .physicalDisability
     
     private var tableViewData = [cellData]()
+    
+    private var touristDestinationCommonInfo: CIItem?
+    
+    private var providedImpairmentAidServiceList: Dictionary<DetailTableViewSection.ServiceDetailSection, [String]> = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +54,34 @@ final class DetailViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
-        updateTableViewData()
+        bindings()
     }
     
     private func updateTableViewData() {
-        tableViewData = selectedService.serviceTitleList.map({ _ in
-            cellData(opened: false, sectionData: ["테스트"])
-        })
+        if let providedImpairmentAidServiceDescriptionList = providedImpairmentAidServiceList[selectedService] {
+            tableViewData = selectedService.serviceTitleList.enumerated().map { index, _ in
+                cellData(opened: false, sectionData: [providedImpairmentAidServiceDescriptionList[index]])
+            }
+        } else {
+            tableViewData = selectedService.serviceTitleList.map { _ in
+                cellData(opened: false, sectionData: ["없음"])
+            }
+        }
+    }
+    
+    private func bindings() {
+        viewModel.inputViewDidLoadTrigger.value = (self.contentId, self.contentTypeId)
+        
+        viewModel.outputDetailTableViewData.bind { [weak self]
+            touristDestinationCommonInfo, dictionary in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.touristDestinationCommonInfo = touristDestinationCommonInfo
+            
+            weakSelf.providedImpairmentAidServiceList = dictionary
+            weakSelf.updateTableViewData()
+            weakSelf.tableView.reloadData()
+        }
     }
 }
 
@@ -67,7 +99,7 @@ extension DetailViewController: UIViewControllerConfiguration {
     func configureNavigationBar() {
         navigationController?.navigationBar.isHidden = false
         
-        navigationItem.title = "우가우가 한식당"
+        navigationItem.title = contentTitle
         
         navigationController?.navigationBar.tintColor = .customBlack
         
@@ -77,7 +109,7 @@ extension DetailViewController: UIViewControllerConfiguration {
         let shareImage = UIImage(systemName: "square.and.arrow.up")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
         let shareImageRightBarButtonItem = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(shareRightBarButtonItemTapped))
         
-        navigationItem.rightBarButtonItems = [ shareImageRightBarButtonItem, bookmarkRightBarButtonItem]
+        navigationItem.rightBarButtonItems = [shareImageRightBarButtonItem, bookmarkRightBarButtonItem]
     }
     
     func configureConstraints() {
@@ -145,23 +177,35 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == DetailTableViewSection.descriptionSection.rawValue {
             
-            if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .regionDetailCell {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: RegionDetailTableViewCell.identifier, for: indexPath) as? RegionDetailTableViewCell else { return UITableViewCell() }
-                cell.selectionStyle = .none
-                return cell
-            } else if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .phoneNumberCell {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: PhoneNumberTableViewCell.identifier, for: indexPath) as? PhoneNumberTableViewCell else { return UITableViewCell() }
-                cell.selectionStyle = .none
-                return cell
-            } else if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .addressCell {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { return UITableViewCell() }
-                cell.selectionStyle = .none
-                return cell
-            } else if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .serviceProvidedCell {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceProvidedTableViewCell.identifier, for: indexPath) as? ServiceProvidedTableViewCell else { return UITableViewCell() }
-                cell.selectionStyle = .none
-                cell.delegate = self
-                return cell
+            if let touristDestinationCommonInfo = touristDestinationCommonInfo {
+                if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .regionDetailCell {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: RegionDetailTableViewCell.identifier, for: indexPath) as? RegionDetailTableViewCell else { return UITableViewCell() }
+                    cell.selectionStyle = .none
+                    
+                    let regionImageURL = URL(string: touristDestinationCommonInfo.firstimage)
+                    let placeHolderImage = UIImage(systemName: "photo")
+                    cell.regionImageView.kf.setImage(with: regionImageURL, placeholder: placeHolderImage)
+                    cell.regionNameLabel.text = touristDestinationCommonInfo.title
+                    cell.regionDescriptionLabel.text = touristDestinationCommonInfo.overview
+                    return cell
+                } else if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .phoneNumberCell {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: PhoneNumberTableViewCell.identifier, for: indexPath) as? PhoneNumberTableViewCell else { return UITableViewCell() }
+                    cell.selectionStyle = .none
+                    
+                    cell.phoneNumberLabel.text = touristDestinationCommonInfo.tel == "" ? "없음" : touristDestinationCommonInfo.tel
+                    return cell
+                } else if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .addressCell {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { return UITableViewCell() }
+                    cell.selectionStyle = .none
+                    
+                    cell.addressLabel.text = touristDestinationCommonInfo.addr1 == "" ? "없음" : touristDestinationCommonInfo.addr1
+                    return cell
+                } else if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .serviceProvidedCell {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceProvidedTableViewCell.identifier, for: indexPath) as? ServiceProvidedTableViewCell else { return UITableViewCell() }
+                    cell.selectionStyle = .none
+                    cell.delegate = self
+                    return cell
+                }
             }
         } else {
             if indexPath.row == 0 {
@@ -171,7 +215,9 @@ extension DetailViewController: UITableViewDataSource {
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier) else { return UITableViewCell() }
-                cell.textLabel?.text = tableViewData[indexPath.section - 1].sectionData[indexPath.row - 1]
+                let providedImpairmentAidServiceDescription = tableViewData[indexPath.section - 1].sectionData[indexPath.row - 1]
+                cell.textLabel?.text = providedImpairmentAidServiceDescription == "" ? "없음" : providedImpairmentAidServiceDescription
+                cell.textLabel?.numberOfLines = 0
                 return cell
             }
         }

@@ -182,7 +182,12 @@ extension ContentViewController: UIViewControllerConfiguration {
 extension ContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if ContentTableViewSection.allCases[indexPath.section] == .searchResultList {
+            let touristDestination = locationBasedTouristDestinationList[indexPath.row]
+            
             let detailVC = DetailViewController()
+            detailVC.contentTitle = touristDestination.title
+            detailVC.contentId = touristDestination.contentid
+            detailVC.contentTypeId = touristDestination.contenttypeid
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

@@ -62,7 +62,7 @@ final class MainViewController: UIViewController {
         configureUI()
         addTourType()
         showFloatingPanel()  
-        binding()
+        binding()        
     }
     
     // TODO: - 이 부분이 어떻게 동작하는지 다시 살펴보기
