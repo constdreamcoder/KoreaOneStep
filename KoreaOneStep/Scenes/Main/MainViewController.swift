@@ -140,6 +140,12 @@ extension MainViewController: TTGTextTagCollectionViewDelegate {
         tag.selected = false
         guard let content = tag.content as? TTGTextTagStringContent else { return }
         print(index, content.text)
+        
+        guard let contentNav = floatingPanelController.contentViewController as? UINavigationController else { return }
+        guard let contentVC = contentNav.viewControllers.first as? ContentViewController else { return }
+        contentVC.selectedTourType = TourType(rawValue: content.text)
+        
+        viewModel.inputTourType.value = (contentVC.userLocationInfo, contentVC.selectedTourType)
     }
 }
 

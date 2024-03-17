@@ -20,6 +20,7 @@ final class KoreaTravelingManager {
         longitude: Double,
         radius: Int = FilteringOrder.FilteringDistance.oneKiloMeter.rawValue,
         arrange: String = FilteringOrder.title.sortingCode,
+        tourTypeCode contentTypeId: String = "",
         completionHandler: @escaping ([LBItem]) -> Void
     ) {
         let urlString = "\(baseURL)/locationBasedList1"
@@ -37,7 +38,7 @@ final class KoreaTravelingManager {
             "mapY": "\(latitude)", // GPS Y좌표(WGS84 위도좌표)
             "radius": "\(radius)", // 거리반경(단위:m) , Max값 20000m=20Km
             "_type": "json", // 응답메세지 형식 : REST방식의 URL호출 시 json값 추가(디폴트 응답메세지 형식은XML)
-            "contentTypeId": "" // 관광타입(12:관광지, 14:문화시설, 15:축제공연행사, 25:여행코스, 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점) ID
+            "contentTypeId": contentTypeId // 관광타입(12:관광지, 14:문화시설, 15:축제공연행사, 25:여행코스, 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점) ID
         ]
         
         // TODO: - 네트워크 에러 처리하기

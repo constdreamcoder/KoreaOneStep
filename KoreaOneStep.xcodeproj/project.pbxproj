@@ -33,10 +33,10 @@
 		0063D5F72BA531640081B59D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5F62BA531640081B59D /* MainViewModel.swift */; };
 		0063D5F92BA531E50081B59D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5F82BA531E50081B59D /* Observable.swift */; };
 		0063D5FD2BA5356B0081B59D /* KoreaTravelingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5FC2BA5356B0081B59D /* KoreaTravelingManager.swift */; };
-		0063D5FF2BA536680081B59D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5FE2BA536680081B59D /* APIKeys.swift */; };
 		007323F62BA5892C001B0A2E /* LocationBasedTourismInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */; };
 		007323F82BA5A119001B0A2E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F72BA5A119001B0A2E /* String+Extension.swift */; };
 		007323FD2BA5E621001B0A2E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323FC2BA5E621001B0A2E /* LocationManager.swift */; };
+		007324012BA613D2001B0A2E /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007324002BA613D2001B0A2E /* APIKeys.swift */; };
 		0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */; };
 		0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */; };
 		0081E89C2B9DB10E00EF615D /* SettingTableViewCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */; };
@@ -90,10 +90,10 @@
 		0063D5F62BA531640081B59D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		0063D5F82BA531E50081B59D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		0063D5FC2BA5356B0081B59D /* KoreaTravelingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaTravelingManager.swift; sourceTree = "<group>"; };
-		0063D5FE2BA536680081B59D /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBasedTourismInformationModel.swift; sourceTree = "<group>"; };
 		007323F72BA5A119001B0A2E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		007323FC2BA5E621001B0A2E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		007324002BA613D2001B0A2E /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCellTitle.swift; sourceTree = "<group>"; };
@@ -457,7 +457,7 @@
 				00FD1C462B99840A00C2A76E /* Assets.xcassets */,
 				00FD1C482B99840A00C2A76E /* LaunchScreen.storyboard */,
 				00FD1C4B2B99840A00C2A76E /* Info.plist */,
-				0063D5FE2BA536680081B59D /* APIKeys.swift */,
+				007324002BA613D2001B0A2E /* APIKeys.swift */,
 			);
 			path = KoreaOneStep;
 			sourceTree = "<group>";
@@ -612,7 +612,6 @@
 				005E57202BA01CB5005CD618 /* PhoneNumberTableViewCell.swift in Sources */,
 				00F77ACF2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift in Sources */,
 				0063D5F92BA531E50081B59D /* Observable.swift in Sources */,
-				0063D5FF2BA536680081B59D /* APIKeys.swift in Sources */,
 				00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */,
 				00F77AD12B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift in Sources */,
 				0024F3052B9B4DE300799623 /* UIViewControllerConfiguration.swift in Sources */,
@@ -622,6 +621,7 @@
 				005E57192BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
 				005E572E2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift in Sources */,
 				007323FD2BA5E621001B0A2E /* LocationManager.swift in Sources */,
+				007324012BA613D2001B0A2E /* APIKeys.swift in Sources */,
 				0015DE6F2BA19CCE002CA32C /* SearchResultListTableViewCell.swift in Sources */,
 				007323F62BA5892C001B0A2E /* LocationBasedTourismInformationModel.swift in Sources */,
 				00F59C9D2BA1E94700CE49C4 /* AmbientSettingsTableViewCell.swift in Sources */,

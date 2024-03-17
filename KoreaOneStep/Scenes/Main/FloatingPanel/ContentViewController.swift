@@ -31,15 +31,16 @@ final class ContentViewController: UIViewController {
     
     private var isAmbientSettingsSectionOpened = false
     
-    private var selectedFilteringDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
     private var filteringButtonList: [UIButton] = []
-    private var selectedFilteringCategory: FilteringOrder = FilteringOrder.allCases[0]
     
     private var mainViewModel: MainViewModel?
     
     private var locationBasedTouristDestinationList: [LBItem] = []
     
-    private var userLocationInfo: CLLocationCoordinate2D?
+    private var selectedFilteringDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
+    private var selectedFilteringCategory: FilteringOrder = FilteringOrder.allCases[0]
+     var userLocationInfo: CLLocationCoordinate2D?
+    var selectedTourType: TourType?
     
     init(mainViewModel: MainViewModel) {
         self.mainViewModel = mainViewModel

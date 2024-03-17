@@ -16,4 +16,25 @@ enum TourType: String, CaseIterable {
     case accommodations = "숙박 시설"
     case shopping = "쇼핑"
     case restaurants = "음식점"
+    
+    var tourTypeCode: String {
+        switch self {
+        case .touristAttractions:
+            return "12"
+        case .culturalFacilities:
+            return "14"
+        case .festivalsOrConcerts:
+            return "15"
+        case .travelingCourses:
+            return "25"
+        case .leports:
+            return "28"
+        case .accommodations:
+            return "32"
+        case .shopping:
+            return "38"
+        case .restaurants:
+            return "39"
+        }
+    }
 }
