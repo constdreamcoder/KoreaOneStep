@@ -15,7 +15,6 @@ final class FilterTableViewCell: UITableViewCell {
         let tagListView = TTGTextTagCollectionView()
         
         tagListView.alignment = .left
-        tagListView.delegate = self
         
         tagListView.selectionLimit = 1
         
@@ -58,13 +57,7 @@ extension FilterTableViewCell: UITableViewCellConfiguration {
     }
 }
 
-extension FilterTableViewCell: TTGTextTagCollectionViewDelegate {
-    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
-        if tag.selected {
-            print(tag.content.getAttributedString().string)
-        }
-    }
-    
+extension FilterTableViewCell {
     private func addTags() {
         tagListView.removeAllTags()
         

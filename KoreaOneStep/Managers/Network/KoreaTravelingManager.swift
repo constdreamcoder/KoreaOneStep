@@ -130,4 +130,37 @@ final class KoreaTravelingManager {
         }
     }
     
+    func fetchAreaCode(
+        areaCode: String = "",
+        completionHandler: @escaping ([ACItem]) -> Void
+    ) {
+        let urlString = "\(baseURL)/areaCode1"
+        
+        // TODO: 나중에 MobileApp 번들ID로 변경
+        let parameters = [
+            "serviceKey": APIKeys.serviceKey, // 필수, 인증키(서비스키)
+            "numOfRows": "500", // 한페이지 결과수
+            "pageNo": "1", // 페이지 번호
+            "MobileOS": "IOS", // 필수, OS 구분 : IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC(기타)
+            "MobileApp": "AppTest", // 필수, 서비스명(어플명)
+            "_type": "json", // 응답메세지 형식 : REST방식의 URL호출 시 json값 추가(디폴트 응답메세지 형식은XML)
+            "areaCode": areaCode // 지역코드
+        ]
+        
+        // TODO: - 네트워크 에러 처리하기
+        AF.request(
+            urlString,
+            method: .get,
+            parameters: parameters,
+            encoder: URLEncodedFormParameterEncoder(destination: .queryString)
+        ).responseDecodable(of: AreaCodeModel.self) { response in
+            switch response.result {
+            case .success(let success):
+                completionHandler(success.response.body.items.item)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
 }

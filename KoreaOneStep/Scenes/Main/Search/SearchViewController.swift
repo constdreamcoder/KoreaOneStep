@@ -29,6 +29,8 @@ final class SearchViewController: UIViewController {
         return tableView
     }()
     
+    private let viewModel = SearchViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,7 +52,7 @@ extension SearchViewController {
     }
     
     @objc func rightBarButtonItemTapped() {
-        let filterVC = FilterViewController()
+        let filterVC = FilterViewController(searchViewModel: viewModel)
         let filterNav = UINavigationController(rootViewController: filterVC)
         present(filterNav, animated: true)
     }
