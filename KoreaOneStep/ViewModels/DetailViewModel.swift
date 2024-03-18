@@ -10,8 +10,11 @@ import Foundation
 final class DetailViewModel {
     
     let inputViewDidLoadTrigger: Observable<(String?, String?)> = Observable((nil, nil))
+    let inputIsBookmarked: Observable<String?> = Observable(nil)
+    let inputBookmarkButtonTrigger: Observable<(String?, String?, String?, String?, String?)> = Observable((nil, nil, nil, nil, nil))
     
     let outputDetailTableViewData: Observable<(CIItem?, Dictionary<DetailTableViewSection.ServiceDetailSection, [String]>)> = Observable((nil, [:]))
+    let outputIsBookmarked: Observable<Bool> = Observable(false)
     
     init() {
         inputViewDidLoadTrigger.bind { [weak self]  contentId, contentTypeId in
@@ -104,6 +107,56 @@ final class DetailViewModel {
             
             group.notify(queue: .main) {
                 weakSelf.outputDetailTableViewData.value = (touristDestinationCommonInformationTemp, providedImpairmentAidServiceList)
+            }
+        }
+        
+        inputIsBookmarked.bind { [weak self] contentId in
+            guard let weakSelf = self else { return }
+            
+            guard let contentId = contentId else { return }
+            
+            let bookmarkList: [Bookmark] = RealmManager.shared.read(Bookmark.self).map { $0 }
+            
+            let filteredBookmarkList = bookmarkList.filter { $0.contentId == contentId }
+            
+            if filteredBookmarkList.count == 0 {
+                weakSelf.outputIsBookmarked.value = false
+            } else if filteredBookmarkList.count == 1 {
+                weakSelf.outputIsBookmarked.value = true
+            }
+        }
+        
+        inputBookmarkButtonTrigger.bind { [weak self] contentId, contentTypeId, title, imageURL, region in
+            
+            guard let weakSelf = self else { return }
+            
+            guard 
+                let contentId = contentId,
+                let contentTypeId = contentTypeId,
+                let title = title,
+                let imageURL = imageURL,
+                let region = region
+            else { return }
+            
+            let bookmarkList: [Bookmark] = RealmManager.shared.read(Bookmark.self).map { $0 }
+            
+            let filteredBookmarkList = bookmarkList.filter { $0.contentId == contentId }
+            
+            if filteredBookmarkList.count < 1 {
+                // 추가
+                let newBookmark = Bookmark(
+                    contentId: contentId,
+                    contentTypeId: contentTypeId,
+                    title: title,
+                    imageURL: imageURL,
+                    region: region
+                )
+                RealmManager.shared.write(newBookmark)
+                weakSelf.outputIsBookmarked.value = true
+            } else {
+                // 삭제
+                RealmManager.shared.delete(filteredBookmarkList[0])
+                weakSelf.outputIsBookmarked.value = false
             }
         }
     }

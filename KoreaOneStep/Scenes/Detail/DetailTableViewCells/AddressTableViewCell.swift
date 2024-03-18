@@ -33,7 +33,7 @@ final class AddressTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let chevronRightIconImageView: UIImageView = {
+    let chevronRightIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.right")
         imageView.tintColor = .customBlack

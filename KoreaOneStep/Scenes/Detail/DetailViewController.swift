@@ -38,6 +38,8 @@ final class DetailViewController: UIViewController {
     var contentId: String?
     var contentTypeId: String?
     
+    var isFromBookmarkVC: Bool = false
+    
     private var viewModel = DetailViewModel()
     
     private var selectedService: DetailTableViewSection.ServiceDetailSection = .physicalDisability
@@ -71,6 +73,7 @@ final class DetailViewController: UIViewController {
     
     private func bindings() {
         viewModel.inputViewDidLoadTrigger.value = (self.contentId, self.contentTypeId)
+        viewModel.inputIsBookmarked.value = self.contentId
         
         viewModel.outputDetailTableViewData.bind { [weak self]
             touristDestinationCommonInfo, dictionary in
@@ -82,12 +85,32 @@ final class DetailViewController: UIViewController {
             weakSelf.updateTableViewData()
             weakSelf.tableView.reloadData()
         }
+        
+        viewModel.outputIsBookmarked.bind { [weak self] isBookmarked in
+            guard let weakSelf = self else { return }
+            
+            if isBookmarked {
+                weakSelf.navigationItem.rightBarButtonItems?[1].image = UIImage(systemName: "bookmark.fill")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+            } else {
+                weakSelf.navigationItem.rightBarButtonItems?[1].image = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+            }
+        }
     }
 }
 
 extension DetailViewController {
     @objc func bookmarkRightBarButtonItemTapped() {
         print(#function)
+        
+        guard let touristDestinationCommonInfo = touristDestinationCommonInfo else { return }
+
+        viewModel.inputBookmarkButtonTrigger.value = (
+            contentId,
+            contentTypeId,
+            touristDestinationCommonInfo.title,
+            touristDestinationCommonInfo.firstimage,
+            touristDestinationCommonInfo.areacode
+        )
     }
     
     @objc func shareRightBarButtonItemTapped() {
@@ -199,6 +222,7 @@ extension DetailViewController: UITableViewDataSource {
                     cell.selectionStyle = .none
                     
                     cell.addressLabel.text = touristDestinationCommonInfo.addr1 == "" ? "없음" : touristDestinationCommonInfo.addr1
+                    cell.chevronRightIconImageView.isHidden = isFromBookmarkVC
                     return cell
                 } else if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .serviceProvidedCell {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceProvidedTableViewCell.identifier, for: indexPath) as? ServiceProvidedTableViewCell else { return UITableViewCell() }

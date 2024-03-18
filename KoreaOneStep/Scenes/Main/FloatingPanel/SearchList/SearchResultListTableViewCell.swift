@@ -53,6 +53,18 @@ final class SearchResultListTableViewCell: UITableViewCell {
         label.font = .systemFont(ofSize: 16.0, weight: .semibold)
         return label
     }()
+    
+    lazy var isBookmarked: Bool = false {
+        didSet {
+            if isBookmarked {
+                let buttonImage = UIImage(systemName: "bookmark.fill")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+                bookmarkIconButton.setImage(buttonImage, for: .normal)
+            } else {
+                let buttonImage = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+                bookmarkIconButton.setImage(buttonImage, for: .normal)
+            }
+        }
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

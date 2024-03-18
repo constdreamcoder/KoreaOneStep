@@ -35,7 +35,7 @@ final class ContentViewController: UIViewController {
     
     private var mainViewModel: MainViewModel?
     
-    private var locationBasedTouristDestinationList: [LBItem] = []
+    private var locationBasedTouristDestinationList: [SearchResulData] = []
     
     private var selectedFilteringDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
     private var selectedFilteringCategory: FilteringOrder = FilteringOrder.allCases[0]
@@ -64,6 +64,10 @@ final class ContentViewController: UIViewController {
         super.viewWillAppear(animated)
         
         configureNavigationBar()
+        
+        guard let mainViewModel = mainViewModel else { return }
+        print("ff")
+        mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
     private func selectFilteringDistance(slider: UISlider) -> FilteringOrder.FilteringDistance {
@@ -97,7 +101,7 @@ final class ContentViewController: UIViewController {
             guard let weakSelf = self else { return }
             
             weakSelf.locationBasedTouristDestinationList = locationBasedTouristDestinationList
-            weakSelf.tableView.reloadSections([ContentTableViewSection.allCases[1].rawValue], with: .none)
+            weakSelf.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
         }
         
         mainViewModel.outputUserCurrentLocationInfo.bind { [weak self] coordinate in
@@ -123,7 +127,7 @@ extension ContentViewController {
         tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.allCases[0].rawValue)], with: .none)
         
         guard let mainViewModel = mainViewModel else { return }
-        mainViewModel.inputFilteringDistance.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
+        mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
     @objc func filteringCategoryTapped(_ button: UIButton) {
@@ -148,10 +152,26 @@ extension ContentViewController {
             }
         }
         
-        tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.allCases[0].rawValue)], with: .none)
+        tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.ambientSettings.rawValue)], with: .none)
         
         guard let mainViewModel = mainViewModel else { return }
-        mainViewModel.inputFilteringOrder.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
+        mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
+    }
+    
+    @objc func bookmarkIconButtonTapped(_ button: UIButton) {
+        guard let cell = tableView.cellForRow(at: IndexPath(row: button.tag, section: ContentTableViewSection.searchResultList.rawValue)) as? SearchResultListTableViewCell else { return }
+        
+        let locationBasedTouristDestination = locationBasedTouristDestinationList[button.tag].locationBasedTouristDestination
+        
+        guard let mainViewModel = mainViewModel else { return }
+
+        if cell.isBookmarked {
+            mainViewModel.inputRemoveBookmark.value = locationBasedTouristDestination
+        } else {
+            mainViewModel.inputAddNewBookmark.value = locationBasedTouristDestination
+        }
+        
+        cell.isBookmarked.toggle()
     }
 }
 
@@ -182,9 +202,12 @@ extension ContentViewController: UIViewControllerConfiguration {
 extension ContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if ContentTableViewSection.allCases[indexPath.section] == .searchResultList {
-            let touristDestination = locationBasedTouristDestinationList[indexPath.row]
+            let touristDestination = locationBasedTouristDestinationList[indexPath.row].locationBasedTouristDestination
             
             let detailVC = DetailViewController()
+            
+            detailVC.isFromBookmarkVC = false
+            
             detailVC.contentTitle = touristDestination.title
             detailVC.contentId = touristDestination.contentid
             detailVC.contentTypeId = touristDestination.contenttypeid
@@ -235,7 +258,12 @@ extension ContentViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultListTableViewCell.identifier) as? SearchResultListTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         
-        let locationBasedTouristDestination = locationBasedTouristDestinationList[indexPath.row]
+        cell.bookmarkIconButton.addTarget(self, action: #selector(bookmarkIconButtonTapped), for: .touchUpInside)
+        cell.bookmarkIconButton.tag = indexPath.row
+        
+        let locationBasedTouristDestination = locationBasedTouristDestinationList[indexPath.row].locationBasedTouristDestination
+        
+        let isBookmarked = locationBasedTouristDestinationList[indexPath.row].isBookmarked
         
         let regionImageURL = URL(string: locationBasedTouristDestination.firstimage)
         let placeholderImage = UIImage(systemName: "photo")
@@ -243,6 +271,8 @@ extension ContentViewController: UITableViewDataSource {
         cell.regionNameLabel.text = locationBasedTouristDestination.title
         cell.distanceLabel.text = "\(locationBasedTouristDestination.dist.convertStringToDistanceWithIntType)m"
         cell.telephoneNumberLabel.text = locationBasedTouristDestination.tel == "" ? "전화번호 미기재" : locationBasedTouristDestination.tel
+        
+        cell.isBookmarked = isBookmarked
     
         return cell
     }

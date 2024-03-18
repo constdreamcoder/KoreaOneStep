@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class BookmarkViewController: UIViewController {
     
@@ -28,6 +29,10 @@ final class BookmarkViewController: UIViewController {
         
         return collectionView
     }()
+    
+    private let viewModel = BookmarkViewModel()
+    
+    private var bookmarkList: [Bookmark] = []
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +40,23 @@ final class BookmarkViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
+        bindings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.inputViewWillAppearTrigger.value = ()
+    }
+    
+    private func bindings() {
+        viewModel.outputBookmarkList.bind { [weak self] bookmarkList in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.bookmarkList = bookmarkList
+            
+            weakSelf.collectionView.reloadData()
+        }
     }
 }
 
@@ -83,7 +105,16 @@ extension BookmarkViewController: UICollectionViewConfiguration {
 
 extension BookmarkViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedBookmark = bookmarkList[indexPath.item]
+        
         let detailVC = DetailViewController()
+
+        detailVC.isFromBookmarkVC = true
+
+        detailVC.contentTitle = selectedBookmark.title
+        detailVC.contentId = selectedBookmark.contentId
+        detailVC.contentTypeId = selectedBookmark.contentTypeId
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -96,12 +127,18 @@ extension BookmarkViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return bookmarkList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookmarkCollectionViewCell.identifier, for: indexPath) as? BookmarkCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .brown
+        
+        let bookmark = bookmarkList[indexPath.item]
+        
+        let buttonImageURL = URL(string: bookmark.imageURL)
+        let placeholderImage = UIImage(systemName: "photo")
+        cell.thumnailImageView.kf.setImage(with: buttonImageURL, placeholder: placeholderImage)
+        cell.nameLabel.text = bookmark.title
         return cell
     }
 }
