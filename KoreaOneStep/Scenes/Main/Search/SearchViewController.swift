@@ -28,7 +28,7 @@ final class SearchViewController: UIViewController {
         
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

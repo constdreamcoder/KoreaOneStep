@@ -35,6 +35,7 @@ final class MainViewController: UIViewController {
         tourTypeListView.showsHorizontalScrollIndicator = false
         
         tourTypeListView.contentInset = UIEdgeInsets(top: 2, left: 16, bottom: 2, right: 16)
+        
         return tourTypeListView
     }()
     
@@ -119,6 +120,9 @@ extension MainViewController: UIViewControllerConfiguration {
             $0.top.equalTo(searchBar.snp.bottom)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        // TODO: - 배포 후, 삭제(추가 개발 예정)
+        tourTypeListView.isHidden = true
     }
     
     func configureUI() {

@@ -8,12 +8,13 @@
 import Foundation
 
 final class BookmarkViewModel {
-    let inputViewWillAppearTrigger: Observable<Void?> = Observable(nil)
+    let inputForCollectionViewUpdate: Observable<Void?> = Observable(nil)
+    let inputTextDidChange: Observable<String> = Observable("")
     
     let outputBookmarkList: Observable<[Bookmark]> = Observable([])
     
     init() {
-        inputViewWillAppearTrigger.bind { [weak self] trigger in
+        inputForCollectionViewUpdate.bind { [weak self] trigger in
             guard let weakSelf = self else { return }
             
             guard let trigger = trigger else { return }
@@ -21,6 +22,14 @@ final class BookmarkViewModel {
             let bookmarkList: [Bookmark] = RealmManager.shared.read(Bookmark.self).map { $0 }
             
             weakSelf.outputBookmarkList.value = bookmarkList
+        }
+        
+        inputTextDidChange.bind { [weak self] searchText in
+            guard let weakSelf = self else { return }
+
+            let bookmarkList: [Bookmark] =  RealmManager.shared.read(Bookmark.self).map { $0 }
+            
+            weakSelf.outputBookmarkList.value = bookmarkList.filter { $0.title.contains(searchText) }
         }
     }
 }

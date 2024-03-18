@@ -66,7 +66,6 @@ final class ContentViewController: UIViewController {
         configureNavigationBar()
         
         guard let mainViewModel = mainViewModel else { return }
-        print("ff")
         mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     

@@ -41,12 +41,13 @@ final class BookmarkViewController: UIViewController {
         configureConstraints()
         configureUI()
         bindings()
+        addUserEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.inputViewWillAppearTrigger.value = ()
+        viewModel.inputForCollectionViewUpdate.value = ()
     }
     
     private func bindings() {
@@ -57,6 +58,19 @@ final class BookmarkViewController: UIViewController {
             
             weakSelf.collectionView.reloadData()
         }
+    }
+    
+    private func addUserEvents() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+}
+
+extension BookmarkViewController {
+    @objc func backgroundViewTapped(_ gestureRecognizer: UIGestureRecognizer) {
+        print("바탕화면 터치됨")
+        view.endEditing(true)
     }
 }
 
@@ -97,7 +111,9 @@ extension BookmarkViewController: UICollectionViewConfiguration {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
-        layout.headerReferenceSize = .init(width: view.frame.width, height: 190)
+        // TODO: - 배포 후, 주석 해제(추가 개발 예정)
+        //layout.headerReferenceSize = .init(width: view.frame.width, height: 190)
+        layout.headerReferenceSize = .init(width: view.frame.width, height: .zero)
         
         return layout
     }
@@ -148,5 +164,19 @@ extension BookmarkViewController: UISearchBarDelegate {
         let updatedLayout = configureCollectionViewLayout()
         updatedLayout.headerReferenceSize = .zero
         collectionView.collectionViewLayout = updatedLayout
+        
+        bookmarkList = []
+        
+        collectionView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        viewModel.inputTextDidChange.value = trimmedSearchText
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        viewModel.inputForCollectionViewUpdate.value = ()
     }
 }
