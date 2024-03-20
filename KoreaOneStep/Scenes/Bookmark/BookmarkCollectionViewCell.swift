@@ -37,6 +37,24 @@ final class BookmarkCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    private lazy var coverView: UIView = {
+        let view = UIView()
+        DispatchQueue.main.async {
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.frame = view.bounds
+            gradientLayer.colors = [
+                UIColor.customBlack.withAlphaComponent(0.0).cgColor,
+                UIColor.customBlack.withAlphaComponent(0.6).cgColor,
+                UIColor.customBlack.withAlphaComponent(0.8).cgColor
+            ]
+            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+            gradientLayer.locations = [0.5, 0.7]
+            view.layer.addSublayer(gradientLayer)
+        }
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -60,11 +78,16 @@ extension BookmarkCollectionViewCell: UICollectionViewCellConfiguration {
     func configureConstraints() {
         [
             thumnailImageView,
+            coverView,
             nameLabel,
             bookmarkIconButton,
         ].forEach { contentView.addSubview($0) }
         
         thumnailImageView.snp.makeConstraints {
+            $0.edges.equalTo(contentView.safeAreaLayoutGuide)
+        }
+        
+        coverView.snp.makeConstraints {
             $0.edges.equalTo(contentView.safeAreaLayoutGuide)
         }
         
