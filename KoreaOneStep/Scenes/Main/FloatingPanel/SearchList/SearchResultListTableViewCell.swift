@@ -106,9 +106,12 @@ extension SearchResultListTableViewCell: UITableViewCellConfiguration {
         }
         
         bookmarkIconButton.snp.makeConstraints {
+            $0.leading.equalTo(regionNameLabel.snp.trailing).offset(8.0)
             $0.centerY.equalTo(regionNameLabel)
             $0.trailing.equalTo(regionImageView)
         }
+        bookmarkIconButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        bookmarkIconButton.setContentHuggingPriority(.required, for: .horizontal)
         
         telephoneNumberLabel.snp.makeConstraints {
             $0.centerY.equalTo(distanceLabel)

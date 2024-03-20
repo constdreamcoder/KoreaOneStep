@@ -25,7 +25,6 @@
 		003247242BA82B3B009642D4 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247232BA82B3B009642D4 /* BookmarkViewModel.swift */; };
 		003247282BA87015009642D4 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247272BA87015009642D4 /* SearchViewModel.swift */; };
 		0032472A2BA87317009642D4 /* AreaCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247292BA87317009642D4 /* AreaCodeModel.swift */; };
-		003247332BA8ADE4009642D4 /* CoreLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247322BA8ADE3009642D4 /* CoreLocationViewController.swift */; };
 		0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051C2A22BA3516E0094D4BC /* TourType.swift */; };
 		0051C2A62BA35B6C0094D4BC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0051C2A52BA35B6C0094D4BC /* SnapKit */; };
 		0051C2A92BA35BD80094D4BC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0051C2A82BA35BD80094D4BC /* Alamofire */; };
@@ -99,7 +98,6 @@
 		003247232BA82B3B009642D4 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		003247272BA87015009642D4 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		003247292BA87317009642D4 /* AreaCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCodeModel.swift; sourceTree = "<group>"; };
-		003247322BA8ADE3009642D4 /* CoreLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationViewController.swift; sourceTree = "<group>"; };
 		0051C2A22BA3516E0094D4BC /* TourType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourType.swift; sourceTree = "<group>"; };
 		005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
 		005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -519,7 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
-				003247322BA8ADE3009642D4 /* CoreLocationViewController.swift */,
 				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
 				0081E89A2B9DB0E100EF615D /* Enums */,
 				0024F3062B9B4DF100799623 /* Protocols */,
@@ -734,7 +731,6 @@
 				00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */,
 				0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */,
 				00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */,
-				003247332BA8ADE4009642D4 /* CoreLocationViewController.swift in Sources */,
 				0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */,
 				0063D5F72BA531640081B59D /* MainViewModel.swift in Sources */,
 				007323F82BA5A119001B0A2E /* String+Extension.swift in Sources */,

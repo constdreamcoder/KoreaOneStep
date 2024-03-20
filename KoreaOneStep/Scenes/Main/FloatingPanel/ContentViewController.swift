@@ -101,7 +101,7 @@ final class ContentViewController: UIViewController {
             weakSelf.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
         }
         
-        mainViewModel.outputUserCurrentLocationInfo.bind { [weak self] coordinate in
+        mainViewModel.outputUserCurrentLocationInfoToContentVC.bind { [weak self] coordinate in
             guard let weakSelf = self else { return }
             
             weakSelf.userLocationInfo = coordinate

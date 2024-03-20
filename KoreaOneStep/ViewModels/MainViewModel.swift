@@ -25,7 +25,8 @@ final class MainViewModel {
     let inputDetailVCViewDidLoadTrigger: Observable<Void?> = Observable(nil)
     
     let outputLocationBasedTouristDestinationList: Observable<[SearchResulData]> = Observable([])
-    let outputUserCurrentLocationInfo: Observable<CLLocationCoordinate2D?> = Observable(nil)
+    let outputUserCurrentLocationInfoToMainVC: Observable<CLLocationCoordinate2D?> = Observable(nil)
+    let outputUserCurrentLocationInfoToContentVC: Observable<CLLocationCoordinate2D?> = Observable(nil)
     let outputSelectedTouristDestination: Observable<LBItem?> = Observable(nil)
     let outputTappedTouristDestination: Observable<KSItem?> = Observable(nil)
     let outputDetailVCLeftBarButtonItemTappedTrigger: Observable<Void?> = Observable(nil)
@@ -48,7 +49,8 @@ final class MainViewModel {
                     return
                 }
                 
-                weakSelf.outputUserCurrentLocationInfo.value = coordinate
+                weakSelf.outputUserCurrentLocationInfoToMainVC.value = coordinate
+                weakSelf.outputUserCurrentLocationInfoToContentVC.value = coordinate
                 
                 KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
                     latitude: coordinate.latitude,

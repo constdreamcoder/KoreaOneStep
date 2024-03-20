@@ -43,7 +43,6 @@ final class MainViewController: UIViewController {
     private let mapView: NMFMapView = {
         let mapView = NMFMapView()
         mapView.logoAlign = .leftTop
-        mapView.locationOverlay.hidden = false
         mapView.positionMode = .direction
         return mapView
     }()
@@ -109,15 +108,16 @@ final class MainViewController: UIViewController {
     private func binding() {
         viewModel.inputViewDidLoadTrigger.value = ()
         
-        viewModel.outputUserCurrentLocationInfo.bind { [weak self] coordinate in
+        viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in
             guard let weakSelf = self else { return }
             
             guard let coordinate = coordinate else { return }
             
             weakSelf.mapView.locationOverlay.location = NMGLatLng(lat: coordinate.latitude, lng: coordinate.longitude)
+            weakSelf.mapView.locationOverlay.hidden = false
             
             weakSelf.configureCamera(lat: coordinate.latitude, lng: coordinate.longitude)
-            
+           
             weakSelf.userLocationInfo = coordinate
         }
         

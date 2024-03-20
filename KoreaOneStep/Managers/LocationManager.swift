@@ -25,7 +25,7 @@ final class LocationManager: CLLocationManager {
     }
     
     private func requestAuthorization() {
-        self.desiredAccuracy = kCLLocationAccuracyBest
+        self.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.requestWhenInUseAuthorization()
     }
 }
@@ -40,13 +40,7 @@ extension LocationManager {
         super.stopUpdatingLocation()
     }
     
-    override func requestLocation() {
-        super.requestLocation()
-    }
-    
     func fetchLocation(completion: @escaping FetchLocationCompletion) {
-        self.requestLocation()
-        
         self.fetchLocationCompletion = completion
     }
 }
@@ -59,7 +53,7 @@ extension LocationManager: CLLocationManagerDelegate {
             print(coordinate)
             print(coordinate.latitude)
             print(coordinate.longitude)
-            
+                        
             self.fetchLocationCompletion?(coordinate, nil)
             
             self.fetchLocationCompletion = nil
