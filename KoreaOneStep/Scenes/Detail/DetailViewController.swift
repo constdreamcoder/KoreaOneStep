@@ -91,9 +91,9 @@ final class DetailViewController: UIViewController {
             guard let weakSelf = self else { return }
             
             if isBookmarked {
-                weakSelf.navigationItem.rightBarButtonItems?[1].image = UIImage(systemName: "bookmark.fill")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark.fill")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
             } else {
-                weakSelf.navigationItem.rightBarButtonItems?[1].image = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
             }
         }
         
@@ -151,7 +151,9 @@ extension DetailViewController: UIViewControllerConfiguration {
         let shareImage = UIImage(systemName: "square.and.arrow.up")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
         let shareImageRightBarButtonItem = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(shareRightBarButtonItemTapped))
         
-        navigationItem.rightBarButtonItems = [shareImageRightBarButtonItem, bookmarkRightBarButtonItem]
+        // TODO: - 배포 후, 주석 해제(추가 개발 예정)
+//        navigationItem.rightBarButtonItems = [shareImageRightBarButtonItem, bookmarkRightBarButtonItem]
+        navigationItem.rightBarButtonItems = [bookmarkRightBarButtonItem]
     }
     
     func configureConstraints() {

@@ -43,7 +43,18 @@ final class RealmManager {
                 realm.delete(object)
                 print("해당 북마크가 정상적으로 삭제되었습니다.")
             }
-            
+        } catch {
+            // TODO: - 에러 처리하기
+            print(error)
+        }
+    }
+    
+    func deleteAll() {
+        do {
+            try realm.write {
+                realm.deleteAll()
+                print("북마크가 모두 삭제되었습니다.")
+            }
         } catch {
             // TODO: - 에러 처리하기
             print(error)

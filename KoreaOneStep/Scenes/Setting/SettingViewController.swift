@@ -20,6 +20,8 @@ final class SettingViewController: UIViewController {
         
         return tableView
     }()
+    
+    private let viewModel = SettingViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,10 @@ extension SettingViewController: UIViewControllerConfiguration {
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(SettingTableViewCellTitle.allCases[indexPath.row].rawValue)
+        
+        if SettingTableViewCellTitle.allCases[indexPath.row] == .removeAllBookmarkRecords {
+            viewModel.inputBookmarkRemoveAllCellTapTrigger.value = ()
+        }
     }
 }
 
