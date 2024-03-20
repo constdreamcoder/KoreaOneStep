@@ -30,7 +30,7 @@ final class BookmarkCollectionViewCell: UICollectionViewCell {
     
     let bookmarkIconButton: UIButton = {
         let button = UIButton()
-        let buttonImage = UIImage(systemName: "bookmark.fill")?.withTintColor(.customWhite, renderingMode: .alwaysOriginal)
+        let buttonImage = UIImage(systemName: "bookmark.fill")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
         button.setImage(buttonImage, for: .normal)
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 28)
         button.setPreferredSymbolConfiguration(symbolConfig, forImageIn: .normal)

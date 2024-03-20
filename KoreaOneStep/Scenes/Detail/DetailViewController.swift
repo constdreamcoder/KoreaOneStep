@@ -91,9 +91,9 @@ final class DetailViewController: UIViewController {
             guard let weakSelf = self else { return }
             
             if isBookmarked {
-                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark.fill")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark.fill")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
             } else {
-                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
             }
         }
         
@@ -145,7 +145,7 @@ extension DetailViewController: UIViewControllerConfiguration {
         let leftBarButtonImage = UIImage(systemName: "chevron.left")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: leftBarButtonImage, style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
         
-        let bookmarkImage = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+        let bookmarkImage = UIImage(systemName: "bookmark")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
         let bookmarkRightBarButtonItem = UIBarButtonItem(image: bookmarkImage, style: .plain, target: self, action: #selector(bookmarkRightBarButtonItemTapped))
         
         let shareImage = UIImage(systemName: "square.and.arrow.up")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)

@@ -29,7 +29,7 @@ final class SearchResultListTableViewCell: UITableViewCell {
     
     let bookmarkIconButton: UIButton = {
         let button = UIButton()
-        let buttonImage = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+        let buttonImage = UIImage(systemName: "bookmark")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
         button.setImage(buttonImage, for: .normal)
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20)
         button.setPreferredSymbolConfiguration(symbolConfig, forImageIn: .normal)
@@ -57,10 +57,10 @@ final class SearchResultListTableViewCell: UITableViewCell {
     lazy var isBookmarked: Bool = false {
         didSet {
             if isBookmarked {
-                let buttonImage = UIImage(systemName: "bookmark.fill")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+                let buttonImage = UIImage(systemName: "bookmark.fill")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
                 bookmarkIconButton.setImage(buttonImage, for: .normal)
             } else {
-                let buttonImage = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+                let buttonImage = UIImage(systemName: "bookmark")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
                 bookmarkIconButton.setImage(buttonImage, for: .normal)
             }
         }
