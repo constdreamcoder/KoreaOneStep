@@ -13,19 +13,25 @@ struct SearchResulData {
     let isBookmarked: Bool
 }
 
-final class MainViewModel: NSObject {
+final class MainViewModel {
     let inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
     let inputForTableViewUpdate: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance, FilteringOrder)> = Observable((nil, .oneKiloMeter, .title))
     let inputTourType: Observable<(CLLocationCoordinate2D?, TourType?)> = Observable((nil, nil))
     let inputAddNewBookmark: Observable<LBItem?> = Observable(nil)
     let inputRemoveBookmark: Observable<LBItem?> = Observable(nil)
+    let inputContentVCTableViewDidSelectRowAtTrigger: Observable<LBItem?> = Observable(nil)
+    let inputSearchVCTableViewDidSelectRowAt: Observable<KSItem?> = Observable(nil)
+    let inputDetailVCLeftBarButtonItemTappedTrigger: Observable<Void?> = Observable(nil)
+    let inputDetailVCViewDidLoadTrigger: Observable<Void?> = Observable(nil)
     
     let outputLocationBasedTouristDestinationList: Observable<[SearchResulData]> = Observable([])
     let outputUserCurrentLocationInfo: Observable<CLLocationCoordinate2D?> = Observable(nil)
+    let outputSelectedTouristDestination: Observable<LBItem?> = Observable(nil)
+    let outputTappedTouristDestination: Observable<KSItem?> = Observable(nil)
+    let outputDetailVCLeftBarButtonItemTappedTrigger: Observable<Void?> = Observable(nil)
+    let outputDetailVCViewDidLoadTrigger: Observable<Void?> = Observable(nil)
         
-    override init() {
-        super.init()
-                
+   init() {
         inputViewDidLoadTrigger.bind { trigger in
             guard let trigger = trigger else { return }
             
@@ -136,6 +142,36 @@ final class MainViewModel: NSObject {
             }
             
             RealmManager.shared.delete(filteredBookmarkList[0])
+        }
+        
+        inputContentVCTableViewDidSelectRowAtTrigger.bind { [weak self] touristDestination in
+            guard let weakSelf = self else { return }
+            
+            guard let touristDestination = touristDestination else { return }
+            
+            weakSelf.outputSelectedTouristDestination.value = touristDestination
+        }
+        
+        inputSearchVCTableViewDidSelectRowAt.bind { [weak self] selectedTouristDestination in
+            guard let weakSelf = self else { return }
+           
+            weakSelf.outputTappedTouristDestination.value = selectedTouristDestination
+        }
+        
+        inputDetailVCLeftBarButtonItemTappedTrigger.bind { [weak self] trigger in
+            guard let weakSelf = self else { return }
+            
+            guard let trigger = trigger else { return }
+            
+            weakSelf.outputDetailVCLeftBarButtonItemTappedTrigger.value = trigger
+        }
+        
+        inputDetailVCViewDidLoadTrigger.bind { [weak self] trigger in
+            guard let weakSelf = self else { return }
+            
+            guard let trigger = trigger else { return }
+            
+            weakSelf.outputDetailVCViewDidLoadTrigger.value = trigger
         }
     }
 }

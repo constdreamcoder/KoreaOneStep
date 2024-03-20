@@ -33,7 +33,7 @@ final class ContentViewController: UIViewController {
     
     private var filteringButtonList: [UIButton] = []
     
-    private var mainViewModel: MainViewModel?
+    private var mainViewModel: MainViewModel
     
     private var locationBasedTouristDestinationList: [SearchResulData] = []
     
@@ -55,6 +55,7 @@ final class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureNavigationBar()
         configureConstraints()
         configureUI()
         binding()
@@ -63,9 +64,8 @@ final class ContentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        configureNavigationBar()
-        
-        guard let mainViewModel = mainViewModel else { return }
+        navigationController?.navigationBar.isHidden = true
+
         mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
@@ -94,8 +94,6 @@ final class ContentViewController: UIViewController {
     }
     
     private func binding() {
-        guard let mainViewModel = mainViewModel else { return }
-        
         mainViewModel.outputLocationBasedTouristDestinationList.bind { [weak self] locationBasedTouristDestinationList in
             guard let weakSelf = self else { return }
             
@@ -125,7 +123,6 @@ extension ContentViewController {
         
         tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.allCases[0].rawValue)], with: .none)
         
-        guard let mainViewModel = mainViewModel else { return }
         mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
@@ -153,7 +150,6 @@ extension ContentViewController {
         
         tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.ambientSettings.rawValue)], with: .none)
         
-        guard let mainViewModel = mainViewModel else { return }
         mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
@@ -162,8 +158,6 @@ extension ContentViewController {
         
         let locationBasedTouristDestination = locationBasedTouristDestinationList[button.tag].locationBasedTouristDestination
         
-        guard let mainViewModel = mainViewModel else { return }
-
         if cell.isBookmarked {
             mainViewModel.inputRemoveBookmark.value = locationBasedTouristDestination
         } else {
@@ -176,7 +170,6 @@ extension ContentViewController {
 
 extension ContentViewController: UIViewControllerConfiguration {
     func configureNavigationBar() {
-        navigationController?.navigationBar.isHidden = true
         
         navigationItem.backButtonTitle = ""
     }
@@ -203,9 +196,12 @@ extension ContentViewController: UITableViewDelegate {
         if ContentTableViewSection.allCases[indexPath.section] == .searchResultList {
             let touristDestination = locationBasedTouristDestinationList[indexPath.row].locationBasedTouristDestination
             
+            mainViewModel.inputContentVCTableViewDidSelectRowAtTrigger.value = touristDestination
+            
             let detailVC = DetailViewController()
             
             detailVC.isFromBookmarkVC = false
+            detailVC.mainViewModel = mainViewModel
             
             detailVC.contentTitle = touristDestination.title
             detailVC.contentId = touristDestination.contentid

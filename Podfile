@@ -6,4 +6,5 @@ target 'KoreaOneStep' do
   use_frameworks!
 
   # Pods for KoreaOneStep
+  pod 'NMapsMap'	
 end

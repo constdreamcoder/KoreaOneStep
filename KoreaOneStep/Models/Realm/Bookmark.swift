@@ -18,6 +18,7 @@ final class Bookmark: Object {
     
     convenience init(contentId: String, contentTypeId: String, title: String, imageURL: String, region: String) {
         self.init()
+        
         self.contentId = contentId
         self.contentTypeId = contentTypeId
         self.title = title

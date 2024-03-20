@@ -41,6 +41,7 @@ final class DetailViewController: UIViewController {
     var isFromBookmarkVC: Bool = false
     
     private var viewModel = DetailViewModel()
+    var mainViewModel: MainViewModel?
     
     private var selectedService: DetailTableViewSection.ServiceDetailSection = .physicalDisability
     
@@ -95,10 +96,25 @@ final class DetailViewController: UIViewController {
                 weakSelf.navigationItem.rightBarButtonItems?[1].image = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
             }
         }
+        
+        guard let mainViewModel = mainViewModel else { return }
+        mainViewModel.inputDetailVCViewDidLoadTrigger.value = ()
     }
 }
 
 extension DetailViewController {
+    @objc func leftBarButtonItemTapped() {
+        if isFromBookmarkVC {
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        
+        guard let mainViewModel = mainViewModel else { return }
+        mainViewModel.inputDetailVCLeftBarButtonItemTappedTrigger.value = ()
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc func bookmarkRightBarButtonItemTapped() {
         print(#function)
         
@@ -125,6 +141,9 @@ extension DetailViewController: UIViewControllerConfiguration {
         navigationItem.title = contentTitle
         
         navigationController?.navigationBar.tintColor = .customBlack
+        
+        let leftBarButtonImage = UIImage(systemName: "chevron.left")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: leftBarButtonImage, style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
         
         let bookmarkImage = UIImage(systemName: "bookmark")?.withTintColor(.customBlack, renderingMode: .alwaysOriginal)
         let bookmarkRightBarButtonItem = UIBarButtonItem(image: bookmarkImage, style: .plain, target: self, action: #selector(bookmarkRightBarButtonItemTapped))

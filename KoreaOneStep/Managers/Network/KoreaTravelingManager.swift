@@ -125,6 +125,7 @@ final class KoreaTravelingManager {
             case .success(let success):
                 completionHandler(success.response.body.items.item)
             case .failure(let failure):
+                completionHandler([])
                 print(failure)
             }
         }
@@ -159,6 +160,46 @@ final class KoreaTravelingManager {
                 completionHandler(success.response.body.items.item)
             case .failure(let failure):
                 print(failure)
+            }
+        }
+    }
+    
+    func fetchKeywordBasedSearching(
+        keyword: String,
+        areaCode: String = "",
+        sigunguCode: String = "",
+        completionHandler: @escaping ([KSItem]) -> Void
+    ) {
+        let urlString = "\(baseURL)/searchKeyword1"
+        
+        // TODO: 나중에 MobileApp 번들ID로 변경
+        let parameters = [
+            "serviceKey": APIKeys.serviceKey, // 필수, 인증키(서비스키)
+            "numOfRows": "300", // 한페이지 결과수
+            "pageNo": "1", // 페이지 번호
+            "MobileOS": "IOS", // 필수, OS 구분 : IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC(기타)
+            "MobileApp": "AppTest", // 필수, 서비스명(어플명)
+            "listYN": "Y", // 목록구분(Y=목록, N=개수)
+            "arrange": "O", // 정렬구분(A=제목순, C=수정일순, D=생성일순)대표이미지가반드시있는정렬(O=제목순, Q=수정일순, R=생성일순)
+            "keyword": keyword, // 검색요청할키워드(국문=인코딩필요)
+            "_type": "json", // 응답메세지 형식 : REST방식의 URL호출 시 json값 추가(디폴트 응답메세지 형식은XML)
+            "areaCode": areaCode, // 지역코드
+            "sigunguCode": sigunguCode // 시군구 코드(지역코드 필수)
+        ]
+        
+        // TODO: - 네트워크 에러 처리하기
+        AF.request(
+            urlString,
+            method: .get,
+            parameters: parameters,
+            encoder: URLEncodedFormParameterEncoder(destination: .queryString)
+        ).responseDecodable(of: KeywordBasedSearchgingModel.self) { response in
+            switch response.result {
+            case .success(let success):
+                completionHandler(success.response.body.items.item)
+            case .failure(let failure):
+                print(failure)
+                completionHandler([])
             }
         }
     }

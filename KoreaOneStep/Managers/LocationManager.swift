@@ -26,19 +26,18 @@ final class LocationManager: CLLocationManager {
     
     private func requestAuthorization() {
         self.desiredAccuracy = kCLLocationAccuracyBest
-
         self.requestWhenInUseAuthorization()
     }
 }
 
 extension LocationManager {
     
-    override func startUpdatingHeading() {
-        super.startUpdatingHeading()
+    override func startUpdatingLocation() {
+        super.startUpdatingLocation()
     }
     
-    override func stopUpdatingHeading() {
-        super.stopUpdatingHeading()
+    override func stopUpdatingLocation() {
+        super.stopUpdatingLocation()
     }
     
     override func requestLocation() {
@@ -66,7 +65,7 @@ extension LocationManager: CLLocationManagerDelegate {
             self.fetchLocationCompletion = nil
         }
         
-        stopUpdatingHeading()
+        stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -75,23 +74,27 @@ extension LocationManager: CLLocationManagerDelegate {
         self.fetchLocationCompletion = nil
     }
     
-    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print(#function)
-        switch manager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
-            print("Location Auth: Allow")
-            self.startUpdatingHeading()
-        case .notDetermined:
-            print("notDetermined")
-            requestAuthorization()
-        case .restricted:
-            print("restricted")
-        case .denied:
-            // TODO: - Alert 창으로 권한을 줄 수 있는 설정창으로 이동하는 트리거 구현하기
-            print("denied")
-        @unknown default:
-            print("Error")
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                DispatchQueue.main.async {
+                    switch manager.authorizationStatus {
+                    case .authorizedAlways, .authorizedWhenInUse:
+                        print("Location Auth: Allow")
+                        self.startUpdatingLocation()
+                    case .notDetermined:
+                        print("notDetermined")
+                        self.requestAuthorization()
+                    case .restricted:
+                        print("restricted")
+                    case .denied:
+                        // TODO: - Alert 창으로 권한을 줄 수 있는 설정창으로 이동하는 트리거 구현하기
+                        print("denied")
+                    @unknown default:
+                        print("Error")
+                    }
+                }
+            }
         }
     }
 }

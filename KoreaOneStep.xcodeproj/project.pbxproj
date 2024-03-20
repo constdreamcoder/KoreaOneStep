@@ -25,6 +25,7 @@
 		003247242BA82B3B009642D4 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247232BA82B3B009642D4 /* BookmarkViewModel.swift */; };
 		003247282BA87015009642D4 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247272BA87015009642D4 /* SearchViewModel.swift */; };
 		0032472A2BA87317009642D4 /* AreaCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247292BA87317009642D4 /* AreaCodeModel.swift */; };
+		003247332BA8ADE4009642D4 /* CoreLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247322BA8ADE3009642D4 /* CoreLocationViewController.swift */; };
 		0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051C2A22BA3516E0094D4BC /* TourType.swift */; };
 		0051C2A62BA35B6C0094D4BC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0051C2A52BA35B6C0094D4BC /* SnapKit */; };
 		0051C2A92BA35BD80094D4BC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0051C2A82BA35BD80094D4BC /* Alamofire */; };
@@ -43,6 +44,8 @@
 		007323F82BA5A119001B0A2E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F72BA5A119001B0A2E /* String+Extension.swift */; };
 		007323FD2BA5E621001B0A2E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323FC2BA5E621001B0A2E /* LocationManager.swift */; };
 		007324012BA613D2001B0A2E /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007324002BA613D2001B0A2E /* APIKeys.swift */; };
+		008123232BA96A2500ABC9B7 /* KeywordBasedSearchgingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008123222BA96A2500ABC9B7 /* KeywordBasedSearchgingModel.swift */; };
+		008123252BA9778200ABC9B7 /* SearchedResultsTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008123242BA9778200ABC9B7 /* SearchedResultsTableViewTableViewCell.swift */; };
 		0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */; };
 		0081E8992B9DAF4600EF615D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */; };
 		0081E89C2B9DB10E00EF615D /* SettingTableViewCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */; };
@@ -54,6 +57,7 @@
 		0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */; };
 		009206672BA7A15F00724961 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 009206662BA7A15F00724961 /* Realm */; };
 		009206692BA7A15F00724961 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 009206682BA7A15F00724961 /* RealmSwift */; };
+		009ACA7F2BAAD77100C937F7 /* RecentKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */; };
 		00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */; };
 		00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */; };
 		00F4F86B2BA7B57200071D89 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F4F86A2BA7B57200071D89 /* RealmManager.swift */; };
@@ -94,6 +98,7 @@
 		003247232BA82B3B009642D4 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		003247272BA87015009642D4 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		003247292BA87317009642D4 /* AreaCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCodeModel.swift; sourceTree = "<group>"; };
+		003247322BA8ADE3009642D4 /* CoreLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationViewController.swift; sourceTree = "<group>"; };
 		0051C2A22BA3516E0094D4BC /* TourType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourType.swift; sourceTree = "<group>"; };
 		005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
 		005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -110,6 +115,8 @@
 		007323F72BA5A119001B0A2E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		007323FC2BA5E621001B0A2E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		007324002BA613D2001B0A2E /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		008123222BA96A2500ABC9B7 /* KeywordBasedSearchgingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordBasedSearchgingModel.swift; sourceTree = "<group>"; };
+		008123242BA9778200ABC9B7 /* SearchedResultsTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedResultsTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		0081E8982B9DAF4600EF615D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		0081E89B2B9DB10E00EF615D /* SettingTableViewCellTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCellTitle.swift; sourceTree = "<group>"; };
@@ -118,6 +125,7 @@
 		0081E8A72B9DC71100EF615D /* UITableViewCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellConfiguration.swift; sourceTree = "<group>"; };
 		0081E8AA2B9DD8E400EF615D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeyword.swift; sourceTree = "<group>"; };
 		00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		00F4F86A2BA7B57200071D89 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -342,6 +350,7 @@
 				001D3E972BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift */,
 				001D3E9B2BA6F4D100065C83 /* ProvidedImpairmentAidServicesModel.swift */,
 				003247292BA87317009642D4 /* AreaCodeModel.swift */,
+				008123222BA96A2500ABC9B7 /* KeywordBasedSearchgingModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -414,6 +423,7 @@
 			children = (
 				0081E8A22B9DC11500EF615D /* SearchViewController.swift */,
 				0081E8A52B9DC68200EF615D /* SearchTableViewCell.swift */,
+				008123242BA9778200ABC9B7 /* SearchedResultsTableViewTableViewCell.swift */,
 				0081E8A92B9DD87C00EF615D /* Filter */,
 			);
 			path = Search;
@@ -452,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				00F4F86E2BA7B6AE00071D89 /* Bookmark.swift */,
+				009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -505,6 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
+				003247322BA8ADE3009642D4 /* CoreLocationViewController.swift */,
 				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
 				0081E89A2B9DB0E100EF615D /* Enums */,
 				0024F3062B9B4DF100799623 /* Protocols */,
@@ -550,6 +562,7 @@
 				00FD1C362B99840900C2A76E /* Sources */,
 				00FD1C372B99840900C2A76E /* Frameworks */,
 				00FD1C382B99840900C2A76E /* Resources */,
+				73714B403E4390F3AFF9386C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -647,6 +660,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		73714B403E4390F3AFF9386C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KoreaOneStep/Pods-KoreaOneStep-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KoreaOneStep/Pods-KoreaOneStep-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KoreaOneStep/Pods-KoreaOneStep-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -680,6 +710,7 @@
 				005E57202BA01CB5005CD618 /* PhoneNumberTableViewCell.swift in Sources */,
 				00F77ACF2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift in Sources */,
 				0063D5F92BA531E50081B59D /* Observable.swift in Sources */,
+				008123252BA9778200ABC9B7 /* SearchedResultsTableViewTableViewCell.swift in Sources */,
 				00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */,
 				0032472A2BA87317009642D4 /* AreaCodeModel.swift in Sources */,
 				00F77AD12B9EED9700A6A2E0 /* BookmarkHeaderViewCell.swift in Sources */,
@@ -699,6 +730,7 @@
 				00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */,
 				0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */,
 				00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */,
+				003247332BA8ADE4009642D4 /* CoreLocationViewController.swift in Sources */,
 				0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */,
 				0063D5F72BA531640081B59D /* MainViewModel.swift in Sources */,
 				007323F82BA5A119001B0A2E /* String+Extension.swift in Sources */,
@@ -708,7 +740,9 @@
 				0081E8A62B9DC68200EF615D /* SearchTableViewCell.swift in Sources */,
 				0081E8A82B9DC71100EF615D /* UITableViewCellConfiguration.swift in Sources */,
 				0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */,
+				009ACA7F2BAAD77100C937F7 /* RecentKeyword.swift in Sources */,
 				0081E89C2B9DB10E00EF615D /* SettingTableViewCellTitle.swift in Sources */,
+				008123232BA96A2500ABC9B7 /* KeywordBasedSearchgingModel.swift in Sources */,
 				0063D5FD2BA5356B0081B59D /* KoreaTravelingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -862,7 +896,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 59V6NJY3X6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KoreaOneStep/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -895,7 +930,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 59V6NJY3X6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KoreaOneStep/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

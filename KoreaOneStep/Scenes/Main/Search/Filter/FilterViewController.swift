@@ -138,6 +138,8 @@ extension FilterViewController: UITableViewDataSource {
 
 extension FilterViewController: TTGTextTagCollectionViewDelegate {
     func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
+        guard let searchViewModel = searchViewModel else { return }
+
         if tag.selected {
             let selectedTagName = tag.content.getAttributedString().string
             
@@ -146,15 +148,14 @@ extension FilterViewController: TTGTextTagCollectionViewDelegate {
             if selectedSiGunGuTagList.count >= 1 {
                 print("시군구", selectedSiGunGuTagList)
                 
+                searchViewModel.inputSelectedSiGunGuTag.value = selectedSiGunGuTagList[0]
             } else {
                 let selectedReigonTagList = self.regionTagList.filter { $0.name == selectedTagName }
                 print("지역", selectedReigonTagList)
 
-                guard let searchViewModel = searchViewModel else { return }
                 searchViewModel.inputSelectedRegionTag.value = selectedReigonTagList[0]
             }
         }
     }
-    
 }
 
