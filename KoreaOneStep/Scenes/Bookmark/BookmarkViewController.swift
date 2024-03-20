@@ -72,6 +72,12 @@ extension BookmarkViewController {
         print("바탕화면 터치됨")
         view.endEditing(true)
     }
+    
+    @objc func bookmarkIconButtonTapped(_ button: UIButton) {
+        let bookmark = bookmarkList[button.tag]
+        
+        viewModel.inputBookmarkIconButtonTapTrigger.value = bookmark
+    }
 }
 
 extension BookmarkViewController: UIViewControllerConfiguration {
@@ -155,6 +161,9 @@ extension BookmarkViewController: UICollectionViewDataSource {
         let placeholderImage = UIImage(systemName: "photo")
         cell.thumnailImageView.kf.setImage(with: buttonImageURL, placeholder: placeholderImage)
         cell.nameLabel.text = bookmark.title
+        
+        cell.bookmarkIconButton.tag = indexPath.item
+        cell.bookmarkIconButton.addTarget(self, action: #selector(bookmarkIconButtonTapped), for: .touchUpInside)
         return cell
     }
 }
