@@ -23,6 +23,7 @@ final class MainViewModel {
     let inputSearchVCTableViewDidSelectRowAt: Observable<KSItem?> = Observable(nil)
     let inputDetailVCLeftBarButtonItemTappedTrigger: Observable<Void?> = Observable(nil)
     let inputDetailVCViewDidLoadTrigger: Observable<Void?> = Observable(nil)
+    let inputDetailVCAddressCellTappTrigger: Observable<(Double?, Double?)> = Observable((nil, nil))
     
     let outputLocationBasedTouristDestinationList: Observable<[SearchResulData]> = Observable([])
     let outputUserCurrentLocationInfoToMainVC: Observable<CLLocationCoordinate2D?> = Observable(nil)
@@ -31,6 +32,7 @@ final class MainViewModel {
     let outputTappedTouristDestination: Observable<KSItem?> = Observable(nil)
     let outputDetailVCLeftBarButtonItemTappedTrigger: Observable<Void?> = Observable(nil)
     let outputDetailVCViewDidLoadTrigger: Observable<Void?> = Observable(nil)
+    let outputDetailVCAddressCellTappTrigger: Observable<(Double?, Double?)> = Observable((nil, nil))
         
    init() {
         inputViewDidLoadTrigger.bind { trigger in
@@ -175,6 +177,17 @@ final class MainViewModel {
             
             weakSelf.outputDetailVCViewDidLoadTrigger.value = trigger
         }
+       
+       inputDetailVCAddressCellTappTrigger.bind { [weak self] latitude, longitude in
+           guard let weakSelf = self else { return }
+           
+           guard
+                let latitude = latitude,
+                let longitude = longitude
+           else { return }
+           
+           weakSelf.outputDetailVCAddressCellTappTrigger.value = (latitude, longitude)
+       }
     }
 }
 

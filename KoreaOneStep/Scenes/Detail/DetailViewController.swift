@@ -173,7 +173,21 @@ extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == DetailTableViewSection.descriptionSection.rawValue {
-           
+            if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .addressCell {
+                if !isFromBookmarkVC {
+                    guard
+                        let mainViewModel = mainViewModel,
+                        let touristDestinationCommonInfo = touristDestinationCommonInfo
+                    else { return }
+                    
+                    guard
+                        let latitude = Double(touristDestinationCommonInfo.mapy),
+                        let longitude = Double(touristDestinationCommonInfo.mapx)
+                    else { return }
+                    
+                    mainViewModel.inputDetailVCAddressCellTappTrigger.value = (latitude, longitude)
+                }
+            }
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
             

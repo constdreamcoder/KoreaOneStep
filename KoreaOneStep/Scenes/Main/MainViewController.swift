@@ -61,6 +61,24 @@ final class MainViewController: UIViewController {
         return floatingPC
     }()
     
+    private lazy var goToUserButtonContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 32 / 2
+        view.clipsToBounds = true
+        view.addSubview(goToUserButton)
+        return view
+    }()
+    
+    private lazy var goToUserButton: UIButton = {
+        let button = UIButton()
+        let buttonImage = UIImage(systemName: "location.circle")?.withTintColor(.customLightBlue, renderingMode: .alwaysOriginal)
+        button.setImage(buttonImage, for: .normal)
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 28)
+        button.setPreferredSymbolConfiguration(symbolConfig, forImageIn: .normal)
+        return button
+    }()
+    
     private let viewModel = MainViewModel()
     
     private var userLocationInfo: CLLocationCoordinate2D?
@@ -75,7 +93,8 @@ final class MainViewController: UIViewController {
         configureUI()
         addTourType()
         showFloatingPanel()  
-        binding()        
+        binding()  
+        addUserEvents()
     }
     
     // TODO: - 이 부분이 어떻게 동작하는지 다시 살펴보기
@@ -184,6 +203,29 @@ final class MainViewController: UIViewController {
             weakSelf.searchBar.isHidden = true
             weakSelf.tourTypeListView.isHidden = true
         }
+        
+        viewModel.outputDetailVCAddressCellTappTrigger.bind { [weak self] latitude, longitude in
+            guard let weakSelf = self else { return }
+            
+            guard
+                let latitude = latitude,
+                let longitude = longitude
+            else { return }
+            
+            weakSelf.configureCamera(lat: latitude, lng: longitude)
+        }
+    }
+    
+    private func addUserEvents() {
+        goToUserButton.addTarget(self, action: #selector(goToButtonTapped), for: .touchUpInside)
+    }
+}
+
+extension MainViewController {
+    @objc func goToButtonTapped(_ button: UIButton) {
+        guard let userLocationInfo = userLocationInfo else { return }
+        
+        configureCamera(lat: userLocationInfo.latitude, lng: userLocationInfo.longitude)
     }
 }
 
@@ -214,7 +256,8 @@ extension MainViewController: UIViewControllerConfiguration {
         [
             mapView,
             searchBar,
-            tourTypeListView
+            tourTypeListView,
+            goToUserButtonContainerView
         ].forEach { view.addSubview($0) }
             
         mapView.snp.makeConstraints {
@@ -222,13 +265,23 @@ extension MainViewController: UIViewControllerConfiguration {
         }
         
         searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(32.0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(40.0)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16.0)
         }
         
         tourTypeListView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        goToUserButtonContainerView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(8.0)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(12.0)
+            $0.size.equalTo(36.0)
+        }
+        
+        goToUserButton.snp.makeConstraints {
+            $0.center.equalTo(goToUserButtonContainerView)
         }
     }
     
