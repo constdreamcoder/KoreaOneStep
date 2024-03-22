@@ -191,6 +191,8 @@ extension SearchViewController: UITableViewDelegate {
             mainViewModel.inputSearchVCTableViewDidSelectRowAt.value = selectedTouristDestination
             
             dismiss(animated: true)
+            
+            mainViewModel.inputActivityIndicatorStartTrigger.value = ()
         }
     }
 }
