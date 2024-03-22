@@ -16,7 +16,7 @@ struct SearchResulData {
 final class MainViewModel {
     let inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
     let inputForTableViewUpdate: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance, FilteringOrder)> = Observable((nil, .oneKiloMeter, .title))
-    let inputTourType: Observable<(CLLocationCoordinate2D?, TourType?)> = Observable((nil, nil))
+    let inputTourType: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance, FilteringOrder, TourType?)> = Observable((nil, .oneKiloMeter, .title, nil))
     let inputAddNewBookmark: Observable<LBItem?> = Observable(nil)
     let inputRemoveBookmark: Observable<LBItem?> = Observable(nil)
     let inputContentVCTableViewDidSelectRowAtTrigger: Observable<LBItem?> = Observable(nil)
@@ -24,6 +24,8 @@ final class MainViewModel {
     let inputDetailVCLeftBarButtonItemTappedTrigger: Observable<Void?> = Observable(nil)
     let inputDetailVCViewDidLoadTrigger: Observable<Void?> = Observable(nil)
     let inputDetailVCAddressCellTappTrigger: Observable<(Double?, Double?)> = Observable((nil, nil))
+    let inputActivityIndicatorStopTrigger: Observable<Void?> = Observable(nil)
+    let inputActivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
     
     let outputLocationBasedTouristDestinationList: Observable<[SearchResulData]> = Observable([])
     let outputUserCurrentLocationInfoToMainVC: Observable<CLLocationCoordinate2D?> = Observable(nil)
@@ -33,7 +35,9 @@ final class MainViewModel {
     let outputDetailVCLeftBarButtonItemTappedTrigger: Observable<Void?> = Observable(nil)
     let outputDetailVCViewDidLoadTrigger: Observable<Void?> = Observable(nil)
     let outputDetailVCAddressCellTappTrigger: Observable<(Double?, Double?)> = Observable((nil, nil))
-        
+    let outputActivityIndicatorStopTrigger: Observable<Void?> = Observable(nil)
+    let outputActivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
+    
    init() {
         inputViewDidLoadTrigger.bind { trigger in
             guard let trigger = trigger else { return }
@@ -84,7 +88,7 @@ final class MainViewModel {
             }
         }
         
-        inputTourType.bind { coordinate, tourType in
+        inputTourType.bind { coordinate, filteringDistance, filteringOrder, tourType in
             guard
                 let coordinate = coordinate,
                 let tourType = tourType
@@ -93,6 +97,8 @@ final class MainViewModel {
             KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
                 latitude: coordinate.latitude,
                 longitude: coordinate.longitude,
+                radius: filteringDistance.rawValue,
+                arrange: filteringOrder.sortingCode,
                 tourTypeCode: tourType.tourTypeCode
             ) { [weak self] touristDestinationList in
                 guard let weakSelf = self else { return }
@@ -187,6 +193,22 @@ final class MainViewModel {
            else { return }
            
            weakSelf.outputDetailVCAddressCellTappTrigger.value = (latitude, longitude)
+       }
+       
+       inputActivityIndicatorStopTrigger.bind { [weak self] trigger in
+           guard let weakSelf = self else { return }
+           
+           guard let trigger = trigger else { return }
+           
+           weakSelf.outputActivityIndicatorStopTrigger.value = trigger
+       }
+       
+       inputActivityIndicatorStartTrigger.bind { [weak self] trigger in
+           guard let weakSelf = self else { return }
+           
+           guard let trigger = trigger else { return }
+           
+           weakSelf.outputActivityIndicatorStartTrigger.value = trigger
        }
     }
 }

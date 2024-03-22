@@ -18,7 +18,7 @@ final class ServiceProvidedDetailTableViewCell: UITableViewCell {
         return label
     }()
     
-    let chevronDownImageView: UIImageView = {
+    let chevronImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")
         imageView.tintColor = .customBlack
@@ -42,7 +42,7 @@ extension ServiceProvidedDetailTableViewCell: UITableViewCellConfiguration {
     func configureConstraints() {
        [
             serviceTitleLabel,
-            chevronDownImageView
+            chevronImageView
        ].forEach { contentView.addSubview($0) }
         
         serviceTitleLabel.snp.makeConstraints {
@@ -50,7 +50,7 @@ extension ServiceProvidedDetailTableViewCell: UITableViewCellConfiguration {
             $0.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16.0)
         }
         
-        chevronDownImageView.snp.makeConstraints {
+        chevronImageView.snp.makeConstraints {
             $0.centerY.equalTo(serviceTitleLabel)
             $0.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16.0)
             $0.width.equalTo(19.0)

@@ -37,9 +37,9 @@ final class ContentViewController: UIViewController {
     
     private var locationBasedTouristDestinationList: [SearchResulData] = []
     
-    private var selectedFilteringDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
-    private var selectedFilteringCategory: FilteringOrder = FilteringOrder.allCases[0]
-     var userLocationInfo: CLLocationCoordinate2D?
+    var selectedFilteringDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
+    var selectedFilteringCategory: FilteringOrder = FilteringOrder.allCases[0]
+    var userLocationInfo: CLLocationCoordinate2D?
     var selectedTourType: TourType?
     
     init(mainViewModel: MainViewModel) {
@@ -66,6 +66,8 @@ final class ContentViewController: UIViewController {
         
         navigationController?.navigationBar.isHidden = true
 
+        mainViewModel.inputActivityIndicatorStartTrigger.value = ()
+        
         mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
@@ -99,6 +101,8 @@ final class ContentViewController: UIViewController {
             
             weakSelf.locationBasedTouristDestinationList = locationBasedTouristDestinationList
             weakSelf.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
+            
+            weakSelf.mainViewModel.inputActivityIndicatorStopTrigger.value = ()
         }
         
         mainViewModel.outputUserCurrentLocationInfoToContentVC.bind { [weak self] coordinate in
@@ -123,6 +127,7 @@ extension ContentViewController {
         
         tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.allCases[0].rawValue)], with: .none)
         
+        mainViewModel.inputActivityIndicatorStartTrigger.value = ()
         mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
@@ -150,6 +155,7 @@ extension ContentViewController {
         
         tableView.reloadRows(at: [IndexPath(row: 0, section: ContentTableViewSection.ambientSettings.rawValue)], with: .none)
         
+        mainViewModel.inputActivityIndicatorStartTrigger.value = ()
         mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
     }
     
@@ -207,6 +213,8 @@ extension ContentViewController: UITableViewDelegate {
             detailVC.contentId = touristDestination.contentid
             detailVC.contentTypeId = touristDestination.contenttypeid
             navigationController?.pushViewController(detailVC, animated: true)
+            
+            mainViewModel.inputActivityIndicatorStartTrigger.value = ()
         }
     }
 }
@@ -237,6 +245,11 @@ extension ContentViewController: UITableViewDataSource {
                 let title = "\(selectedFilteringDistance.getDistanceStringWithUnit) 반경 \(selectedFilteringCategory.rawValue)"
                 cell.settingButton.setTitle(title, for: .normal)
                 cell.setSettingButtonAttributedTitle(selectedFilteringDistance, selectedFilteringCategory)
+                if isAmbientSettingsSectionOpened {
+                    cell.chevronImageView.image = UIImage(systemName: "chevron.up")
+                } else {
+                    cell.chevronImageView.image = UIImage(systemName: "chevron.down")
+                }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AccordionTableViewCell.identifier) as? AccordionTableViewCell else { return UITableViewCell() }

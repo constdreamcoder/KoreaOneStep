@@ -87,7 +87,7 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // 서울
         configureNavigationBar()
         configureConstraints()
         configureUI()
@@ -126,7 +126,7 @@ final class MainViewController: UIViewController {
     
     private func binding() {
         viewModel.inputViewDidLoadTrigger.value = ()
-        
+
         viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in
             guard let weakSelf = self else { return }
             
@@ -184,6 +184,8 @@ final class MainViewController: UIViewController {
             guard let contentVC = contentNav.viewControllers[0] as? ContentViewController else { return }
             
             contentVC.navigationController?.pushViewController(detailVC, animated: true)
+            
+            weakSelf.viewModel.inputActivityIndicatorStopTrigger.value = ()
         }
         
         viewModel.outputDetailVCLeftBarButtonItemTappedTrigger.bind { [weak self] trigger in
@@ -213,6 +215,22 @@ final class MainViewController: UIViewController {
             else { return }
             
             weakSelf.configureCamera(lat: latitude, lng: longitude)
+        }
+        
+        viewModel.outputActivityIndicatorStopTrigger.bind { [weak self] trigger in
+            guard let weakSelf = self else { return }
+            
+            guard let trigger = trigger else { return }
+            
+            weakSelf.view.hideToastActivity()
+        }
+        
+        viewModel.outputActivityIndicatorStartTrigger.bind { [weak self] trigger in
+            guard let weakSelf = self else { return }
+            
+            guard let trigger = trigger else { return }
+            
+            weakSelf.view.makeToastActivity(.center)
         }
     }
     
@@ -309,7 +327,8 @@ extension MainViewController: TTGTextTagCollectionViewDelegate {
         guard let contentVC = contentNav.viewControllers.first as? ContentViewController else { return }
         contentVC.selectedTourType = TourType(rawValue: content.text)
         
-        viewModel.inputTourType.value = (contentVC.userLocationInfo, contentVC.selectedTourType)
+        view.makeToastActivity(.center)
+        viewModel.inputTourType.value = (contentVC.userLocationInfo, contentVC.selectedFilteringDistance, contentVC.selectedFilteringCategory, contentVC.selectedTourType)
     }
 }
 

@@ -66,8 +66,9 @@ final class SearchViewController: UIViewController {
         configureConstraints()
         configureUI()
         bindings()
+        addUserEvents()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -79,15 +80,18 @@ final class SearchViewController: UIViewController {
         
         viewModel.outputSearchedResultList.bind { [weak self] searchedResultList in
             guard let weakSelf = self else { return }
-               
+            
+            guard let searchedResultList = searchedResultList else { return }
             weakSelf.searchedResultList = searchedResultList
             weakSelf.searchedResultTableView.reloadData()
             
             if searchedResultList.count >= 1 {
                 weakSelf.searchedResultTableView.isHidden = false
-            } else if searchedResultList.count < 0 {
+            } else if searchedResultList.count < 1 {
                 weakSelf.searchedResultTableView.isHidden = true
+                weakSelf.view.makeToast(ToastMessage.Failure.noSearchingResults, position: .center)
             }
+            weakSelf.view.hideToastActivity()
         }
         
         viewModel.outputSelectedRegionTag.bind { [weak self] selectedRegion in
@@ -109,14 +113,29 @@ final class SearchViewController: UIViewController {
             weakSelf.recentKeywordTableView.reloadData()
         }
     }
+    
+    private func addUserEvents() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
 }
 
 extension SearchViewController {
+    @objc func backgroundViewTapped(_ gestureRecognizer: UIGestureRecognizer) {
+        searchBar.resignFirstResponder()
+        print("바탕화면 터치됨")
+        view.endEditing(true)
+    }
+    
     @objc func leftBarButtonItemTapped() {
         dismiss(animated: false)
     }
     
     @objc func rightBarButtonItemTapped() {
+        selectedRegion = nil
+        selectedSiGunGu = nil
+        
         let filterVC = FilterViewController(searchViewModel: viewModel)
         let filterNav = UINavigationController(rootViewController: filterVC)
         present(filterNav, animated: true)
@@ -159,6 +178,8 @@ extension SearchViewController: UIViewControllerConfiguration {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == recentKeywordTableView {
+            view.makeToastActivity(.center)
+            
             let recentKeyword = recentKeywordList[indexPath.row]
             
             searchBar.text = recentKeyword.keyword
@@ -214,8 +235,9 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         guard searchBar.text! != "" else { return }
+        
+        view.makeToastActivity(.center)
         
         let trimmedsearchBarText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         

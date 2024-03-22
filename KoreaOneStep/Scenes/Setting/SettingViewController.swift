@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Toast
 
 final class SettingViewController: UIViewController {
     
@@ -29,6 +30,15 @@ final class SettingViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
+        bindings()
+    }
+    
+    private func bindings() {
+        viewModel.outputRemoveAllBookmarksToastMessage.bind { [weak self] toastMessage in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.view.makeToast(toastMessage)
+        }
     }
 }
 

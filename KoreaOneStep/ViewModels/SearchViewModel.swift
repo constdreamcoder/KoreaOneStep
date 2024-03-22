@@ -18,7 +18,7 @@ final class SearchViewModel {
     let outputRecentKeywordList: Observable<[RecentKeyword]> = Observable([])
     let outputAreaCodeList: Observable<[ACItem]> = Observable([])
     let outputSiGunGuCodeList: Observable<[ACItem]> = Observable([])
-    let outputSearchedResultList: Observable<[KSItem]> = Observable([])
+    let outputSearchedResultList: Observable<[KSItem]?> = Observable(nil)
     let outputSelectedRegionTag: Observable<ACItem?> = Observable(nil)
     let outputSelectedSiGunGu: Observable<ACItem?> = Observable(nil)
     
@@ -52,6 +52,7 @@ final class SearchViewModel {
             KoreaTravelingManager.shared.fetchAreaCode(
                 areaCode: regionTag.code
             ) { siGunGuCodeList in
+                
                 weakSelf.outputSiGunGuCodeList.value = siGunGuCodeList
             }
         }

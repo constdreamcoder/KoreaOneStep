@@ -27,7 +27,7 @@ final class AddressTableViewCell: UITableViewCell {
     
     let addressLabel: UILabel = {
         let label = UILabel()
-        label.text = "전북특별자치도 부안군 변산면 조각공원길 31"
+        label.text = ""
         label.textColor = .customBlack
         label.font = .systemFont(ofSize: 16.0)
         return label

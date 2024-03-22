@@ -31,6 +31,8 @@ final class DetailViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         
+        tableView.isHidden = true
+        
         return tableView
     }()
     
@@ -60,6 +62,19 @@ final class DetailViewController: UIViewController {
         bindings()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if touristDestinationCommonInfo == nil {
+            if isFromBookmarkVC {
+                view.makeToastActivity(.center)
+            } else {
+                guard let mainViewModel = mainViewModel else { return }
+                mainViewModel.inputActivityIndicatorStartTrigger.value = ()
+            }
+        }
+    }
+    
     private func updateTableViewData() {
         if let providedImpairmentAidServiceDescriptionList = providedImpairmentAidServiceList[selectedService] {
             tableViewData = selectedService.serviceTitleList.enumerated().map { index, _ in
@@ -85,6 +100,19 @@ final class DetailViewController: UIViewController {
             weakSelf.providedImpairmentAidServiceList = dictionary
             weakSelf.updateTableViewData()
             weakSelf.tableView.reloadData()
+            
+            if touristDestinationCommonInfo != nil {
+                weakSelf.tableView.isHidden = false
+            }
+
+            if weakSelf.isFromBookmarkVC {
+                weakSelf.view.hideToastActivity()
+            } else {
+                guard 
+                    let _ = touristDestinationCommonInfo else { return }
+                guard let mainViewModel = weakSelf.mainViewModel else { return }
+                mainViewModel.outputActivityIndicatorStopTrigger.value = ()
+            }
         }
         
         viewModel.outputIsBookmarked.bind { [weak self] isBookmarked in
@@ -234,7 +262,6 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == DetailTableViewSection.descriptionSection.rawValue {
-            
             if let touristDestinationCommonInfo = touristDestinationCommonInfo {
                 if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .regionDetailCell {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: RegionDetailTableViewCell.identifier, for: indexPath) as? RegionDetailTableViewCell else { return UITableViewCell() }
@@ -271,6 +298,11 @@ extension DetailViewController: UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceProvidedDetailTableViewCell.identifier, for: indexPath) as? ServiceProvidedDetailTableViewCell else { return UITableViewCell() }
                 cell.selectionStyle = .none
                 cell.serviceTitleLabel.text = selectedService.serviceTitleList[indexPath.section - 1]
+                if tableViewData[indexPath.section - 1].opened {
+                    cell.chevronImageView.image = UIImage(systemName: "chevron.up")
+                } else {
+                    cell.chevronImageView.image = UIImage(systemName: "chevron.down")
+                }
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier) else { return UITableViewCell() }

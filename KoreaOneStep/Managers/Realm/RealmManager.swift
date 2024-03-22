@@ -49,15 +49,20 @@ final class RealmManager {
         }
     }
     
-    func deleteAll() {
+    func deleteAll() -> String {
+        var toastMessage: String = ""
         do {
             try realm.write {
                 realm.deleteAll()
                 print("북마크가 모두 삭제되었습니다.")
+                toastMessage = ToastMessage.Success.removeAllBookmarks
             }
         } catch {
             // TODO: - 에러 처리하기
             print(error)
+            toastMessage = ToastMessage.Failure.removeAllBookmarks
         }
+        
+        return toastMessage
     }
 }

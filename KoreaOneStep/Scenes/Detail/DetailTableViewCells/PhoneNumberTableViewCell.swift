@@ -27,7 +27,7 @@ final class PhoneNumberTableViewCell: UITableViewCell {
     
     let phoneNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "02-752-1945"
+        label.text = ""
         label.textColor = .customBlack
         label.font = .systemFont(ofSize: 16.0, weight: .semibold)
         return label

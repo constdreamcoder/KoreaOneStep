@@ -48,33 +48,51 @@ final class FilterViewController: UIViewController {
         configureConstraints()
         configureUI()
         bindings()
+        print(#function)
+        print(isViewLoaded)
+        print(isBeingPresented)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let searchViewModel = searchViewModel else { return }
+        searchViewModel.outputAreaCodeList.value = []
+        searchViewModel.outputSiGunGuCodeList.value = []
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         tableView.reloadData()
+        
+        view.makeToastActivity(.center)
+        
+        guard let searchViewModel = searchViewModel else { return }
+        searchViewModel.inputFilterVCViewDidLoadTrigger.value = ()
     }
     
     private func bindings() {
         guard let searchViewModel = searchViewModel else { return }
-        
-        searchViewModel.inputFilterVCViewDidLoadTrigger.value = ()
-        
+                
         searchViewModel.outputAreaCodeList.bind { [weak self] areaCodeList in
             guard let weakSelf = self else { return }
             
             weakSelf.regionTagList = areaCodeList
             
             weakSelf.tableView.reloadData()
+            
+            weakSelf.view.hideToastActivity()
         }
         
         searchViewModel.outputSiGunGuCodeList.bind { [weak self] siGunGuCodeList in
             guard let weakSelf = self else { return }
-            
+
             weakSelf.siGunGuTagList = siGunGuCodeList
                         
             weakSelf.tableView.reloadSections([FilterTableViewSection.selectSiGunGu.rawValue], with: .none)
+            
+            weakSelf.view.hideToastActivity()
         }
     }
 }
@@ -86,7 +104,7 @@ extension FilterViewController: UIViewControllerConfiguration {
     
     func configureConstraints() {
         [
-            tableView,
+            tableView
         ].forEach { view.addSubview($0) }
         
         tableView.snp.makeConstraints {
@@ -137,10 +155,12 @@ extension FilterViewController: UITableViewDataSource {
 }
 
 extension FilterViewController: TTGTextTagCollectionViewDelegate {
+    
     func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
         guard let searchViewModel = searchViewModel else { return }
-
+        
         if tag.selected {
+
             let selectedTagName = tag.content.getAttributedString().string
             
             let selectedSiGunGuTagList = self.siGunGuTagList.filter { $0.name == selectedTagName }
@@ -150,6 +170,8 @@ extension FilterViewController: TTGTextTagCollectionViewDelegate {
                 
                 searchViewModel.inputSelectedSiGunGuTag.value = selectedSiGunGuTagList[0]
             } else {
+                view.makeToastActivity(.center)
+                
                 let selectedReigonTagList = self.regionTagList.filter { $0.name == selectedTagName }
                 print("지역", selectedReigonTagList)
 
