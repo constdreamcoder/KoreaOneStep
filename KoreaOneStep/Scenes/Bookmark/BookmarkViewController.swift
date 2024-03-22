@@ -36,7 +36,7 @@ final class BookmarkViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(#function)
         configureNavigationBar()
         configureConstraints()
         configureUI()
@@ -137,7 +137,7 @@ extension BookmarkViewController: UICollectionViewDelegate {
         detailVC.contentTitle = selectedBookmark.title
         detailVC.contentId = selectedBookmark.contentId
         detailVC.contentTypeId = selectedBookmark.contentTypeId
-        navigationController?.pushViewController(detailVC, animated: true)
+        navigationController?.pushViewController(detailVC, animated: true)        
     }
 }
 
@@ -185,7 +185,8 @@ extension BookmarkViewController: UISearchBarDelegate {
         viewModel.inputTextDidChange.value = trimmedSearchText
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        viewModel.inputForCollectionViewUpdate.value = ()
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        view.endEditing(true)
     }
 }

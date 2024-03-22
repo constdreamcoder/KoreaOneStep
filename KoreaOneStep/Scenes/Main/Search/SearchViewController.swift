@@ -243,6 +243,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         if trimmedsearchBarText != "" {
             viewModel.inputSearchElements.value = (trimmedsearchBarText, selectedRegion, selectedSiGunGu)
+            searchBar.resignFirstResponder()
         }
     }
     

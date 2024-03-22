@@ -12,9 +12,11 @@ final class DetailViewModel {
     let inputViewDidLoadTrigger: Observable<(String?, String?)> = Observable((nil, nil))
     let inputIsBookmarked: Observable<String?> = Observable(nil)
     let inputBookmarkButtonTrigger: Observable<(String?, String?, String?, String?, String?)> = Observable((nil, nil, nil, nil, nil))
+    let inputAcitivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
     
     let outputDetailTableViewData: Observable<(CIItem?, Dictionary<DetailTableViewSection.ServiceDetailSection, [String]>)> = Observable((nil, [:]))
     let outputIsBookmarked: Observable<Bool> = Observable(false)
+    let outputAcitivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
     
     init() {
         inputViewDidLoadTrigger.bind { [weak self]  contentId, contentTypeId in
@@ -158,6 +160,14 @@ final class DetailViewModel {
                 RealmManager.shared.delete(filteredBookmarkList[0])
                 weakSelf.outputIsBookmarked.value = false
             }
+        }
+        
+        inputAcitivityIndicatorStartTrigger.bind { [weak self] trigger in
+            guard let weakSelf = self else { return }
+            
+            guard let trigger = trigger else { return }
+            
+            weakSelf.outputAcitivityIndicatorStartTrigger.value = trigger
         }
     }
 }

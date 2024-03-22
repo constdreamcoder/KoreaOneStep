@@ -28,7 +28,7 @@ final class SearchViewModel {
             
             guard let trigger = trigger else { return }
             
-            let recentKeywordList: [RecentKeyword] = RealmManager.shared.read(RecentKeyword.self).map { $0 }
+            let recentKeywordList: [RecentKeyword] = RealmManager.shared.read(RecentKeyword.self).sorted(byKeyPath: "regDate", ascending: false).map { $0 }
             weakSelf.outputRecentKeywordList.value = recentKeywordList
         }
         
@@ -91,7 +91,7 @@ final class SearchViewModel {
                         RealmManager.shared.getLocationOfDefaultRealm()
                         RealmManager.shared.write(newRecentKeyword)
                         
-                        let recentKeywordList: [RecentKeyword] = RealmManager.shared.read(RecentKeyword.self).map { $0 }
+                        let recentKeywordList: [RecentKeyword] = RealmManager.shared.read(RecentKeyword.self).sorted(byKeyPath: "regDate", ascending: false).map { $0 }
                         
                         weakSelf.outputRecentKeywordList.value = recentKeywordList
                     }
@@ -106,7 +106,7 @@ final class SearchViewModel {
             
             RealmManager.shared.delete(recentKeyword)
             
-            let updatedRecentKeywordList: [RecentKeyword] = RealmManager.shared.read(RecentKeyword.self).map { $0 }
+            let updatedRecentKeywordList: [RecentKeyword] = RealmManager.shared.read(RecentKeyword.self).sorted(byKeyPath: "regDate", ascending: false).map { $0 }
             
             weakSelf.outputRecentKeywordList.value = updatedRecentKeywordList
         }

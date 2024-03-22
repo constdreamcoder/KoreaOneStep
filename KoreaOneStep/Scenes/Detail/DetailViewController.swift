@@ -65,13 +65,8 @@ final class DetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if touristDestinationCommonInfo == nil {
-            if isFromBookmarkVC {
-                view.makeToastActivity(.center)
-            } else {
-                guard let mainViewModel = mainViewModel else { return }
-                mainViewModel.inputActivityIndicatorStartTrigger.value = ()
-            }
+        if isFromBookmarkVC {
+            view.makeToastActivity(.center)
         }
     }
     
@@ -88,6 +83,10 @@ final class DetailViewController: UIViewController {
     }
     
     private func bindings() {
+        if isFromBookmarkVC {
+            viewModel.inputAcitivityIndicatorStartTrigger.value = ()
+        }
+        
         viewModel.inputViewDidLoadTrigger.value = (self.contentId, self.contentTypeId)
         viewModel.inputIsBookmarked.value = self.contentId
         
@@ -123,6 +122,14 @@ final class DetailViewController: UIViewController {
             } else {
                 weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
             }
+        }
+        
+        viewModel.outputAcitivityIndicatorStartTrigger.bind { [weak self] trigger in
+            guard let weakSelf = self else { return }
+            
+            guard let trigger = trigger else { return }
+            
+            weakSelf.view.makeToastActivity(.center)
         }
         
         guard let mainViewModel = mainViewModel else { return }
@@ -271,7 +278,7 @@ extension DetailViewController: UITableViewDataSource {
                     let placeHolderImage = UIImage(systemName: "photo")
                     cell.regionImageView.kf.setImage(with: regionImageURL, placeholder: placeHolderImage)
                     cell.regionNameLabel.text = touristDestinationCommonInfo.title
-                    cell.regionDescriptionLabel.text = touristDestinationCommonInfo.overview
+                    cell.regionDescriptionLabel.text = touristDestinationCommonInfo.overview.htmlEscaped
                     return cell
                 } else if DetailTableViewSection.DescriptionSection.allCases[indexPath.row] == .phoneNumberCell {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: PhoneNumberTableViewCell.identifier, for: indexPath) as? PhoneNumberTableViewCell else { return UITableViewCell() }

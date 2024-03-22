@@ -25,7 +25,7 @@ final class LocationManager: CLLocationManager {
     }
     
     private func requestAuthorization() {
-        self.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.desiredAccuracy = kCLLocationAccuracyBest
         self.requestWhenInUseAuthorization()
     }
 }

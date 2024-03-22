@@ -154,6 +154,8 @@ final class MainViewController: UIViewController {
                 lat: Double(touristDestination.mapy) ?? 126.9783881,
                 lng: Double(touristDestination.mapx) ?? 37.5666102
             )
+            
+            weakSelf.floatingPanelController.move(to: .half, animated: true)
         }
         
         viewModel.outputTappedTouristDestination.bind { [weak self] tappedTouristDestionation in
@@ -215,6 +217,10 @@ final class MainViewController: UIViewController {
             else { return }
             
             weakSelf.configureCamera(lat: latitude, lng: longitude)
+            
+            if weakSelf.floatingPanelController.state == FloatingPanelState.full {
+                weakSelf.floatingPanelController.move(to: .tip, animated: true)
+            }
         }
         
         viewModel.outputActivityIndicatorStopTrigger.bind { [weak self] trigger in
