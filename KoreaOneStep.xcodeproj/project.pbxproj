@@ -58,7 +58,7 @@
 		009206692BA7A15F00724961 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 009206682BA7A15F00724961 /* RealmSwift */; };
 		009ACA7F2BAAD77100C937F7 /* RecentKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */; };
 		009ACA812BAB136100C937F7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA802BAB136100C937F7 /* SettingViewModel.swift */; };
-		00D18FC42BABFA6400E1DC2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00D18FC32BABFA6400E1DC2A /* GoogleService-Info.plist */; };
+		00A3D6222BAEE47800632748 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00A3D6212BAEE47700632748 /* GoogleService-Info.plist */; };
 		00D18FC72BAC153700E1DC2A /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 00D18FC62BAC153700E1DC2A /* Toast */; };
 		00D18FC92BAC167400E1DC2A /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D18FC82BAC167400E1DC2A /* ToastMessage.swift */; };
 		00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */; };
@@ -131,7 +131,7 @@
 		0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeyword.swift; sourceTree = "<group>"; };
 		009ACA802BAB136100C937F7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		00D18FC32BABFA6400E1DC2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		00A3D6212BAEE47700632748 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00D18FC82BAC167400E1DC2A /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -541,7 +541,7 @@
 				00FD1C482B99840A00C2A76E /* LaunchScreen.storyboard */,
 				00FD1C4B2B99840A00C2A76E /* Info.plist */,
 				007324002BA613D2001B0A2E /* APIKeys.swift */,
-				00D18FC32BABFA6400E1DC2A /* GoogleService-Info.plist */,
+				00A3D6212BAEE47700632748 /* GoogleService-Info.plist */,
 			);
 			path = KoreaOneStep;
 			sourceTree = "<group>";
@@ -647,8 +647,8 @@
 			files = (
 				00FD1C522B99861900C2A76E /* .gitignore in Resources */,
 				00FD1C4A2B99840A00C2A76E /* LaunchScreen.storyboard in Resources */,
+				00A3D6222BAEE47800632748 /* GoogleService-Info.plist in Resources */,
 				00FD1C472B99840A00C2A76E /* Assets.xcassets in Resources */,
-				00D18FC42BABFA6400E1DC2A /* GoogleService-Info.plist in Resources */,
 				00FD1C452B99840900C2A76E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -914,7 +914,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 59V6NJY3X6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -931,7 +931,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.constdreamcoder.KoreaOneStep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -950,7 +950,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 59V6NJY3X6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -967,7 +967,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.constdreamcoder.KoreaOneStep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

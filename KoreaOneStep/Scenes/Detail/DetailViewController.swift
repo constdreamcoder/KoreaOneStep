@@ -65,7 +65,7 @@ final class DetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if isFromBookmarkVC {
+        if isFromBookmarkVC && touristDestinationCommonInfo == nil {
             view.makeToastActivity(.center)
         }
     }
