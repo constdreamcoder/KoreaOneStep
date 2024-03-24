@@ -4,12 +4,6 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>사용자 위치 데이터에 접근하려고 합니다. 위치 데이터 접근에 동의하시겠습니까?</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>사용자 위치 데이터에 접근하려고 합니다. 위치 데이터 접근에 동의하시겠습니까?</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
