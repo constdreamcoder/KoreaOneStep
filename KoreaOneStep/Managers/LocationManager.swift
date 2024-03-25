@@ -12,7 +12,7 @@ final class LocationManager: CLLocationManager {
     
     static let shared = LocationManager()
     
-    typealias FetchLocationCompletion = (CLLocationCoordinate2D?, Error?) -> Void
+    typealias FetchLocationCompletion = (CLLocationCoordinate2D?, Error?, Bool) -> Void
     
     private var fetchLocationCompletion: FetchLocationCompletion?
         
@@ -54,7 +54,7 @@ extension LocationManager: CLLocationManagerDelegate {
             print(coordinate.latitude)
             print(coordinate.longitude)
                         
-            self.fetchLocationCompletion?(coordinate, nil)
+            self.fetchLocationCompletion?(coordinate, nil, false)
             
             self.fetchLocationCompletion = nil
         }
@@ -63,7 +63,7 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        self.fetchLocationCompletion?(nil, error)
+        self.fetchLocationCompletion?(nil, error, false)
         
         self.fetchLocationCompletion = nil
     }
@@ -84,6 +84,7 @@ extension LocationManager: CLLocationManagerDelegate {
                     case .denied:
                         // TODO: - Alert 창으로 권한을 줄 수 있는 설정창으로 이동하는 트리거 구현하기
                         print("denied")
+                        self.fetchLocationCompletion?(nil, nil, true)
                     @unknown default:
                         print("Error")
                     }

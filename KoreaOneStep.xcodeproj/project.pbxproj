@@ -59,6 +59,7 @@
 		009ACA7F2BAAD77100C937F7 /* RecentKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */; };
 		009ACA812BAB136100C937F7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA802BAB136100C937F7 /* SettingViewModel.swift */; };
 		00A3D6222BAEE47800632748 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00A3D6212BAEE47700632748 /* GoogleService-Info.plist */; };
+		00C8CB8B2BB1C23F0074A58A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C8CB8A2BB1C23F0074A58A /* UIViewController+Extension.swift */; };
 		00D18FC72BAC153700E1DC2A /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 00D18FC62BAC153700E1DC2A /* Toast */; };
 		00D18FC92BAC167400E1DC2A /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D18FC82BAC167400E1DC2A /* ToastMessage.swift */; };
 		00DFE3BB2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */; };
@@ -132,6 +133,7 @@
 		009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeyword.swift; sourceTree = "<group>"; };
 		009ACA802BAB136100C937F7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		00A3D6212BAEE47700632748 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		00C8CB8A2BB1C23F0074A58A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		00D18FC82BAC167400E1DC2A /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				00F77ADA2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift */,
 				005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */,
 				007323F72BA5A119001B0A2E /* String+Extension.swift */,
+				00C8CB8A2BB1C23F0074A58A /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				00F4F86B2BA7B57200071D89 /* RealmManager.swift in Sources */,
 				00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */,
 				001D3E9A2BA6E2AD00065C83 /* DetailViewModel.swift in Sources */,
+				00C8CB8B2BB1C23F0074A58A /* UIViewController+Extension.swift in Sources */,
 				0081E8A32B9DC11500EF615D /* SearchViewController.swift in Sources */,
 				005E57222BA01F9F005CD618 /* AddressTableViewCell.swift in Sources */,
 				0081E8972B9D9C0500EF615D /* CellIdentifiable.swift in Sources */,
@@ -922,8 +926,8 @@
 				INFOPLIST_FILE = KoreaOneStep/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "대한민국 한걸음";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자 위치 데이터에 접근하려고 합니다. 위치 데이터 접근에 동의하시겠습니까?";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치 데이터에 접근하려고 합니다. 위치 데이터 접근에 동의하시겠습니까?";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 정보를 기반으로 현재 위치, 주변 검색을 제공합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보를 기반으로 현재 위치, 주변 검색을 제공합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -962,8 +966,8 @@
 				INFOPLIST_FILE = KoreaOneStep/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "대한민국 한걸음";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자 위치 데이터에 접근하려고 합니다. 위치 데이터 접근에 동의하시겠습니까?";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치 데이터에 접근하려고 합니다. 위치 데이터 접근에 동의하시겠습니까?";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 정보를 기반으로 현재 위치, 주변 검색을 제공합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보를 기반으로 현재 위치, 주변 검색을 제공합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

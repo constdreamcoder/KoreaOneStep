@@ -27,7 +27,7 @@ final class SettingViewModel {
                 return
             }
             
-            weakSelf.outputRemoveAllBookmarksToastMessage.value = nil
+            weakSelf.outputRemoveAllBookmarksToastMessage.value = ToastMessage.Failure.noBookmarkContents
         }
     }
 }

@@ -37,16 +37,22 @@ final class MainViewModel {
     let outputDetailVCAddressCellTappTrigger: Observable<(Double?, Double?)> = Observable((nil, nil))
     let outputActivityIndicatorStopTrigger: Observable<Void?> = Observable(nil)
     let outputActivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
+    let outputShowAlertTriggerForAuthorization: Observable<Bool> = Observable(false)
     
    init() {
         inputViewDidLoadTrigger.bind { trigger in
             guard let trigger = trigger else { return }
             
-            LocationManager.shared.fetchLocation { [weak self] coordinate, error in
+            LocationManager.shared.fetchLocation { [weak self] coordinate, error, isDenied in
                 guard let weakSelf = self else { return }
                 
                 guard error == nil else {
                     print("위치 찾기 에러 발생: ", error)
+                    return
+                }
+                
+                guard !isDenied else {
+                    weakSelf.outputShowAlertTriggerForAuthorization.value = isDenied
                     return
                 }
                 

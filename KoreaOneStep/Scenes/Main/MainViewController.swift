@@ -238,6 +238,14 @@ final class MainViewController: UIViewController {
             
             weakSelf.view.makeToastActivity(.center)
         }
+        
+        viewModel.outputShowAlertTriggerForAuthorization.bind { [weak self] isDenied in
+            guard let weakSelf = self else { return }
+            
+            if isDenied {
+                weakSelf.showLocationSettingAlert()
+            }
+        }
     }
     
     private func addUserEvents() {
