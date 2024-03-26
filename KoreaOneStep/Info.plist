@@ -8,15 +8,15 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>apis.data.go.kr</key>
+			<dict>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
 			<key>tong.visitkorea.or.kr</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-			</dict>
-			<key>apis.data.go.kr</key>
-			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
 			</dict>

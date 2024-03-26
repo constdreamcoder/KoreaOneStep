@@ -53,38 +53,35 @@ extension LocationManager: CLLocationManagerDelegate {
             print(coordinate)
             print(coordinate.latitude)
             print(coordinate.longitude)
-                        
-            self.fetchLocationCompletion?(coordinate, nil, false)
             
-            self.fetchLocationCompletion = nil
+            fetchLocationCompletion?(coordinate, nil, false)
         }
         
         stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        self.fetchLocationCompletion?(nil, error, false)
-        
-        self.fetchLocationCompletion = nil
+        fetchLocationCompletion?(nil, error, false)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
+            guard let weakSelf = self else { return }
+            
             if CLLocationManager.locationServicesEnabled() {
                 DispatchQueue.main.async {
                     switch manager.authorizationStatus {
                     case .authorizedAlways, .authorizedWhenInUse:
                         print("Location Auth: Allow")
-                        self.startUpdatingLocation()
+                        weakSelf.startUpdatingLocation()
                     case .notDetermined:
                         print("notDetermined")
-                        self.requestAuthorization()
+                        weakSelf.requestAuthorization()
                     case .restricted:
                         print("restricted")
                     case .denied:
-                        // TODO: - Alert 창으로 권한을 줄 수 있는 설정창으로 이동하는 트리거 구현하기
                         print("denied")
-                        self.fetchLocationCompletion?(nil, nil, true)
+                        weakSelf.fetchLocationCompletion?(nil, nil, true)
                     @unknown default:
                         print("Error")
                     }

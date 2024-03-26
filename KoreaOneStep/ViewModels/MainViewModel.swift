@@ -52,6 +52,7 @@ final class MainViewModel {
                 }
                 
                 guard !isDenied else {
+                    print("Denied")
                     weakSelf.outputShowAlertTriggerForAuthorization.value = isDenied
                     return
                 }

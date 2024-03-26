@@ -61,16 +61,16 @@ final class MainViewController: UIViewController {
         return floatingPC
     }()
     
-    private lazy var goToUserButtonContainerView: UIView = {
+    private lazy var moveToUserButtonContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 32 / 2
         view.clipsToBounds = true
-        view.addSubview(goToUserButton)
+        view.addSubview(moveToUserButton)
         return view
     }()
     
-    private lazy var goToUserButton: UIButton = {
+    private lazy var moveToUserButton: UIButton = {
         let button = UIButton()
         let buttonImage = UIImage(systemName: "location.circle")?.withTintColor(.customLightBlue, renderingMode: .alwaysOriginal)
         button.setImage(buttonImage, for: .normal)
@@ -87,7 +87,7 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 서울
+        
         configureNavigationBar()
         configureConstraints()
         configureUI()
@@ -130,14 +130,14 @@ final class MainViewController: UIViewController {
         viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in
             guard let weakSelf = self else { return }
             
+            weakSelf.userLocationInfo = coordinate
+
             guard let coordinate = coordinate else { return }
             
             weakSelf.mapView.locationOverlay.location = NMGLatLng(lat: coordinate.latitude, lng: coordinate.longitude)
             weakSelf.mapView.locationOverlay.hidden = false
             
             weakSelf.configureCamera(lat: coordinate.latitude, lng: coordinate.longitude)
-           
-            weakSelf.userLocationInfo = coordinate
         }
         
         viewModel.outputSelectedTouristDestination.bind { [weak self] touristDestination in
@@ -244,18 +244,29 @@ final class MainViewController: UIViewController {
             
             if isDenied {
                 weakSelf.showLocationSettingAlert()
+                
+                weakSelf.mapView.locationOverlay.location = NMGLatLng()
+                weakSelf.mapView.locationOverlay.hidden = true
+                
+                weakSelf.viewModel.outputUserCurrentLocationInfoToMainVC.value = nil
+                weakSelf.viewModel.outputUserCurrentLocationInfoToContentVC.value = nil
             }
+            
+            weakSelf.viewModel.outputActivityIndicatorStopTrigger.value = ()
         }
     }
     
     private func addUserEvents() {
-        goToUserButton.addTarget(self, action: #selector(goToButtonTapped), for: .touchUpInside)
+        moveToUserButton.addTarget(self, action: #selector(moveToButtonTapped), for: .touchUpInside)
     }
 }
 
 extension MainViewController {
-    @objc func goToButtonTapped(_ button: UIButton) {
-        guard let userLocationInfo = userLocationInfo else { return }
+    @objc func moveToButtonTapped(_ button: UIButton) {
+        guard let userLocationInfo = userLocationInfo else {
+            showLocationSettingAlert()
+            return
+        }
         
         configureCamera(lat: userLocationInfo.latitude, lng: userLocationInfo.longitude)
     }
@@ -289,7 +300,7 @@ extension MainViewController: UIViewControllerConfiguration {
             mapView,
             searchBar,
             tourTypeListView,
-            goToUserButtonContainerView
+            moveToUserButtonContainerView
         ].forEach { view.addSubview($0) }
             
         mapView.snp.makeConstraints {
@@ -306,14 +317,14 @@ extension MainViewController: UIViewControllerConfiguration {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        goToUserButtonContainerView.snp.makeConstraints {
+        moveToUserButtonContainerView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(8.0)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(12.0)
             $0.size.equalTo(36.0)
         }
         
-        goToUserButton.snp.makeConstraints {
-            $0.center.equalTo(goToUserButtonContainerView)
+        moveToUserButton.snp.makeConstraints {
+            $0.center.equalTo(moveToUserButtonContainerView)
         }
     }
     
