@@ -8,14 +8,14 @@
 import Foundation
 
 final class BookmarkViewModel {
-    let inputForCollectionViewUpdate: Observable<Void?> = Observable(nil)
-    let inputTextDidChange: Observable<String> = Observable("")
+    let inputForGettingInitialCollectionViewState: Observable<Void?> = Observable(nil)
+    let inputForCollectionViewUpdateWithsearchText: Observable<String> = Observable("")
     let inputBookmarkIconButtonTapTrigger: Observable<Bookmark?> = Observable(nil)
     
     let outputBookmarkList: Observable<[Bookmark]> = Observable([])
     
     init() {
-        inputForCollectionViewUpdate.bind { [weak self] trigger in
+        inputForGettingInitialCollectionViewState.bind { [weak self] trigger in
             guard let weakSelf = self else { return }
             
             guard let trigger = trigger else { return }
@@ -25,7 +25,7 @@ final class BookmarkViewModel {
             weakSelf.outputBookmarkList.value = bookmarkList
         }
         
-        inputTextDidChange.bind { [weak self] searchText in
+        inputForCollectionViewUpdateWithsearchText.bind { [weak self] searchText in
             guard let weakSelf = self else { return }
 
             let bookmarkList: [Bookmark] =  RealmManager.shared.read(Bookmark.self).map { $0 }

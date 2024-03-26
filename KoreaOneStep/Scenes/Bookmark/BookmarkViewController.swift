@@ -30,13 +30,26 @@ final class BookmarkViewController: UIViewController {
         return collectionView
     }()
     
+    private let noBookmarkLabel: UILabel = {
+        let label = UILabel()
+        label.text = "데이터가 존재하지 않습니다\n북마크를 추가해주세요!!"
+        label.textColor = .customBlack
+        label.numberOfLines = 2
+        label.font = .boldSystemFont(ofSize: 20)
+        label.backgroundColor = .customWhite
+        label.textAlignment = .center
+        return label
+    }()
+    
     private let viewModel = BookmarkViewModel()
     
     private var bookmarkList: [Bookmark] = []
+    
+    private var isSearchingMode: Bool = false
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
+        
         configureNavigationBar()
         configureConstraints()
         configureUI()
@@ -47,13 +60,22 @@ final class BookmarkViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.inputForCollectionViewUpdate.value = ()
+        guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        collectionViewUpdate(with: searchText)
     }
     
     private func bindings() {
         viewModel.outputBookmarkList.bind { [weak self] bookmarkList in
             guard let weakSelf = self else { return }
             
+            if !weakSelf.isSearchingMode {
+                if bookmarkList.count >= 1 {
+                    weakSelf.noBookmarkLabel.isHidden = true
+                } else {
+                    weakSelf.noBookmarkLabel.isHidden = false
+                }
+            }
+           
             weakSelf.bookmarkList = bookmarkList
             
             weakSelf.collectionView.reloadData()
@@ -64,6 +86,16 @@ final class BookmarkViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+    }
+    
+    private func collectionViewUpdate(with searchText: String) {
+        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if trimmedSearchText != "" {
+            viewModel.inputForCollectionViewUpdateWithsearchText.value = trimmedSearchText
+        } else {
+            viewModel.inputForGettingInitialCollectionViewState.value = ()
+        }
     }
 }
 
@@ -89,7 +121,8 @@ extension BookmarkViewController: UIViewControllerConfiguration {
     func configureConstraints() {
         [
             searchBar,
-            collectionView
+            collectionView,
+            noBookmarkLabel
         ].forEach { view.addSubview($0) }
         
         searchBar.snp.makeConstraints {
@@ -99,6 +132,10 @@ extension BookmarkViewController: UIViewControllerConfiguration {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(16.0)
             $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        noBookmarkLabel.snp.makeConstraints{
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -137,7 +174,7 @@ extension BookmarkViewController: UICollectionViewDelegate {
         detailVC.contentTitle = selectedBookmark.title
         detailVC.contentId = selectedBookmark.contentId
         detailVC.contentTypeId = selectedBookmark.contentTypeId
-        navigationController?.pushViewController(detailVC, animated: true)        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
@@ -170,23 +207,31 @@ extension BookmarkViewController: UICollectionViewDataSource {
 
 extension BookmarkViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        isSearchingMode = true
+        
         let updatedLayout = configureCollectionViewLayout()
         updatedLayout.headerReferenceSize = .zero
         collectionView.collectionViewLayout = updatedLayout
-        
-        bookmarkList = []
+            
+        guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        collectionViewUpdate(with: searchText)
         
         collectionView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        viewModel.inputTextDidChange.value = trimmedSearchText
+        collectionViewUpdate(with: searchText)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearchingMode = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = nil
         view.endEditing(true)
+        
+        isSearchingMode = false
     }
 }
