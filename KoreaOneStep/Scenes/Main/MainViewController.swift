@@ -93,7 +93,7 @@ final class MainViewController: UIViewController {
         configureUI()
         addTourType()
         showFloatingPanel()  
-        binding()  
+        bindings() // TODO: - bindings() 메서드 UIViewControllerConfigurationProtocol에 넣기
         addUserEvents()
     }
     
@@ -124,7 +124,7 @@ final class MainViewController: UIViewController {
         tourTypeListView.reload()
     }
     
-    private func binding() {
+    private func bindings() {
         viewModel.inputViewDidLoadTrigger.value = ()
 
         viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in
@@ -250,6 +250,8 @@ final class MainViewController: UIViewController {
                 
                 weakSelf.viewModel.outputUserCurrentLocationInfoToMainVC.value = nil
                 weakSelf.viewModel.outputUserCurrentLocationInfoToContentVC.value = nil
+                
+                weakSelf.viewModel.outputLocationBasedTouristDestinationList.value = []
             }
             
             weakSelf.viewModel.outputActivityIndicatorStopTrigger.value = ()

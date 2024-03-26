@@ -27,7 +27,7 @@ final class MainViewModel {
     let inputActivityIndicatorStopTrigger: Observable<Void?> = Observable(nil)
     let inputActivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
     
-    let outputLocationBasedTouristDestinationList: Observable<[SearchResulData]> = Observable([])
+    let outputLocationBasedTouristDestinationList: Observable<[SearchResulData]?> = Observable(nil)
     let outputUserCurrentLocationInfoToMainVC: Observable<CLLocationCoordinate2D?> = Observable(nil)
     let outputUserCurrentLocationInfoToContentVC: Observable<CLLocationCoordinate2D?> = Observable(nil)
     let outputSelectedTouristDestination: Observable<LBItem?> = Observable(nil)

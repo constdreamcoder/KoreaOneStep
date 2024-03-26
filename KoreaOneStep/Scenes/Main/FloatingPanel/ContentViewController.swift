@@ -29,6 +29,16 @@ final class ContentViewController: UIViewController {
         return tableView
     }()
     
+    let noContentLabel: UILabel = {
+        let label = UILabel()
+        label.text = "검색결과가 존재하지 않습니다."
+        label.textAlignment = .center
+        label.textColor = .customBlack
+        label.font = .boldSystemFont(ofSize: 20.0)
+        label.isHidden = true
+        return label
+    }()
+    
     private var isAmbientSettingsSectionOpened = false
     
     private var filteringButtonList: [UIButton] = []
@@ -58,7 +68,7 @@ final class ContentViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
-        binding()
+        bindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,14 +105,24 @@ final class ContentViewController: UIViewController {
         }
     }
     
-    private func binding() {
+    private func bindings() {
         mainViewModel.outputLocationBasedTouristDestinationList.bind { [weak self] locationBasedTouristDestinationList in
             guard let weakSelf = self else { return }
+            
+            guard let locationBasedTouristDestinationList = locationBasedTouristDestinationList else { return }
             
             weakSelf.locationBasedTouristDestinationList = locationBasedTouristDestinationList
             weakSelf.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
             
             weakSelf.mainViewModel.inputActivityIndicatorStopTrigger.value = ()
+            
+            if locationBasedTouristDestinationList.count < 1 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    weakSelf.noContentLabel.isHidden = false
+                }
+            } else {
+                weakSelf.noContentLabel.isHidden = true
+            }
         }
         
         mainViewModel.outputUserCurrentLocationInfoToContentVC.bind { [weak self] coordinate in
@@ -182,12 +202,18 @@ extension ContentViewController: UIViewControllerConfiguration {
     
     func configureConstraints() {
         [
-            tableView
+            tableView,
+            noContentLabel
         ].forEach { view.addSubview($0) }
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20.0)
             $0.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        noContentLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(220.0)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
