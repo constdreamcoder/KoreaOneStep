@@ -81,60 +81,6 @@ final class DetailViewController: UIViewController {
             }
         }
     }
-    
-    private func bindings() {
-        if isFromBookmarkVC {
-            viewModel.inputAcitivityIndicatorStartTrigger.value = ()
-        }
-        
-        viewModel.inputViewDidLoadTrigger.value = (self.contentId, self.contentTypeId)
-        viewModel.inputIsBookmarked.value = self.contentId
-        
-        viewModel.outputDetailTableViewData.bind { [weak self]
-            touristDestinationCommonInfo, dictionary in
-            guard let weakSelf = self else { return }
-            
-            weakSelf.touristDestinationCommonInfo = touristDestinationCommonInfo
-            
-            weakSelf.providedImpairmentAidServiceList = dictionary
-            weakSelf.updateTableViewData()
-            weakSelf.tableView.reloadData()
-            
-            if touristDestinationCommonInfo != nil {
-                weakSelf.tableView.isHidden = false
-            }
-
-            if weakSelf.isFromBookmarkVC {
-                weakSelf.view.hideToastActivity()
-            } else {
-                guard 
-                    let _ = touristDestinationCommonInfo else { return }
-                guard let mainViewModel = weakSelf.mainViewModel else { return }
-                mainViewModel.outputActivityIndicatorStopTrigger.value = ()
-            }
-        }
-        
-        viewModel.outputIsBookmarked.bind { [weak self] isBookmarked in
-            guard let weakSelf = self else { return }
-            
-            if isBookmarked {
-                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark.fill")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
-            } else {
-                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
-            }
-        }
-        
-        viewModel.outputAcitivityIndicatorStartTrigger.bind { [weak self] trigger in
-            guard let weakSelf = self else { return }
-            
-            guard let trigger = trigger else { return }
-            
-            weakSelf.view.makeToastActivity(.center)
-        }
-        
-        guard let mainViewModel = mainViewModel else { return }
-        mainViewModel.inputDetailVCViewDidLoadTrigger.value = ()
-    }
 }
 
 extension DetailViewController {
@@ -201,6 +147,60 @@ extension DetailViewController: UIViewControllerConfiguration {
     
     func configureUI() {
         view.backgroundColor = .customWhite
+    }
+    
+    func bindings() {
+        if isFromBookmarkVC {
+            viewModel.inputAcitivityIndicatorStartTrigger.value = ()
+        }
+        
+        viewModel.inputViewDidLoadTrigger.value = (self.contentId, self.contentTypeId)
+        viewModel.inputIsBookmarked.value = self.contentId
+        
+        viewModel.outputDetailTableViewData.bind { [weak self]
+            touristDestinationCommonInfo, dictionary in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.touristDestinationCommonInfo = touristDestinationCommonInfo
+            
+            weakSelf.providedImpairmentAidServiceList = dictionary
+            weakSelf.updateTableViewData()
+            weakSelf.tableView.reloadData()
+            
+            if touristDestinationCommonInfo != nil {
+                weakSelf.tableView.isHidden = false
+            }
+
+            if weakSelf.isFromBookmarkVC {
+                weakSelf.view.hideToastActivity()
+            } else {
+                guard
+                    let _ = touristDestinationCommonInfo else { return }
+                guard let mainViewModel = weakSelf.mainViewModel else { return }
+                mainViewModel.outputActivityIndicatorStopTrigger.value = ()
+            }
+        }
+        
+        viewModel.outputIsBookmarked.bind { [weak self] isBookmarked in
+            guard let weakSelf = self else { return }
+            
+            if isBookmarked {
+                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark.fill")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+            } else {
+                weakSelf.navigationItem.rightBarButtonItems?[0].image = UIImage(systemName: "bookmark")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+            }
+        }
+        
+        viewModel.outputAcitivityIndicatorStartTrigger.bind { [weak self] trigger in
+            guard let weakSelf = self else { return }
+            
+            guard let trigger = trigger else { return }
+            
+            weakSelf.view.makeToastActivity(.center)
+        }
+        
+        guard let mainViewModel = mainViewModel else { return }
+        mainViewModel.inputDetailVCViewDidLoadTrigger.value = ()
     }
 }
 

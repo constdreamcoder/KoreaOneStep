@@ -104,33 +104,6 @@ final class ContentViewController: UIViewController {
             return FilteringOrder.FilteringDistance.allCases[5]
         }
     }
-    
-    private func bindings() {
-        mainViewModel.outputLocationBasedTouristDestinationList.bind { [weak self] locationBasedTouristDestinationList in
-            guard let weakSelf = self else { return }
-            
-            guard let locationBasedTouristDestinationList = locationBasedTouristDestinationList else { return }
-            
-            weakSelf.locationBasedTouristDestinationList = locationBasedTouristDestinationList
-            weakSelf.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
-            
-            weakSelf.mainViewModel.inputActivityIndicatorStopTrigger.value = ()
-            
-            if locationBasedTouristDestinationList.count < 1 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    weakSelf.noContentLabel.isHidden = false
-                }
-            } else {
-                weakSelf.noContentLabel.isHidden = true
-            }
-        }
-        
-        mainViewModel.outputUserCurrentLocationInfoToContentVC.bind { [weak self] coordinate in
-            guard let weakSelf = self else { return }
-            
-            weakSelf.userLocationInfo = coordinate
-        }
-    }
 }
 
 extension ContentViewController {
@@ -220,6 +193,33 @@ extension ContentViewController: UIViewControllerConfiguration {
     func configureUI() {
         view.backgroundColor = .customWhite
         // TODO: - Floating Panel Top 부분 둥글게 만들기
+    }
+    
+    func bindings() {
+        mainViewModel.outputLocationBasedTouristDestinationList.bind { [weak self] locationBasedTouristDestinationList in
+            guard let weakSelf = self else { return }
+            
+            guard let locationBasedTouristDestinationList = locationBasedTouristDestinationList else { return }
+            
+            weakSelf.locationBasedTouristDestinationList = locationBasedTouristDestinationList
+            weakSelf.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
+            
+            weakSelf.mainViewModel.inputActivityIndicatorStopTrigger.value = ()
+            
+            if locationBasedTouristDestinationList.count < 1 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    weakSelf.noContentLabel.isHidden = false
+                }
+            } else {
+                weakSelf.noContentLabel.isHidden = true
+            }
+        }
+        
+        mainViewModel.outputUserCurrentLocationInfoToContentVC.bind { [weak self] coordinate in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.userLocationInfo = coordinate
+        }
     }
 }
 

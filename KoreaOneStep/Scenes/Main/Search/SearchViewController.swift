@@ -75,45 +75,6 @@ final class SearchViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
-    private func bindings() {
-        viewModel.inputViewDidLoadTrigger.value = ()
-        
-        viewModel.outputSearchedResultList.bind { [weak self] searchedResultList in
-            guard let weakSelf = self else { return }
-            
-            guard let searchedResultList = searchedResultList else { return }
-            weakSelf.searchedResultList = searchedResultList
-            weakSelf.searchedResultTableView.reloadData()
-            
-            if searchedResultList.count >= 1 {
-                weakSelf.searchedResultTableView.isHidden = false
-            } else if searchedResultList.count < 1 {
-                weakSelf.searchedResultTableView.isHidden = true
-                weakSelf.view.makeToast(ToastMessage.Failure.noSearchingResults, position: .center)
-            }
-            weakSelf.view.hideToastActivity()
-        }
-        
-        viewModel.outputSelectedRegionTag.bind { [weak self] selectedRegion in
-            guard let weakSelf = self else { return }
-            
-            weakSelf.selectedRegion = selectedRegion
-        }
-        
-        viewModel.outputSelectedSiGunGu.bind { [weak self] selectedSiGunGu in
-            guard let weakSelf = self else { return }
-                        
-            weakSelf.selectedSiGunGu = selectedSiGunGu
-        }
-        
-        viewModel.outputRecentKeywordList.bind { [weak self] recentKeywordList in
-            guard let weakSelf = self else { return }
-            
-            weakSelf.recentKeywordList = recentKeywordList
-            weakSelf.recentKeywordTableView.reloadData()
-        }
-    }
-    
     private func addUserEvents() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
         tap.cancelsTouchesInView = false
@@ -172,6 +133,45 @@ extension SearchViewController: UIViewControllerConfiguration {
     
     func configureUI() {
         view.backgroundColor = .customWhite
+    }
+    
+    func bindings() {
+        viewModel.inputViewDidLoadTrigger.value = ()
+        
+        viewModel.outputSearchedResultList.bind { [weak self] searchedResultList in
+            guard let weakSelf = self else { return }
+            
+            guard let searchedResultList = searchedResultList else { return }
+            weakSelf.searchedResultList = searchedResultList
+            weakSelf.searchedResultTableView.reloadData()
+            
+            if searchedResultList.count >= 1 {
+                weakSelf.searchedResultTableView.isHidden = false
+            } else if searchedResultList.count < 1 {
+                weakSelf.searchedResultTableView.isHidden = true
+                weakSelf.view.makeToast(ToastMessage.Failure.noSearchingResults, position: .center)
+            }
+            weakSelf.view.hideToastActivity()
+        }
+        
+        viewModel.outputSelectedRegionTag.bind { [weak self] selectedRegion in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.selectedRegion = selectedRegion
+        }
+        
+        viewModel.outputSelectedSiGunGu.bind { [weak self] selectedSiGunGu in
+            guard let weakSelf = self else { return }
+                        
+            weakSelf.selectedSiGunGu = selectedSiGunGu
+        }
+        
+        viewModel.outputRecentKeywordList.bind { [weak self] recentKeywordList in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.recentKeywordList = recentKeywordList
+            weakSelf.recentKeywordTableView.reloadData()
+        }
     }
 }
 

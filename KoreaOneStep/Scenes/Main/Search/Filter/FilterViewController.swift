@@ -71,8 +71,28 @@ final class FilterViewController: UIViewController {
         guard let searchViewModel = searchViewModel else { return }
         searchViewModel.inputFilterVCViewDidLoadTrigger.value = ()
     }
+}
+
+extension FilterViewController: UIViewControllerConfiguration {
+    func configureNavigationBar() {
+        navigationItem.title = "필터"
+    }
     
-    private func bindings() {
+    func configureConstraints() {
+        [
+            tableView
+        ].forEach { view.addSubview($0) }
+        
+        tableView.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    func configureUI() {
+        view.backgroundColor = .customWhite
+    }
+    
+    func bindings() {
         guard let searchViewModel = searchViewModel else { return }
                 
         searchViewModel.outputAreaCodeList.bind { [weak self] areaCodeList in
@@ -94,26 +114,6 @@ final class FilterViewController: UIViewController {
             
             weakSelf.view.hideToastActivity()
         }
-    }
-}
-
-extension FilterViewController: UIViewControllerConfiguration {
-    func configureNavigationBar() {
-        navigationItem.title = "필터"
-    }
-    
-    func configureConstraints() {
-        [
-            tableView
-        ].forEach { view.addSubview($0) }
-        
-        tableView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
-    func configureUI() {
-        view.backgroundColor = .customWhite
     }
 }
 

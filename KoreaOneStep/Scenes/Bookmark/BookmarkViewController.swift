@@ -64,24 +64,6 @@ final class BookmarkViewController: UIViewController {
         collectionViewUpdate(with: searchText)
     }
     
-    private func bindings() {
-        viewModel.outputBookmarkList.bind { [weak self] bookmarkList in
-            guard let weakSelf = self else { return }
-            
-            if !weakSelf.isSearchingMode {
-                if bookmarkList.count >= 1 {
-                    weakSelf.noBookmarkLabel.isHidden = true
-                } else {
-                    weakSelf.noBookmarkLabel.isHidden = false
-                }
-            }
-           
-            weakSelf.bookmarkList = bookmarkList
-            
-            weakSelf.collectionView.reloadData()
-        }
-    }
-    
     private func addUserEvents() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
         tap.cancelsTouchesInView = false
@@ -141,6 +123,24 @@ extension BookmarkViewController: UIViewControllerConfiguration {
     
     func configureUI() {
         view.backgroundColor = .customWhite
+    }
+    
+    func bindings() {
+        viewModel.outputBookmarkList.bind { [weak self] bookmarkList in
+            guard let weakSelf = self else { return }
+            
+            if !weakSelf.isSearchingMode {
+                if bookmarkList.count >= 1 {
+                    weakSelf.noBookmarkLabel.isHidden = true
+                } else {
+                    weakSelf.noBookmarkLabel.isHidden = false
+                }
+            }
+           
+            weakSelf.bookmarkList = bookmarkList
+            
+            weakSelf.collectionView.reloadData()
+        }
     }
 }
 

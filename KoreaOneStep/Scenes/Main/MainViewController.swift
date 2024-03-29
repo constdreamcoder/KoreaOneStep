@@ -31,7 +31,7 @@ final class MainViewController: UIViewController {
         tourTypeListView.delegate = self
         
         tourTypeListView.selectionLimit = 1
-            
+        
         tourTypeListView.scrollDirection = .horizontal
         tourTypeListView.showsHorizontalScrollIndicator = false
         
@@ -92,8 +92,8 @@ final class MainViewController: UIViewController {
         configureConstraints()
         configureUI()
         addTourType()
-        showFloatingPanel()  
-        bindings() // TODO: - bindings() 메서드 UIViewControllerConfigurationProtocol에 넣기
+        showFloatingPanel()
+        bindings()
         addUserEvents()
     }
     
@@ -124,14 +124,90 @@ final class MainViewController: UIViewController {
         tourTypeListView.reload()
     }
     
-    private func bindings() {
-        viewModel.inputViewDidLoadTrigger.value = ()
+    private func addUserEvents() {
+        moveToUserButton.addTarget(self, action: #selector(moveToButtonTapped), for: .touchUpInside)
+    }
+}
 
+extension MainViewController {
+    @objc func moveToButtonTapped(_ button: UIButton) {
+        guard let userLocationInfo = userLocationInfo else {
+            showLocationSettingAlert()
+            return
+        }
+        
+        configureCamera(lat: userLocationInfo.latitude, lng: userLocationInfo.longitude)
+    }
+}
+
+// MARK: - 네이버 지도 관련 메서드
+extension MainViewController {
+    func configureCamera(lat: Double, lng: Double) {
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat, lng: lng))
+        cameraUpdate.animation = .easeOut
+        cameraUpdate.animationDuration = 1.5
+        mapView.moveCamera(cameraUpdate)
+    }
+    
+    func confiugreMarker(lat: Double, lng: Double) {
+        marker.mapView = nil
+        marker.position = NMGLatLng(lat: lat, lng: lng)
+        marker.mapView = mapView
+    }
+}
+
+extension MainViewController: UIViewControllerConfiguration {
+    func configureNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
+        
+        navigationItem.backButtonTitle = ""
+    }
+    
+    func configureConstraints() {
+        [
+            mapView,
+            searchBar,
+            tourTypeListView,
+            moveToUserButtonContainerView
+        ].forEach { view.addSubview($0) }
+        
+        mapView.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        searchBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(40.0)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16.0)
+        }
+        
+        tourTypeListView.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        moveToUserButtonContainerView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(8.0)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(12.0)
+            $0.size.equalTo(36.0)
+        }
+        
+        moveToUserButton.snp.makeConstraints {
+            $0.center.equalTo(moveToUserButtonContainerView)
+        }
+    }
+    
+    func configureUI() {
+        view.backgroundColor = .customWhite
+    }
+    
+    func bindings() {
+        viewModel.inputViewDidLoadTrigger.value = ()
+        
         viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in
             guard let weakSelf = self else { return }
             
             weakSelf.userLocationInfo = coordinate
-
+            
             guard let coordinate = coordinate else { return }
             
             weakSelf.mapView.locationOverlay.location = NMGLatLng(lat: coordinate.latitude, lng: coordinate.longitude)
@@ -142,7 +218,7 @@ final class MainViewController: UIViewController {
         
         viewModel.outputSelectedTouristDestination.bind { [weak self] touristDestination in
             guard let weakSelf = self else { return }
-
+            
             guard let touristDestination = touristDestination else { return }
             
             weakSelf.confiugreMarker(
@@ -256,82 +332,6 @@ final class MainViewController: UIViewController {
             
             weakSelf.viewModel.outputActivityIndicatorStopTrigger.value = ()
         }
-    }
-    
-    private func addUserEvents() {
-        moveToUserButton.addTarget(self, action: #selector(moveToButtonTapped), for: .touchUpInside)
-    }
-}
-
-extension MainViewController {
-    @objc func moveToButtonTapped(_ button: UIButton) {
-        guard let userLocationInfo = userLocationInfo else {
-            showLocationSettingAlert()
-            return
-        }
-        
-        configureCamera(lat: userLocationInfo.latitude, lng: userLocationInfo.longitude)
-    }
-}
-
-// MARK: - 네이버 지도 관련 메서드
-extension MainViewController {
-    func configureCamera(lat: Double, lng: Double) {
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat, lng: lng))
-        cameraUpdate.animation = .easeOut
-        cameraUpdate.animationDuration = 1.5
-        mapView.moveCamera(cameraUpdate)
-    }
-    
-    func confiugreMarker(lat: Double, lng: Double) {
-        marker.mapView = nil
-        marker.position = NMGLatLng(lat: lat, lng: lng)
-        marker.mapView = mapView
-    }
-}
-
-extension MainViewController: UIViewControllerConfiguration {
-    func configureNavigationBar() {
-        navigationController?.navigationBar.isHidden = true
-        
-        navigationItem.backButtonTitle = ""
-    }
-    
-    func configureConstraints() {
-        [
-            mapView,
-            searchBar,
-            tourTypeListView,
-            moveToUserButtonContainerView
-        ].forEach { view.addSubview($0) }
-            
-        mapView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(40.0)
-            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16.0)
-        }
-        
-        tourTypeListView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom)
-            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        moveToUserButtonContainerView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(8.0)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(12.0)
-            $0.size.equalTo(36.0)
-        }
-        
-        moveToUserButton.snp.makeConstraints {
-            $0.center.equalTo(moveToUserButtonContainerView)
-        }
-    }
-    
-    func configureUI() {
-        view.backgroundColor = .customWhite
     }
 }
 

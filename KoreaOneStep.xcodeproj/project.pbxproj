@@ -271,8 +271,8 @@
 		0024F3062B9B4DF100799623 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */,
 				0081E8962B9D9C0500EF615D /* CellIdentifiable.swift */,
+				0024F3042B9B4DE300799623 /* UIViewControllerConfiguration.swift */,
 				0081E8A72B9DC71100EF615D /* UITableViewCellConfiguration.swift */,
 				00F77ACE2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift */,
 				00F77AD32B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift */,

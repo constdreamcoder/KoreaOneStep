@@ -32,14 +32,6 @@ final class SettingViewController: UIViewController {
         configureUI()
         bindings()
     }
-    
-    private func bindings() {
-        viewModel.outputRemoveAllBookmarksToastMessage.bind { [weak self] toastMessage in
-            guard let weakSelf = self else { return }
-            
-            weakSelf.view.makeToast(toastMessage)
-        }
-    }
 }
 
 extension SettingViewController: UIViewControllerConfiguration {
@@ -57,6 +49,14 @@ extension SettingViewController: UIViewControllerConfiguration {
     
     func configureUI() {
         view.backgroundColor = .customWhite
+    }
+    
+    func bindings() {
+        viewModel.outputRemoveAllBookmarksToastMessage.bind { [weak self] toastMessage in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.view.makeToast(toastMessage)
+        }
     }
 }
 
