@@ -62,6 +62,12 @@ final class DetailViewController: UIViewController {
         bindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.inputIsBookmarked.value = contentId
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
