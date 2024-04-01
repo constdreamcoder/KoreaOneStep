@@ -66,8 +66,13 @@ final class MainViewModel {
                 weakSelf.outputUserCurrentLocationInfoToContentVC.value = coordinate
                 
                 KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
-                    latitude: coordinate.latitude,
-                    longitude: coordinate.longitude
+                    api: .locationBasedTourismInformation(
+                        latitude: coordinate.latitude,
+                        longitude: coordinate.longitude,
+                        radius: KoreaTravelingAPI.radiusDefaultValue,
+                        arrange: KoreaTravelingAPI.arrageDefaultValue,
+                        contentTypeId: KoreaTravelingAPI.contentTypeIdDefaultValue
+                    )
                 ) { [weak self] touristDestinationList in
                     guard let weakSelf = self else { return }
                     
@@ -82,10 +87,13 @@ final class MainViewModel {
             guard let coordinate = coordinate else { return  }
             
             KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
-                latitude: coordinate.latitude,
-                longitude: coordinate.longitude,
-                radius: filteringDistance.rawValue,
-                arrange: filteringOrder.sortingCode
+                api: .locationBasedTourismInformation(
+                    latitude: coordinate.latitude,
+                    longitude: coordinate.longitude,
+                    radius: filteringDistance.rawValue,
+                    arrange: filteringOrder.sortingCode,
+                    contentTypeId: KoreaTravelingAPI.contentTypeIdDefaultValue
+                )
             ) { [weak self] touristDestinationList in
                 guard let weakSelf = self else { return }
                 
@@ -102,11 +110,13 @@ final class MainViewModel {
             else { return }
             
             KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
-                latitude: coordinate.latitude,
-                longitude: coordinate.longitude,
-                radius: filteringDistance.rawValue,
-                arrange: filteringOrder.sortingCode,
-                tourTypeCode: tourType.tourTypeCode
+                api: .locationBasedTourismInformation(
+                    latitude: coordinate.latitude,
+                    longitude: coordinate.longitude,
+                    radius: filteringDistance.rawValue,
+                    arrange: filteringOrder.sortingCode,
+                    contentTypeId:  tourType.tourTypeCode
+                )
             ) { [weak self] touristDestinationList in
                 guard let weakSelf = self else { return }
                 

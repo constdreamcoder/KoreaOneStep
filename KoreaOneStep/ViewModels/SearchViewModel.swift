@@ -37,7 +37,9 @@ final class SearchViewModel {
             
             guard let trigger = trigger else { return }
             
-            KoreaTravelingManager.shared.fetchAreaCode { areaCodeList in
+            KoreaTravelingManager.shared.fetchAreaCode(
+                api: .areaCode(areaCode: KoreaTravelingAPI.areaCodeDefaultValue)
+            ) { areaCodeList in
                 weakSelf.outputAreaCodeList.value = areaCodeList
             }
         }
@@ -50,7 +52,7 @@ final class SearchViewModel {
             weakSelf.outputSelectedRegionTag.value = regionTag
             
             KoreaTravelingManager.shared.fetchAreaCode(
-                areaCode: regionTag.code
+                api: .areaCode(areaCode: regionTag.code)
             ) { siGunGuCodeList in
                 
                 weakSelf.outputSiGunGuCodeList.value = siGunGuCodeList
@@ -74,9 +76,11 @@ final class SearchViewModel {
             print("selectedSiGunGu", selectedSiGunGu)
             
             KoreaTravelingManager.shared.fetchKeywordBasedSearching(
-                keyword: searchText,
-                areaCode: selectedRegion == nil ? "" : selectedRegion!.code,
-                sigunguCode: selectedSiGunGu == nil ? "" : selectedRegion!.code
+                api: .keywordBasedSearching(
+                    keyword: searchText,
+                    areaCode: selectedRegion == nil ? "" : selectedRegion!.code,
+                    sigunguCode: selectedSiGunGu == nil ? "" : selectedSiGunGu!.code
+                )
             ) { searchedResultList in
                 guard let weakSelf = self else { return }
                 

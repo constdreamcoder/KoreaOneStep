@@ -33,8 +33,7 @@ final class DetailViewModel {
             
             group.enter()
             KoreaTravelingManager.shared.fetchTouristDestionationCommonInformation(
-                contentId: contentId,
-                contentTypeId: contentTypeId
+                api: .touristDestionationCommonInformation(contentId: contentId, contentTypeId: contentTypeId)
             ) { touristDestinationCommonInformation in
                 
                 touristDestinationCommonInformationTemp = touristDestinationCommonInformation
@@ -51,8 +50,7 @@ final class DetailViewModel {
             ]
             
             group.enter()
-            KoreaTravelingManager.shared.fetchProvidedImpairmentAidServices(
-                contentId: contentId
+            KoreaTravelingManager.shared.fetchProvidedImpairmentAidServices(api: .providedImpairmentAidServices(contentId: contentId)
             ) { providedImpairmentAidServices in
                 // 지체장애 도움 서비스
                 // 주차여부

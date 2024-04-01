@@ -207,7 +207,7 @@ extension ContentViewController: UIViewControllerConfiguration {
             weakSelf.mainViewModel.inputActivityIndicatorStopTrigger.value = ()
             
             if locationBasedTouristDestinationList.count < 1 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     weakSelf.noContentLabel.isHidden = false
                 }
             } else {

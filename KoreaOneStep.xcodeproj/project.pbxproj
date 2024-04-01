@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000F34A42BBAE49100643F56 /* KoreaTravelingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000F34A32BBAE49100643F56 /* KoreaTravelingAPI.swift */; };
 		0015DE6A2BA19363002CA32C /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 0015DE692BA19363002CA32C /* FloatingPanel */; };
 		0015DE6C2BA19592002CA32C /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6B2BA19592002CA32C /* ContentViewController.swift */; };
 		0015DE6F2BA19CCE002CA32C /* SearchResultListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000F34A32BBAE49100643F56 /* KoreaTravelingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaTravelingAPI.swift; sourceTree = "<group>"; };
 		0015DE6B2BA19592002CA32C /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListTableViewCell.swift; sourceTree = "<group>"; };
 		001D3E972BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristDestionationCommonInformationModel.swift; sourceTree = "<group>"; };
@@ -184,6 +186,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000F34A52BBAF4AD00643F56 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				000F34A32BBAE49100643F56 /* KoreaTravelingAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		0015DE6D2BA19CA6002CA32C /* FloatingPanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +437,7 @@
 		0081E89A2B9DB0E100EF615D /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				000F34A52BBAF4AD00643F56 /* Network */,
 				0081E8B42B9E155300EF615D /* Scenes */,
 			);
 			path = Enums;
@@ -746,6 +757,7 @@
 				00F4F86B2BA7B57200071D89 /* RealmManager.swift in Sources */,
 				00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */,
 				001D3E9A2BA6E2AD00065C83 /* DetailViewModel.swift in Sources */,
+				000F34A42BBAE49100643F56 /* KoreaTravelingAPI.swift in Sources */,
 				00C8CB8B2BB1C23F0074A58A /* UIViewController+Extension.swift in Sources */,
 				0081E8A32B9DC11500EF615D /* SearchViewController.swift in Sources */,
 				005E57222BA01F9F005CD618 /* AddressTableViewCell.swift in Sources */,
@@ -942,7 +954,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 59V6NJY3X6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -962,7 +974,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -990,7 +1002,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59V6NJY3X6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1009,7 +1021,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
