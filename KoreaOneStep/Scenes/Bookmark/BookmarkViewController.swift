@@ -155,8 +155,8 @@ extension BookmarkViewController: UICollectionViewConfiguration {
         layout.minimumInteritemSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
         // TODO: - 배포 후, 주석 해제(추가 개발 예정)
-        //layout.headerReferenceSize = .init(width: view.frame.width, height: 190)
-        layout.headerReferenceSize = .init(width: view.frame.width, height: .zero)
+        layout.headerReferenceSize = .init(width: view.frame.width, height: 190)
+        // layout.headerReferenceSize = .init(width: view.frame.width, height: .zero)
         
         return layout
     }
@@ -210,9 +210,9 @@ extension BookmarkViewController: UISearchBarDelegate {
         
         isSearchingMode = true
         
-        let updatedLayout = configureCollectionViewLayout()
-        updatedLayout.headerReferenceSize = .zero
-        collectionView.collectionViewLayout = updatedLayout
+//        let updatedLayout = configureCollectionViewLayout()
+//        updatedLayout.headerReferenceSize = .zero
+//        collectionView.collectionViewLayout = updatedLayout
             
         guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         collectionViewUpdate(with: searchText)

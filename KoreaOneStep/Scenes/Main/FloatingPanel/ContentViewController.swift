@@ -52,6 +52,8 @@ final class ContentViewController: UIViewController {
     var userLocationInfo: CLLocationCoordinate2D?
     var selectedTourType: TourType?
     
+    var initialTriggerFlag: Bool = false
+    
     init(mainViewModel: MainViewModel) {
         self.mainViewModel = mainViewModel
         
@@ -68,6 +70,7 @@ final class ContentViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
+        configureOthers()
         bindings()
     }
     
@@ -103,6 +106,10 @@ final class ContentViewController: UIViewController {
             slider.value = 10.0
             return FilteringOrder.FilteringDistance.allCases[5]
         }
+    }
+    
+    private func configureOthers() {
+        initialTriggerFlag = true
     }
 }
 
@@ -219,6 +226,13 @@ extension ContentViewController: UIViewControllerConfiguration {
             guard let weakSelf = self else { return }
             
             weakSelf.userLocationInfo = coordinate
+            
+            guard let coordinate = coordinate else { return }
+            
+            if weakSelf.initialTriggerFlag {
+                weakSelf.mainViewModel.inputSearchLocationBasedTourismInformationTrigger.value = coordinate
+                weakSelf.initialTriggerFlag = false
+            }
         }
     }
 }

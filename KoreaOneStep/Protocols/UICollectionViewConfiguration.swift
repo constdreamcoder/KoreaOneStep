@@ -8,5 +8,6 @@
 import UIKit
 
 protocol UICollectionViewConfiguration {
+    
     func configureCollectionViewLayout() -> UICollectionViewFlowLayout
 }

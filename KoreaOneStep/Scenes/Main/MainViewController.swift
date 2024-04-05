@@ -135,8 +135,8 @@ extension MainViewController {
             showLocationSettingAlert()
             return
         }
-        
-        configureCamera(lat: userLocationInfo.latitude, lng: userLocationInfo.longitude)
+       
+        viewModel.inputUpdateUserCurrentLocationTrigger.value = ()
     }
 }
 
@@ -201,7 +201,7 @@ extension MainViewController: UIViewControllerConfiguration {
     }
     
     func bindings() {
-        viewModel.inputViewDidLoadTrigger.value = ()
+        viewModel.inputSearchUserCurrentLocationTrigger.value = ()
         
         viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in
             guard let weakSelf = self else { return }

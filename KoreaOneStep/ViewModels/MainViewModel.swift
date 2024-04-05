@@ -14,7 +14,7 @@ struct SearchResulData {
 }
 
 final class MainViewModel {
-    let inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
+    let inputSearchLocationBasedTourismInformationTrigger: Observable<CLLocationCoordinate2D?> = Observable(nil)
     let inputForTableViewUpdate: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance, FilteringOrder)> = Observable((nil, .oneKiloMeter, .title))
     let inputTourType: Observable<(CLLocationCoordinate2D?, FilteringOrder.FilteringDistance, FilteringOrder, TourType?)> = Observable((nil, .oneKiloMeter, .title, nil))
     let inputAddNewBookmark: Observable<LBItem?> = Observable(nil)
@@ -26,6 +26,8 @@ final class MainViewModel {
     let inputDetailVCAddressCellTappTrigger: Observable<(Double?, Double?)> = Observable((nil, nil))
     let inputActivityIndicatorStopTrigger: Observable<Void?> = Observable(nil)
     let inputActivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
+    let inputSearchUserCurrentLocationTrigger: Observable<Void?> = Observable(nil)
+    let inputUpdateUserCurrentLocationTrigger: Observable<Void?> = Observable(nil)
     
     let outputLocationBasedTouristDestinationList: Observable<[SearchResulData]?> = Observable(nil)
     let outputUserCurrentLocationInfoToMainVC: Observable<CLLocationCoordinate2D?> = Observable(nil)
@@ -40,46 +42,54 @@ final class MainViewModel {
     let outputShowAlertTriggerForAuthorization: Observable<Bool> = Observable(false)
     
    init() {
-        inputViewDidLoadTrigger.bind { trigger in
-            guard let trigger = trigger else { return }
+       inputSearchUserCurrentLocationTrigger.bind { [weak self] trigger in
+           guard let weakSelf = self else { return }
+           
+           guard let trigger = trigger else { return }
+           
+           LocationManager.shared.fetchLocation { [weak self] coordinate, error, isDenied in
+               guard let weakSelf = self else { return }
+               
+               guard error == nil else {
+                   print("위치 찾기 에러 발생: ", error)
+                   return
+               }
+               
+               guard !isDenied else {
+                   print("Denied")
+                   weakSelf.outputShowAlertTriggerForAuthorization.value = isDenied
+                   return
+               }
+               
+               guard let coordinate = coordinate else {
+                   print("Something is wrong.")
+                   return
+               }
+               
+               weakSelf.outputUserCurrentLocationInfoToMainVC.value = coordinate
+               weakSelf.outputUserCurrentLocationInfoToContentVC.value = coordinate
+           }
+           
+       }
+       
+       inputSearchLocationBasedTourismInformationTrigger.bind { coordinate in
+          
+            guard let coordinate = coordinate else { return }
             
-            LocationManager.shared.fetchLocation { [weak self] coordinate, error, isDenied in
+            KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
+                api: .locationBasedTourismInformation(
+                    latitude: coordinate.latitude,
+                    longitude: coordinate.longitude,
+                    radius: KoreaTravelingAPI.radiusDefaultValue,
+                    arrange: KoreaTravelingAPI.arrageDefaultValue,
+                    contentTypeId: KoreaTravelingAPI.contentTypeIdDefaultValue
+                )
+            ) { [weak self] touristDestinationList in
                 guard let weakSelf = self else { return }
                 
-                guard error == nil else {
-                    print("위치 찾기 에러 발생: ", error)
-                    return
-                }
+                let searchResulDataList = weakSelf.generateSearchResulDataList(touristDestinationList)
                 
-                guard !isDenied else {
-                    print("Denied")
-                    weakSelf.outputShowAlertTriggerForAuthorization.value = isDenied
-                    return
-                }
-                
-                guard let coordinate = coordinate else {
-                    print("Something is wrong.")
-                    return
-                }
-                
-                weakSelf.outputUserCurrentLocationInfoToMainVC.value = coordinate
-                weakSelf.outputUserCurrentLocationInfoToContentVC.value = coordinate
-                
-                KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
-                    api: .locationBasedTourismInformation(
-                        latitude: coordinate.latitude,
-                        longitude: coordinate.longitude,
-                        radius: KoreaTravelingAPI.radiusDefaultValue,
-                        arrange: KoreaTravelingAPI.arrageDefaultValue,
-                        contentTypeId: KoreaTravelingAPI.contentTypeIdDefaultValue
-                    )
-                ) { [weak self] touristDestinationList in
-                    guard let weakSelf = self else { return }
-                    
-                    let searchResulDataList = weakSelf.generateSearchResulDataList(touristDestinationList)
-                    
-                    weakSelf.outputLocationBasedTouristDestinationList.value = searchResulDataList
-                }
+                weakSelf.outputLocationBasedTouristDestinationList.value = searchResulDataList
             }
         }
         
@@ -226,6 +236,14 @@ final class MainViewModel {
            guard let trigger = trigger else { return }
            
            weakSelf.outputActivityIndicatorStartTrigger.value = trigger
+       }
+       
+       inputUpdateUserCurrentLocationTrigger.bind { [weak self] trigger in
+           guard let weakSelf = self else { return }
+           
+           guard let trigger = trigger else { return }
+           
+           LocationManager.shared.startUpdatingLocation()
        }
     }
 }
