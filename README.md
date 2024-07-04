@@ -34,41 +34,12 @@
 
 ## 🛠 기술 소개
 
-- Custom Observable를 통한 반응형 MVVM 구성
-    - View로부터 비니지스 로직의 독립적 구분 달성
-    - 비동기 처리를 위한 Custom Observable로 구성
-- Singleton 패턴
-    - 네트워크 통신에 대한 메모리 낭비 방지
-- 프로토콜를 이용한 UI 규격화
-    - UI 구성에 있어 프로토콜로 규격화 달성
-- Input/Output 패턴
-    - 유저 이벤트에 대한 Input과 이에 대한 결과로 반환되는 Output의 명확한 구분으로 코드 가독성 및 유지보수 향상 달성
-- Accordion UI
-    - 정보 전달에 있어 시각적 복잡성 감소 달성
-    - 열거형을 이용한 전체적인 UI 구조 구성
-- SnapKit
-    - 간결하고 가독성 있는 Auto Layout 코드 작성
-- Floating Panel
-    - 지도화면의 Bottom Sheet로 사용
-- TTGTags
-    - 지역 기반 검색의 지역 필터 화면 UI 구현
-- Toast-Swift
-    - 유저에게 동작에 대한 상태 표시
-- Alamofire
-    - 비교적 비대한 파라미터를 가진 공공데이터 API 통신에 대한 코드 간소화 및 가독성 달성
-    - 열거형으로 네트워크 통신 Base 구성
-    - 열거형을 통한 API 호출의 Endpoint 관리를 중앙화
-- Kingfisher
-    - URL을 통한 외부 이미지 다운로드 및 캐싱
-    - 이미지 다운로드 중 Placeholder 이미지를 활용한 UX 향상
-- RealmSwift
-    - 간단한 DB 구축 및 Realm Studio를 통한 DB 실시간 변화 모니터링
-    - Generic을 활용한 추상화 달성
-- Firebase
-    - Crashlytics
-        - 앱의 비정상적 동작 감지
-    - Analytics
-        - 앱의 이용현황 확인
+- UIKit, SnapKit, Custom Observable
+- MVVM, Input/Output, Singleton
+- Alamofire, Kingfisher, Realm
+- 프로토콜를 이용한 UI 규격화, Accordion UI
+- Floating Panel, TTGTags, Toast
+- Firebase Crashlytics, Firebase Analytics
 
 <br/>
 
