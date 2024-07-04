@@ -507,7 +507,7 @@ enum KoreaTravelingAPI {
   </div>
   </details>
 
-### 해결방법
+해결방법
 
 - 각각의 리젝 사유에 대한 대응후 재심사 요청
 
