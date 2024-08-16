@@ -14,7 +14,11 @@
 		001D3E982BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D3E972BA6DAA800065C83 /* TouristDestionationCommonInformationModel.swift */; };
 		001D3E9A2BA6E2AD00065C83 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D3E992BA6E2AD00065C83 /* DetailViewModel.swift */; };
 		001D3E9C2BA6F4D100065C83 /* ProvidedImpairmentAidServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001D3E9B2BA6F4D100065C83 /* ProvidedImpairmentAidServicesModel.swift */; };
-		0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0024F2EA2B9B42C200799623 /* Kingfisher */; };
+		001DD5C32BFA3C4E00825DAA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 001DD5C22BFA3C4E00825DAA /* Kingfisher */; };
+		001DD5D32BFA497400825DAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 001DD5D22BFA497400825DAA /* RealmSwift */; };
+		001DD5D42BFA49AD00825DAA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 001DD5D22BFA497400825DAA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		001DD5D52BFA4C0B00825DAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C462B99840A00C2A76E /* Assets.xcassets */; };
+		001DD5D62BFA4C1500825DAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C432B99840900C2A76E /* Main.storyboard */; };
 		0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F2F92B9B45B600799623 /* TabBarViewController.swift */; };
 		0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F2FE2B9B464A00799623 /* MainViewController.swift */; };
 		0024F3012B9B465200799623 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024F3002B9B465200799623 /* BookmarkViewController.swift */; };
@@ -26,6 +30,9 @@
 		003247242BA82B3B009642D4 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247232BA82B3B009642D4 /* BookmarkViewModel.swift */; };
 		003247282BA87015009642D4 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247272BA87015009642D4 /* SearchViewModel.swift */; };
 		0032472A2BA87317009642D4 /* AreaCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247292BA87317009642D4 /* AreaCodeModel.swift */; };
+		003CE0472C087D66003B92FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 003CE0462C087D66003B92FD /* README.md */; };
+		0047079C2C6F1AFD0025E5DB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0047079B2C6F1AFD0025E5DB /* RxCocoa */; };
+		0047079E2C6F1AFD0025E5DB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0047079D2C6F1AFD0025E5DB /* RxSwift */; };
 		0051C2A32BA3516E0094D4BC /* TourType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0051C2A22BA3516E0094D4BC /* TourType.swift */; };
 		0051C2A62BA35B6C0094D4BC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0051C2A52BA35B6C0094D4BC /* SnapKit */; };
 		0051C2A92BA35BD80094D4BC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0051C2A82BA35BD80094D4BC /* Alamofire */; };
@@ -55,8 +62,6 @@
 		0081E8AB2B9DD8E400EF615D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8AA2B9DD8E400EF615D /* FilterViewController.swift */; };
 		0081E8AE2B9DE05000EF615D /* TTGTags in Frameworks */ = {isa = PBXBuildFile; productRef = 0081E8AD2B9DE05000EF615D /* TTGTags */; };
 		0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */; };
-		009206672BA7A15F00724961 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 009206662BA7A15F00724961 /* Realm */; };
-		009206692BA7A15F00724961 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 009206682BA7A15F00724961 /* RealmSwift */; };
 		009ACA7F2BAAD77100C937F7 /* RecentKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */; };
 		009ACA812BAB136100C937F7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA802BAB136100C937F7 /* SettingViewModel.swift */; };
 		00A3D6222BAEE47800632748 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00A3D6212BAEE47700632748 /* GoogleService-Info.plist */; };
@@ -81,12 +86,24 @@
 		00F77ADB2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F77ADA2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift */; };
 		00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C3D2B99840900C2A76E /* AppDelegate.swift */; };
 		00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */; };
-		00FD1C452B99840900C2A76E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C432B99840900C2A76E /* Main.storyboard */; };
-		00FD1C472B99840A00C2A76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C462B99840A00C2A76E /* Assets.xcassets */; };
 		00FD1C4A2B99840A00C2A76E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C482B99840A00C2A76E /* LaunchScreen.storyboard */; };
 		00FD1C522B99861900C2A76E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 00FD1C512B99861900C2A76E /* .gitignore */; };
 		59C03BE6C333BA2CA5EC9571 /* Pods_KoreaOneStep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5826F4DC7AFCBCC2980E97A /* Pods_KoreaOneStep.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		001DD5CF2BFA45C600825DAA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				001DD5D42BFA49AD00825DAA /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		000F34A32BBAE49100643F56 /* KoreaTravelingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaTravelingAPI.swift; sourceTree = "<group>"; };
@@ -106,6 +123,7 @@
 		003247232BA82B3B009642D4 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		003247272BA87015009642D4 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		003247292BA87317009642D4 /* AreaCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCodeModel.swift; sourceTree = "<group>"; };
+		003CE0462C087D66003B92FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0051C2A22BA3516E0094D4BC /* TourType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourType.swift; sourceTree = "<group>"; };
 		005E57182BA00FFF005CD618 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
 		005E571A2BA010B0005CD618 /* RegionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -171,14 +189,15 @@
 			files = (
 				00D18FC72BAC153700E1DC2A /* Toast in Frameworks */,
 				00EB3B242BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				009206692BA7A15F00724961 /* RealmSwift in Frameworks */,
-				009206672BA7A15F00724961 /* Realm in Frameworks */,
-				0024F2EB2B9B42C200799623 /* Kingfisher in Frameworks */,
+				0047079C2C6F1AFD0025E5DB /* RxCocoa in Frameworks */,
 				00EB3B262BAD68DC0073A52A /* FirebaseCrashlytics in Frameworks */,
 				0015DE6A2BA19363002CA32C /* FloatingPanel in Frameworks */,
 				0051C2A62BA35B6C0094D4BC /* SnapKit in Frameworks */,
+				0047079E2C6F1AFD0025E5DB /* RxSwift in Frameworks */,
 				0051C2A92BA35BD80094D4BC /* Alamofire in Frameworks */,
+				001DD5C32BFA3C4E00825DAA /* Kingfisher in Frameworks */,
 				0081E8AE2B9DE05000EF615D /* TTGTags in Frameworks */,
+				001DD5D32BFA497400825DAA /* RealmSwift in Frameworks */,
 				59C03BE6C333BA2CA5EC9571 /* Pods_KoreaOneStep.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				00FD1C512B99861900C2A76E /* .gitignore */,
+				003CE0462C087D66003B92FD /* README.md */,
 				00FD1C3C2B99840900C2A76E /* KoreaOneStep */,
 				00FD1C3B2B99840900C2A76E /* Products */,
 				B2674CF477D59B9A126D8C6A /* Pods */,
@@ -589,6 +609,7 @@
 				00FD1C372B99840900C2A76E /* Frameworks */,
 				00FD1C382B99840900C2A76E /* Resources */,
 				73714B403E4390F3AFF9386C /* [CP] Embed Pods Frameworks */,
+				001DD5CF2BFA45C600825DAA /* Embed Frameworks */,
 				00389ECD2BB6A735008DF6A6 /* ShellScript */,
 			);
 			buildRules = (
@@ -597,16 +618,17 @@
 			);
 			name = KoreaOneStep;
 			packageProductDependencies = (
-				0024F2EA2B9B42C200799623 /* Kingfisher */,
 				0081E8AD2B9DE05000EF615D /* TTGTags */,
 				0015DE692BA19363002CA32C /* FloatingPanel */,
 				0051C2A52BA35B6C0094D4BC /* SnapKit */,
 				0051C2A82BA35BD80094D4BC /* Alamofire */,
-				009206662BA7A15F00724961 /* Realm */,
-				009206682BA7A15F00724961 /* RealmSwift */,
 				00D18FC62BAC153700E1DC2A /* Toast */,
 				00EB3B232BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport */,
 				00EB3B252BAD68DC0073A52A /* FirebaseCrashlytics */,
+				001DD5C22BFA3C4E00825DAA /* Kingfisher */,
+				001DD5D22BFA497400825DAA /* RealmSwift */,
+				0047079B2C6F1AFD0025E5DB /* RxCocoa */,
+				0047079D2C6F1AFD0025E5DB /* RxSwift */,
 			);
 			productName = KoreaOneStep;
 			productReference = 00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */;
@@ -629,22 +651,24 @@
 			};
 			buildConfigurationList = 00FD1C352B99840900C2A76E /* Build configuration list for PBXProject "KoreaOneStep" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				ko,
+				Ko,
 				Base,
 			);
 			mainGroup = 00FD1C312B99840900C2A76E;
 			packageReferences = (
-				0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0081E8AC2B9DE05000EF615D /* XCRemoteSwiftPackageReference "TTGTagCollectionView" */,
 				0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				0051C2A42BA35B6C0094D4BC /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0051C2A72BA35BD80094D4BC /* XCRemoteSwiftPackageReference "Alamofire" */,
-				009206652BA7A15F00724961 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				00D18FC52BAC153700E1DC2A /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				00EB3B222BAD68DC0073A52A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				001DD5C12BFA3C4E00825DAA /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				001DD5D12BFA497300825DAA /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0047079A2C6F1AFD0025E5DB /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 00FD1C3B2B99840900C2A76E /* Products */;
 			projectDirPath = "";
@@ -660,11 +684,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				003CE0472C087D66003B92FD /* README.md in Resources */,
+				001DD5D62BFA4C1500825DAA /* Main.storyboard in Resources */,
+				001DD5D52BFA4C0B00825DAA /* Assets.xcassets in Resources */,
 				00FD1C522B99861900C2A76E /* .gitignore in Resources */,
 				00FD1C4A2B99840A00C2A76E /* LaunchScreen.storyboard in Resources */,
 				00A3D6222BAEE47800632748 /* GoogleService-Info.plist in Resources */,
-				00FD1C472B99840A00C2A76E /* Assets.xcassets in Resources */,
-				00FD1C452B99840900C2A76E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,7 +999,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -1021,7 +1046,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -1073,12 +1098,28 @@
 				minimumVersion = 2.8.2;
 			};
 		};
-		0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		001DD5C12BFA3C4E00825DAA /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.11.0;
+			};
+		};
+		001DD5D12BFA497300825DAA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.50.0;
+			};
+		};
+		0047079A2C6F1AFD0025E5DB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
 			};
 		};
 		0051C2A42BA35B6C0094D4BC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1094,7 +1135,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.0;
+				minimumVersion = 5.9.1;
 			};
 		};
 		0081E8AC2B9DE05000EF615D /* XCRemoteSwiftPackageReference "TTGTagCollectionView" */ = {
@@ -1105,20 +1146,12 @@
 				minimumVersion = 2.4.2;
 			};
 		};
-		009206652BA7A15F00724961 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = exactVersion;
-				version = 10.48.1;
-			};
-		};
 		00D18FC52BAC153700E1DC2A /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				minimumVersion = 5.1.1;
 			};
 		};
 		00EB3B222BAD68DC0073A52A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1126,7 +1159,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.23.0;
+				minimumVersion = 10.24.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1137,10 +1170,25 @@
 			package = 0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */;
 			productName = FloatingPanel;
 		};
-		0024F2EA2B9B42C200799623 /* Kingfisher */ = {
+		001DD5C22BFA3C4E00825DAA /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0024F2E92B9B42C200799623 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 001DD5C12BFA3C4E00825DAA /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		001DD5D22BFA497400825DAA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 001DD5D12BFA497300825DAA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		0047079B2C6F1AFD0025E5DB /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0047079A2C6F1AFD0025E5DB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		0047079D2C6F1AFD0025E5DB /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0047079A2C6F1AFD0025E5DB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 		0051C2A52BA35B6C0094D4BC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1156,16 +1204,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0081E8AC2B9DE05000EF615D /* XCRemoteSwiftPackageReference "TTGTagCollectionView" */;
 			productName = TTGTags;
-		};
-		009206662BA7A15F00724961 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 009206652BA7A15F00724961 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		009206682BA7A15F00724961 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 009206652BA7A15F00724961 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		00D18FC62BAC153700E1DC2A /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

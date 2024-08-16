@@ -128,6 +128,4 @@ enum KoreaTravelingAPI {
             ]
         }
     }
-    
-    
 }

@@ -106,4 +106,3 @@ enum DetailTableViewSection: Int, CaseIterable {
         }
     }
 }
-

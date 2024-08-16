@@ -103,8 +103,6 @@ extension DetailViewController {
     }
     
     @objc func bookmarkRightBarButtonItemTapped() {
-        print(#function)
-        
         guard let touristDestinationCommonInfo = touristDestinationCommonInfo else { return }
 
         viewModel.inputBookmarkButtonTrigger.value = (
@@ -117,7 +115,7 @@ extension DetailViewController {
     }
     
     @objc func shareRightBarButtonItemTapped() {
-        print(#function)
+        
     }
 }
 

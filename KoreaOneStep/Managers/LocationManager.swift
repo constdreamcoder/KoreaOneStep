@@ -50,10 +50,6 @@ extension LocationManager: CLLocationManagerDelegate {
         print(locations)
         
         if let coordinate = locations.last?.coordinate {
-            print(coordinate)
-            print(coordinate.latitude)
-            print(coordinate.longitude)
-            
             fetchLocationCompletion?(coordinate, nil, false)
         }
         
