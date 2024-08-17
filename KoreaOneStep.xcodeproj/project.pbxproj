@@ -45,7 +45,7 @@
 		005E572C2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E572B2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift */; };
 		005E572E2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E572D2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift */; };
 		0063D5F72BA531640081B59D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5F62BA531640081B59D /* MainViewModel.swift */; };
-		0063D5F92BA531E50081B59D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5F82BA531E50081B59D /* Observable.swift */; };
+		0063D5F92BA531E50081B59D /* CustomObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5F82BA531E50081B59D /* CustomObservable.swift */; };
 		0063D5FD2BA5356B0081B59D /* KoreaTravelingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063D5FC2BA5356B0081B59D /* KoreaTravelingManager.swift */; };
 		007323F62BA5892C001B0A2E /* LocationBasedTourismInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */; };
 		007323F82BA5A119001B0A2E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007323F72BA5A119001B0A2E /* String+Extension.swift */; };
@@ -63,7 +63,6 @@
 		0081E8AE2B9DE05000EF615D /* TTGTags in Frameworks */ = {isa = PBXBuildFile; productRef = 0081E8AD2B9DE05000EF615D /* TTGTags */; };
 		0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */; };
 		009ACA7F2BAAD77100C937F7 /* RecentKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */; };
-		009ACA812BAB136100C937F7 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009ACA802BAB136100C937F7 /* SettingViewModel.swift */; };
 		00A3D6222BAEE47800632748 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00A3D6212BAEE47700632748 /* GoogleService-Info.plist */; };
 		00C8CB8B2BB1C23F0074A58A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C8CB8A2BB1C23F0074A58A /* UIViewController+Extension.swift */; };
 		00D18FC72BAC153700E1DC2A /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 00D18FC62BAC153700E1DC2A /* Toast */; };
@@ -72,6 +71,9 @@
 		00DFE3BE2B9F452C005BF9D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */; };
 		00EB3B242BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B232BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		00EB3B262BAD68DC0073A52A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B252BAD68DC0073A52A /* FirebaseCrashlytics */; };
+		00ED3FEE2C707B6E00B50FB2 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED3FED2C707B6E00B50FB2 /* ViewModelType.swift */; };
+		00ED3FF02C707D5900B50FB2 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED3FEF2C707D5900B50FB2 /* SettingViewModel.swift */; };
+		00ED3FF52C708EEC00B50FB2 /* RxAppState in Frameworks */ = {isa = PBXBuildFile; productRef = 00ED3FF42C708EEC00B50FB2 /* RxAppState */; };
 		00F4F86B2BA7B57200071D89 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F4F86A2BA7B57200071D89 /* RealmManager.swift */; };
 		00F4F86F2BA7B6AE00071D89 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F4F86E2BA7B6AE00071D89 /* Bookmark.swift */; };
 		00F59C992BA1E70100CE49C4 /* ContentTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F59C982BA1E70100CE49C4 /* ContentTableViewSection.swift */; };
@@ -134,7 +136,7 @@
 		005E572B2BA0395F005CD618 /* ServiceProvidedInternalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidedInternalCollectionViewCell.swift; sourceTree = "<group>"; };
 		005E572D2BA03AEC005CD618 /* ServiceProvidedDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidedDetailTableViewCell.swift; sourceTree = "<group>"; };
 		0063D5F62BA531640081B59D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		0063D5F82BA531E50081B59D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		0063D5F82BA531E50081B59D /* CustomObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomObservable.swift; sourceTree = "<group>"; };
 		0063D5FC2BA5356B0081B59D /* KoreaTravelingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaTravelingManager.swift; sourceTree = "<group>"; };
 		007323F52BA5892B001B0A2E /* LocationBasedTourismInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBasedTourismInformationModel.swift; sourceTree = "<group>"; };
 		007323F72BA5A119001B0A2E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -151,12 +153,13 @@
 		0081E8AA2B9DD8E400EF615D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		0081E8AF2B9DF2A100EF615D /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		009ACA7E2BAAD77100C937F7 /* RecentKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeyword.swift; sourceTree = "<group>"; };
-		009ACA802BAB136100C937F7 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		00A3D6212BAEE47700632748 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00C8CB8A2BB1C23F0074A58A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		00D18FC82BAC167400E1DC2A /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		00DFE3BA2B9F3682005BF9D6 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		00DFE3BD2B9F452C005BF9D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		00ED3FED2C707B6E00B50FB2 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		00ED3FEF2C707D5900B50FB2 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		00F4F86A2BA7B57200071D89 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		00F4F86E2BA7B6AE00071D89 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		00F59C982BA1E70100CE49C4 /* ContentTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewSection.swift; sourceTree = "<group>"; };
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00D18FC72BAC153700E1DC2A /* Toast in Frameworks */,
+				00ED3FF52C708EEC00B50FB2 /* RxAppState in Frameworks */,
 				00EB3B242BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				0047079C2C6F1AFD0025E5DB /* RxCocoa in Frameworks */,
 				00EB3B262BAD68DC0073A52A /* FirebaseCrashlytics in Frameworks */,
@@ -252,7 +256,7 @@
 				001D3E992BA6E2AD00065C83 /* DetailViewModel.swift */,
 				003247232BA82B3B009642D4 /* BookmarkViewModel.swift */,
 				003247272BA87015009642D4 /* SearchViewModel.swift */,
-				009ACA802BAB136100C937F7 /* SettingViewModel.swift */,
+				00ED3FEF2C707D5900B50FB2 /* SettingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -305,6 +309,7 @@
 				0081E8A72B9DC71100EF615D /* UITableViewCellConfiguration.swift */,
 				00F77ACE2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift */,
 				00F77AD32B9EEDFA00A6A2E0 /* UICollectionViewCellConfiguration.swift */,
+				00ED3FED2C707B6E00B50FB2 /* ViewModelType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -438,7 +443,7 @@
 		0063D5FA2BA532670081B59D /* CommunicationBase */ = {
 			isa = PBXGroup;
 			children = (
-				0063D5F82BA531E50081B59D /* Observable.swift */,
+				0063D5F82BA531E50081B59D /* CustomObservable.swift */,
 			);
 			path = CommunicationBase;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				001DD5D22BFA497400825DAA /* RealmSwift */,
 				0047079B2C6F1AFD0025E5DB /* RxCocoa */,
 				0047079D2C6F1AFD0025E5DB /* RxSwift */,
+				00ED3FF42C708EEC00B50FB2 /* RxAppState */,
 			);
 			productName = KoreaOneStep;
 			productReference = 00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */;
@@ -669,6 +675,7 @@
 				001DD5C12BFA3C4E00825DAA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				001DD5D12BFA497300825DAA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				0047079A2C6F1AFD0025E5DB /* XCRemoteSwiftPackageReference "RxSwift" */,
+				00ED3FF32C708EEC00B50FB2 /* XCRemoteSwiftPackageReference "RxAppState" */,
 			);
 			productRefGroup = 00FD1C3B2B99840900C2A76E /* Products */;
 			projectDirPath = "";
@@ -777,7 +784,7 @@
 				00F77ACB2B9EE68600A6A2E0 /* BookmarkTableViewSection.swift in Sources */,
 				003247282BA87015009642D4 /* SearchViewModel.swift in Sources */,
 				005E571D2BA0190E005CD618 /* DetailTableViewSection.swift in Sources */,
-				009ACA812BAB136100C937F7 /* SettingViewModel.swift in Sources */,
+				00ED3FF02C707D5900B50FB2 /* SettingViewModel.swift in Sources */,
 				00F59C992BA1E70100CE49C4 /* ContentTableViewSection.swift in Sources */,
 				00F4F86B2BA7B57200071D89 /* RealmManager.swift in Sources */,
 				00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */,
@@ -792,7 +799,8 @@
 				00F4F86F2BA7B6AE00071D89 /* Bookmark.swift in Sources */,
 				005E57202BA01CB5005CD618 /* PhoneNumberTableViewCell.swift in Sources */,
 				00F77ACF2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift in Sources */,
-				0063D5F92BA531E50081B59D /* Observable.swift in Sources */,
+				00ED3FEE2C707B6E00B50FB2 /* ViewModelType.swift in Sources */,
+				0063D5F92BA531E50081B59D /* CustomObservable.swift in Sources */,
 				008123252BA9778200ABC9B7 /* SearchedResultsTableViewTableViewCell.swift in Sources */,
 				00F77AA72B9EBC1200A6A2E0 /* FilterTableViewSection.swift in Sources */,
 				0032472A2BA87317009642D4 /* AreaCodeModel.swift in Sources */,
@@ -1013,6 +1021,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1060,6 +1069,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1162,6 +1172,14 @@
 				minimumVersion = 10.24.0;
 			};
 		};
+		00ED3FF32C708EEC00B50FB2 /* XCRemoteSwiftPackageReference "RxAppState" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pixeldock/RxAppState.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1219,6 +1237,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 00EB3B222BAD68DC0073A52A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		00ED3FF42C708EEC00B50FB2 /* RxAppState */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00ED3FF32C708EEC00B50FB2 /* XCRemoteSwiftPackageReference "RxAppState" */;
+			productName = RxAppState;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

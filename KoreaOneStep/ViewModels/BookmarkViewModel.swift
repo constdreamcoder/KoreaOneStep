@@ -8,11 +8,11 @@
 import Foundation
 
 final class BookmarkViewModel {
-    let inputForGettingInitialCollectionViewState: Observable<Void?> = Observable(nil)
-    let inputForCollectionViewUpdateWithsearchText: Observable<String> = Observable("")
-    let inputBookmarkIconButtonTapTrigger: Observable<Bookmark?> = Observable(nil)
+    let inputForGettingInitialCollectionViewState: CustomObservable<Void?> = CustomObservable(nil)
+    let inputForCollectionViewUpdateWithsearchText: CustomObservable<String> = CustomObservable("")
+    let inputBookmarkIconButtonTapTrigger: CustomObservable<Bookmark?> = CustomObservable(nil)
     
-    let outputBookmarkList: Observable<[Bookmark]> = Observable([])
+    let outputBookmarkList: CustomObservable<[Bookmark]> = CustomObservable([])
     
     init() {
         inputForGettingInitialCollectionViewState.bind { [weak self] trigger in

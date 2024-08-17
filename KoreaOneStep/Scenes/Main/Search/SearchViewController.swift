@@ -65,7 +65,7 @@ final class SearchViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
-        bindings()
+        bind()
         addUserEvents()
     }
 
@@ -135,7 +135,7 @@ extension SearchViewController: UIViewControllerConfiguration {
         view.backgroundColor = .customWhite
     }
     
-    func bindings() {
+    func bind() {
         viewModel.inputViewDidLoadTrigger.value = ()
         
         viewModel.outputSearchedResultList.bind { [weak self] searchedResultList in

@@ -53,7 +53,7 @@ final class BookmarkViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
-        bindings()
+        bind()
         addUserEvents()
     }
     
@@ -125,7 +125,7 @@ extension BookmarkViewController: UIViewControllerConfiguration {
         view.backgroundColor = .customWhite
     }
     
-    func bindings() {
+    func bind() {
         viewModel.outputBookmarkList.bind { [weak self] bookmarkList in
             guard let weakSelf = self else { return }
             

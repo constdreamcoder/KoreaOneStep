@@ -8,20 +8,22 @@
 import UIKit
 import SnapKit
 import Toast
+import RxSwift
+import RxCocoa
+import RxAppState
 
 final class SettingViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
+                
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
         
         return tableView
     }()
     
+    private var disposeBag = DisposeBag()
+        
     private let viewModel = SettingViewModel()
 
     override func viewDidLoad() {
@@ -30,7 +32,7 @@ final class SettingViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
-        bindings()
+        bind()
     }
 }
 
@@ -51,43 +53,35 @@ extension SettingViewController: UIViewControllerConfiguration {
         view.backgroundColor = .customWhite
     }
     
-    func bindings() {
-        viewModel.outputRemoveAllBookmarksToastMessage.bind { [weak self] toastMessage in
-            guard let weakSelf = self else { return }
-            
-            weakSelf.view.makeToast(toastMessage)
-        }
-    }
-}
+    func bind() {
+        
+        let itemTapped = Observable.zip(
+            tableView.rx.modelSelected(SettingTableViewCellTitle.self),
+            tableView.rx.itemSelected
+        )
+        
+        let input = SettingViewModel.Input(itemTapped: itemTapped)
+        let output = viewModel.transform(input: input)
+        
+        output.settingTableViewCellTitles
+            .drive(tableView.rx.items(cellIdentifier: UITableViewCell.identifier)) { row, element, cell in
+                
+                cell.selectionStyle = .none
 
-extension SettingViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(SettingTableViewCellTitle.allCases[indexPath.row].rawValue)
+                cell.textLabel?.text = element.rawValue
+                cell.textLabel?.textColor = element.titleColor
+                cell.textLabel?.font = .boldSystemFont(ofSize: 18.0)
+                
+                if !(element == .removeAllBookmarkRecords) {
+                    cell.accessoryType = .disclosureIndicator
+                }
+            }
+            .disposed(by: disposeBag)
         
-        if SettingTableViewCellTitle.allCases[indexPath.row] == .removeAllBookmarkRecords {
-            viewModel.inputBookmarkRemoveAllCellTapTrigger.value = ()
-        }
-    }
-}
-
-extension SettingViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingTableViewCellTitle.allCases.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier)!
-        
-        cell.selectionStyle = .none
-
-        cell.textLabel?.text = SettingTableViewCellTitle.allCases[indexPath.row].rawValue
-        cell.textLabel?.textColor = SettingTableViewCellTitle.allCases[indexPath.row].titleColor
-        cell.textLabel?.font = .boldSystemFont(ofSize: 18.0)
-        
-        if !(SettingTableViewCellTitle.allCases[indexPath.row] == .removeAllBookmarkRecords) {
-            cell.accessoryType = .disclosureIndicator
-        }
-        
-        return cell
+        output.removeAllBookmarksToastMessage
+            .drive(with: self) { owner, toastMessage in
+                owner.view.makeToast(toastMessage)
+            }
+            .disposed(by: disposeBag)
     }
 }

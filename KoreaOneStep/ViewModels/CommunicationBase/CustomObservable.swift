@@ -1,5 +1,5 @@
 //
-//  Observable.swift
+//  CustomObservable.swift
 //  KoreaOneStep
 //
 //  Created by SUCHAN CHANG on 3/16/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Observable<T> {
+final class CustomObservable<T> {
     
     private var closure: ((T) -> Void)?
     

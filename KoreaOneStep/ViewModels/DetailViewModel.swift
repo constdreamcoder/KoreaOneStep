@@ -9,14 +9,14 @@ import Foundation
 
 final class DetailViewModel {
     
-    let inputViewDidLoadTrigger: Observable<(String?, String?)> = Observable((nil, nil))
-    let inputIsBookmarked: Observable<String?> = Observable(nil)
-    let inputBookmarkButtonTrigger: Observable<(String?, String?, String?, String?, String?)> = Observable((nil, nil, nil, nil, nil))
-    let inputAcitivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
+    let inputViewDidLoadTrigger: CustomObservable<(String?, String?)> = CustomObservable((nil, nil))
+    let inputIsBookmarked: CustomObservable<String?> = CustomObservable(nil)
+    let inputBookmarkButtonTrigger: CustomObservable<(String?, String?, String?, String?, String?)> = CustomObservable((nil, nil, nil, nil, nil))
+    let inputAcitivityIndicatorStartTrigger: CustomObservable<Void?> = CustomObservable(nil)
     
-    let outputDetailTableViewData: Observable<(CIItem?, Dictionary<DetailTableViewSection.ServiceDetailSection, [String]>)> = Observable((nil, [:]))
-    let outputIsBookmarked: Observable<Bool> = Observable(false)
-    let outputAcitivityIndicatorStartTrigger: Observable<Void?> = Observable(nil)
+    let outputDetailTableViewData: CustomObservable<(CIItem?, Dictionary<DetailTableViewSection.ServiceDetailSection, [String]>)> = CustomObservable((nil, [:]))
+    let outputIsBookmarked: CustomObservable<Bool> = CustomObservable(false)
+    let outputAcitivityIndicatorStartTrigger: CustomObservable<Void?> = CustomObservable(nil)
     
     init() {
         inputViewDidLoadTrigger.bind { [weak self]  contentId, contentTypeId in

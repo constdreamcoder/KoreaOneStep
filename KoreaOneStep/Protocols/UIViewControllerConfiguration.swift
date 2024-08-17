@@ -11,5 +11,5 @@ protocol UIViewControllerConfiguration {
     func configureNavigationBar()
     func configureConstraints()
     func configureUI()
-    func bindings()
+    func bind()
 }

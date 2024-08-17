@@ -93,7 +93,7 @@ final class MainViewController: UIViewController {
         configureUI()
         addTourType()
         showFloatingPanel()
-        bindings()
+        bind()
         addUserEvents()
     }
     
@@ -200,7 +200,7 @@ extension MainViewController: UIViewControllerConfiguration {
         view.backgroundColor = .customWhite
     }
     
-    func bindings() {
+    func bind() {
         viewModel.inputSearchUserCurrentLocationTrigger.value = ()
         
         viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in

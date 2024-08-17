@@ -47,7 +47,7 @@ final class FilterViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
-        bindings()
+        bind()
         print(#function)
         print(isViewLoaded)
         print(isBeingPresented)
@@ -92,7 +92,7 @@ extension FilterViewController: UIViewControllerConfiguration {
         view.backgroundColor = .customWhite
     }
     
-    func bindings() {
+    func bind() {
         guard let searchViewModel = searchViewModel else { return }
                 
         searchViewModel.outputAreaCodeList.bind { [weak self] areaCodeList in

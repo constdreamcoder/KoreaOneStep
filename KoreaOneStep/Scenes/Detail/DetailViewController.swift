@@ -59,7 +59,7 @@ final class DetailViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
-        bindings()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,7 +153,7 @@ extension DetailViewController: UIViewControllerConfiguration {
         view.backgroundColor = .customWhite
     }
     
-    func bindings() {
+    func bind() {
         if isFromBookmarkVC {
             viewModel.inputAcitivityIndicatorStartTrigger.value = ()
         }

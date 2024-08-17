@@ -1,33 +1,49 @@
 //
-//  SettingViewModel.swift
+//  SettingViewModel2.swift
 //  KoreaOneStep
 //
-//  Created by SUCHAN CHANG on 3/20/24.
+//  Created by SUCHAN CHANG on 8/17/24.
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-final class SettingViewModel {
+typealias SettingTableViewCellTapType = (ControlEvent<SettingTableViewCellTitle>.Element, ControlEvent<IndexPath>.Element)
+
+final class SettingViewModel: ViewModelType {
     
-    let inputBookmarkRemoveAllCellTapTrigger: Observable<Void?> = Observable(nil)
+    var disposeBag = DisposeBag()
     
-    let outputRemoveAllBookmarksToastMessage: Observable<String?> = Observable(nil)
+    struct Input { 
+        let itemTapped: Observable<SettingTableViewCellTapType>
+    }
     
-    init() {
-        inputBookmarkRemoveAllCellTapTrigger.bind { [weak self] trigger in
-            guard let weakSelf = self else { return }
-            
-            guard let trigger = trigger else { return }
-            
-            let bookmarkList: [Bookmark] = RealmManager.shared.read(Bookmark.self).map { $0 }
-            
-            if bookmarkList.count >= 1 {
-                let toastMessage = RealmManager.shared.deleteAll()
-                weakSelf.outputRemoveAllBookmarksToastMessage.value = toastMessage
-                return
+    struct Output {
+        let settingTableViewCellTitles: Driver<[SettingTableViewCellTitle]>
+        let removeAllBookmarksToastMessage: Driver<String>
+    }
+    
+    func transform(input: Input) -> Output {
+        
+        let removeAllBookmarksToastMessage = PublishRelay<String>()
+        
+        input.itemTapped
+            .bind { _ in
+                let bookmarkList: [Bookmark] = RealmManager.shared.read(Bookmark.self).map { $0 }
+                
+                if bookmarkList.count >= 1 {
+                    let toastMessage = RealmManager.shared.deleteAll()
+                    removeAllBookmarksToastMessage.accept(toastMessage)
+                    return
+                }
+                removeAllBookmarksToastMessage.accept(ToastMessage.Failure.noBookmarkContents)
             }
-            
-            weakSelf.outputRemoveAllBookmarksToastMessage.value = ToastMessage.Failure.noBookmarkContents
-        }
+            .disposed(by: disposeBag)
+           
+        return Output(
+            settingTableViewCellTitles: Observable.just(SettingTableViewCellTitle.allCases).asDriver(onErrorJustReturn: []), 
+            removeAllBookmarksToastMessage: removeAllBookmarksToastMessage.asDriver(onErrorJustReturn: "")
+        )
     }
 }

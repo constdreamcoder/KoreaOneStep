@@ -71,7 +71,7 @@ final class ContentViewController: UIViewController {
         configureConstraints()
         configureUI()
         configureOthers()
-        bindings()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -202,7 +202,7 @@ extension ContentViewController: UIViewControllerConfiguration {
         // TODO: - Floating Panel Top 부분 둥글게 만들기
     }
     
-    func bindings() {
+    func bind() {
         mainViewModel.outputLocationBasedTouristDestinationList.bind { [weak self] locationBasedTouristDestinationList in
             guard let weakSelf = self else { return }
             

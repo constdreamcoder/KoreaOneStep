@@ -8,19 +8,19 @@
 import Foundation
 
 final class SearchViewModel {
-    let inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
-    let inputFilterVCViewDidLoadTrigger: Observable<Void?> = Observable(nil)
-    let inputSelectedRegionTag: Observable<ACItem?> = Observable(nil)
-    let inputSelectedSiGunGuTag: Observable<ACItem?> = Observable(nil)
-    let inputSearchElements: Observable<(String?, ACItem?, ACItem?)> = Observable((nil, nil, nil))
-    let inputXmarkButtonTapTrigger: Observable<RecentKeyword?> = Observable(nil)
+    let inputViewDidLoadTrigger: CustomObservable<Void?> = CustomObservable(nil)
+    let inputFilterVCViewDidLoadTrigger: CustomObservable<Void?> = CustomObservable(nil)
+    let inputSelectedRegionTag: CustomObservable<ACItem?> = CustomObservable(nil)
+    let inputSelectedSiGunGuTag: CustomObservable<ACItem?> = CustomObservable(nil)
+    let inputSearchElements: CustomObservable<(String?, ACItem?, ACItem?)> = CustomObservable((nil, nil, nil))
+    let inputXmarkButtonTapTrigger: CustomObservable<RecentKeyword?> = CustomObservable(nil)
     
-    let outputRecentKeywordList: Observable<[RecentKeyword]> = Observable([])
-    let outputAreaCodeList: Observable<[ACItem]> = Observable([])
-    let outputSiGunGuCodeList: Observable<[ACItem]> = Observable([])
-    let outputSearchedResultList: Observable<[KSItem]?> = Observable(nil)
-    let outputSelectedRegionTag: Observable<ACItem?> = Observable(nil)
-    let outputSelectedSiGunGu: Observable<ACItem?> = Observable(nil)
+    let outputRecentKeywordList: CustomObservable<[RecentKeyword]> = CustomObservable([])
+    let outputAreaCodeList: CustomObservable<[ACItem]> = CustomObservable([])
+    let outputSiGunGuCodeList: CustomObservable<[ACItem]> = CustomObservable([])
+    let outputSearchedResultList: CustomObservable<[KSItem]?> = CustomObservable(nil)
+    let outputSelectedRegionTag: CustomObservable<ACItem?> = CustomObservable(nil)
+    let outputSelectedSiGunGu: CustomObservable<ACItem?> = CustomObservable(nil)
     
     init() {
         inputViewDidLoadTrigger.bind { [weak self] trigger in
