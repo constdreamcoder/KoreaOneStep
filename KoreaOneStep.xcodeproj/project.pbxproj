@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000C39442C72334F003452C1 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000C39432C72334F003452C1 /* BookmarkViewModel.swift */; };
+		000C39472C7238F1003452C1 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 000C39462C7238F1003452C1 /* Differentiator */; };
+		000C39492C7238F1003452C1 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 000C39482C7238F1003452C1 /* RxDataSources */; };
+		000C394E2C724066003452C1 /* BookmarkSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000C394D2C724066003452C1 /* BookmarkSectionData.swift */; };
 		000F34A42BBAE49100643F56 /* KoreaTravelingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000F34A32BBAE49100643F56 /* KoreaTravelingAPI.swift */; };
 		0015DE6A2BA19363002CA32C /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 0015DE692BA19363002CA32C /* FloatingPanel */; };
 		0015DE6C2BA19592002CA32C /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015DE6B2BA19592002CA32C /* ContentViewController.swift */; };
@@ -27,7 +31,6 @@
 		00287F4B2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F4A2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift */; };
 		00287F4D2BA2D44800B56A15 /* FilteringCategoryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */; };
 		00287F512BA2DDC300B56A15 /* FilteringOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00287F502BA2DDC300B56A15 /* FilteringOrder.swift */; };
-		003247242BA82B3B009642D4 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247232BA82B3B009642D4 /* BookmarkViewModel.swift */; };
 		003247282BA87015009642D4 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247272BA87015009642D4 /* SearchViewModel.swift */; };
 		0032472A2BA87317009642D4 /* AreaCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003247292BA87317009642D4 /* AreaCodeModel.swift */; };
 		003CE0472C087D66003B92FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 003CE0462C087D66003B92FD /* README.md */; };
@@ -108,6 +111,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		000C39432C72334F003452C1 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
+		000C394D2C724066003452C1 /* BookmarkSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkSectionData.swift; sourceTree = "<group>"; };
 		000F34A32BBAE49100643F56 /* KoreaTravelingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaTravelingAPI.swift; sourceTree = "<group>"; };
 		0015DE6B2BA19592002CA32C /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		0015DE6E2BA19CCE002CA32C /* SearchResultListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListTableViewCell.swift; sourceTree = "<group>"; };
@@ -122,7 +127,6 @@
 		00287F4A2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringDistanceStackView.swift; sourceTree = "<group>"; };
 		00287F4C2BA2D44800B56A15 /* FilteringCategoryStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringCategoryStackView.swift; sourceTree = "<group>"; };
 		00287F502BA2DDC300B56A15 /* FilteringOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringOrder.swift; sourceTree = "<group>"; };
-		003247232BA82B3B009642D4 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		003247272BA87015009642D4 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		003247292BA87317009642D4 /* AreaCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCodeModel.swift; sourceTree = "<group>"; };
 		003CE0462C087D66003B92FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -190,8 +194,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000C39472C7238F1003452C1 /* Differentiator in Frameworks */,
 				00D18FC72BAC153700E1DC2A /* Toast in Frameworks */,
 				00ED3FF52C708EEC00B50FB2 /* RxAppState in Frameworks */,
+				000C39492C7238F1003452C1 /* RxDataSources in Frameworks */,
 				00EB3B242BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				0047079C2C6F1AFD0025E5DB /* RxCocoa in Frameworks */,
 				00EB3B262BAD68DC0073A52A /* FirebaseCrashlytics in Frameworks */,
@@ -209,6 +215,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000C394C2C72405D003452C1 /* BookmarkViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				000C39432C72334F003452C1 /* BookmarkViewModel.swift */,
+				000C394D2C724066003452C1 /* BookmarkSectionData.swift */,
+			);
+			path = BookmarkViewModel;
+			sourceTree = "<group>";
+		};
 		000F34A52BBAF4AD00643F56 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +269,7 @@
 				0063D5FA2BA532670081B59D /* CommunicationBase */,
 				0063D5F62BA531640081B59D /* MainViewModel.swift */,
 				001D3E992BA6E2AD00065C83 /* DetailViewModel.swift */,
-				003247232BA82B3B009642D4 /* BookmarkViewModel.swift */,
+				000C394C2C72405D003452C1 /* BookmarkViewModel */,
 				003247272BA87015009642D4 /* SearchViewModel.swift */,
 				00ED3FEF2C707D5900B50FB2 /* SettingViewModel.swift */,
 			);
@@ -635,6 +650,8 @@
 				0047079B2C6F1AFD0025E5DB /* RxCocoa */,
 				0047079D2C6F1AFD0025E5DB /* RxSwift */,
 				00ED3FF42C708EEC00B50FB2 /* RxAppState */,
+				000C39462C7238F1003452C1 /* Differentiator */,
+				000C39482C7238F1003452C1 /* RxDataSources */,
 			);
 			productName = KoreaOneStep;
 			productReference = 00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */;
@@ -676,6 +693,7 @@
 				001DD5D12BFA497300825DAA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				0047079A2C6F1AFD0025E5DB /* XCRemoteSwiftPackageReference "RxSwift" */,
 				00ED3FF32C708EEC00B50FB2 /* XCRemoteSwiftPackageReference "RxAppState" */,
+				000C39452C7238F1003452C1 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 00FD1C3B2B99840900C2A76E /* Products */;
 			projectDirPath = "";
@@ -778,6 +796,7 @@
 				00287F4B2BA2C1EA00B56A15 /* FilteringDistanceStackView.swift in Sources */,
 				00F77ADB2B9F07A500A6A2E0 /* UICollectionReusableView+Extension.swift in Sources */,
 				0081E8AB2B9DD8E400EF615D /* FilterViewController.swift in Sources */,
+				000C39442C72334F003452C1 /* BookmarkViewModel.swift in Sources */,
 				00F59C9F2BA1F25600CE49C4 /* AccordionTableViewCell.swift in Sources */,
 				00F77AC92B9EE55D00A6A2E0 /* BookmarkHeaderView.swift in Sources */,
 				0024F2FA2B9B45B600799623 /* TabBarViewController.swift in Sources */,
@@ -799,6 +818,7 @@
 				00F4F86F2BA7B6AE00071D89 /* Bookmark.swift in Sources */,
 				005E57202BA01CB5005CD618 /* PhoneNumberTableViewCell.swift in Sources */,
 				00F77ACF2B9EEA8C00A6A2E0 /* UICollectionViewConfiguration.swift in Sources */,
+				000C394E2C724066003452C1 /* BookmarkSectionData.swift in Sources */,
 				00ED3FEE2C707B6E00B50FB2 /* ViewModelType.swift in Sources */,
 				0063D5F92BA531E50081B59D /* CustomObservable.swift in Sources */,
 				008123252BA9778200ABC9B7 /* SearchedResultsTableViewTableViewCell.swift in Sources */,
@@ -827,7 +847,6 @@
 				00D18FC92BAC167400E1DC2A /* ToastMessage.swift in Sources */,
 				0081E8B02B9DF2A100EF615D /* FilterTableViewCell.swift in Sources */,
 				0024F3032B9B465900799623 /* SettingViewController.swift in Sources */,
-				003247242BA82B3B009642D4 /* BookmarkViewModel.swift in Sources */,
 				0081E8A62B9DC68200EF615D /* SearchTableViewCell.swift in Sources */,
 				0081E8A82B9DC71100EF615D /* UITableViewCellConfiguration.swift in Sources */,
 				0024F2FF2B9B464A00799623 /* MainViewController.swift in Sources */,
@@ -1100,6 +1119,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		000C39452C7238F1003452C1 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scenee/FloatingPanel.git";
@@ -1183,6 +1210,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		000C39462C7238F1003452C1 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 000C39452C7238F1003452C1 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		000C39482C7238F1003452C1 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 000C39452C7238F1003452C1 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
 		0015DE692BA19363002CA32C /* FloatingPanel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0015DE682BA19362002CA32C /* XCRemoteSwiftPackageReference "FloatingPanel" */;

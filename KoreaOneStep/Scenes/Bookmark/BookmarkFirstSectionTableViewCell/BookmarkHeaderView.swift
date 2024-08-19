@@ -63,6 +63,12 @@ extension BookmarkHeaderView: UICollectionViewCellConfiguration {
     func configureUI() {
         
     }
+    
+    typealias BindElementType = Bookmark
+    
+    func bind(element: Bookmark) {
+        
+    }
 }
 
 extension BookmarkHeaderView: UICollectionViewConfiguration {

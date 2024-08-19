@@ -8,6 +8,9 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 final class BookmarkViewController: UIViewController {
     
@@ -15,14 +18,11 @@ final class BookmarkViewController: UIViewController {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "검색어를 입력해주세요"
-        searchBar.delegate = self
         return searchBar
     }()
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-        collectionView.dataSource = self
-        collectionView.delegate = self
         
         collectionView.register(BookmarkHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BookmarkHeaderView.identifier)
         collectionView.register(BookmarkCollectionViewCell.self, forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier)
@@ -43,6 +43,32 @@ final class BookmarkViewController: UIViewController {
     
     private let viewModel = BookmarkViewModel()
     
+    private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<BookmarkSectionData> { [weak self] dataSource, collectionView, indexPath, bookmark in
+        guard let self else { return UICollectionViewCell() }
+             
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookmarkCollectionViewCell.identifier, for: indexPath) as? BookmarkCollectionViewCell else { return UICollectionViewCell() }
+        
+        let buttonImageURL = URL(string: bookmark.imageURL)
+        let placeholderImage = UIImage(systemName: "photo")
+        cell.thumnailImageView.kf.setImage(with: buttonImageURL, placeholder: placeholderImage)
+        cell.nameLabel.text = bookmark.title
+        
+        cell.viewModel = viewModel
+        cell.bind(element: bookmark)
+        return cell
+        
+    } configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BookmarkHeaderView.identifier, for: indexPath) as? BookmarkHeaderView else { return UICollectionViewCell() }
+            return header
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
+    private let disposeBag = DisposeBag()
+    
     private var bookmarkList: [Bookmark] = []
     
     private var isSearchingMode: Bool = false
@@ -57,27 +83,10 @@ final class BookmarkViewController: UIViewController {
         addUserEvents()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        collectionViewUpdate(with: searchText)
-    }
-    
     private func addUserEvents() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-    }
-    
-    private func collectionViewUpdate(with searchText: String) {
-        let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if trimmedSearchText != "" {
-            viewModel.inputForCollectionViewUpdateWithsearchText.value = trimmedSearchText
-        } else {
-            viewModel.inputForGettingInitialCollectionViewState.value = ()
-        }
     }
 }
 
@@ -85,12 +94,6 @@ extension BookmarkViewController {
     @objc func backgroundViewTapped(_ gestureRecognizer: UIGestureRecognizer) {
         print("바탕화면 터치됨")
         view.endEditing(true)
-    }
-    
-    @objc func bookmarkIconButtonTapped(_ button: UIButton) {
-        let bookmark = bookmarkList[button.tag]
-        
-        viewModel.inputBookmarkIconButtonTapTrigger.value = bookmark
     }
 }
 
@@ -126,21 +129,65 @@ extension BookmarkViewController: UIViewControllerConfiguration {
     }
     
     func bind() {
-        viewModel.outputBookmarkList.bind { [weak self] bookmarkList in
-            guard let weakSelf = self else { return }
-            
-            if !weakSelf.isSearchingMode {
-                if bookmarkList.count >= 1 {
-                    weakSelf.noBookmarkLabel.isHidden = true
-                } else {
-                    weakSelf.noBookmarkLabel.isHidden = false
+        
+        let textDidBeginEditing = searchBar.rx.textDidBeginEditing
+            .withUnretained(self)
+            .map { owner, _ in
+                let updatedLayout = owner.configureCollectionViewLayout()
+                updatedLayout.headerReferenceSize = .zero
+                owner.collectionView.collectionViewLayout = updatedLayout
+            }
+        
+        let input = BookmarkViewModel.Input(
+            viewWillAppear: rx.viewWillAppear,
+            searchText: searchBar.rx.text.orEmpty,
+            textDidBeginEditing: textDidBeginEditing
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output.section
+            .drive(collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        output.viewWillAppear
+            .drive(with: self) { owner, bookmarkCount in
+                if !owner.isSearchingMode {
+                    if bookmarkCount >= 1 {
+                        owner.noBookmarkLabel.isHidden = true
+                    } else {
+                        owner.noBookmarkLabel.isHidden = false
+                    }
                 }
             }
-           
-            weakSelf.bookmarkList = bookmarkList
-            
-            weakSelf.collectionView.reloadData()
-        }
+            .disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(Bookmark.self)
+            .bind(with: self) { owner, bookmark in
+                let detailVC = DetailViewController()
+
+                detailVC.isFromBookmarkVC = true
+
+                detailVC.contentTitle = bookmark.title
+                detailVC.contentId = bookmark.contentId
+                detailVC.contentTypeId = bookmark.contentTypeId
+                owner.navigationController?.pushViewController(detailVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        searchBar.rx.textDidEndEditing
+            .bind(with: self) { owner, _ in
+                owner.isSearchingMode = false
+            }
+            .disposed(by: disposeBag)
+        
+        searchBar.rx.searchButtonClicked
+            .bind(with: self) { owner, _ in
+                owner.view.endEditing(true)
+                
+                owner.isSearchingMode = false
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -159,79 +206,5 @@ extension BookmarkViewController: UICollectionViewConfiguration {
          layout.headerReferenceSize = .init(width: view.frame.width, height: .zero)
         
         return layout
-    }
-}
-
-extension BookmarkViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let selectedBookmark = bookmarkList[indexPath.item]
-        
-        let detailVC = DetailViewController()
-
-        detailVC.isFromBookmarkVC = true
-
-        detailVC.contentTitle = selectedBookmark.title
-        detailVC.contentId = selectedBookmark.contentId
-        detailVC.contentTypeId = selectedBookmark.contentTypeId
-        navigationController?.pushViewController(detailVC, animated: true)
-    }
-}
-
-extension BookmarkViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BookmarkHeaderView.identifier, for: indexPath) as? BookmarkHeaderView else { return UICollectionViewCell() }
-        return header
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookmarkList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookmarkCollectionViewCell.identifier, for: indexPath) as? BookmarkCollectionViewCell else { return UICollectionViewCell() }
-        
-        let bookmark = bookmarkList[indexPath.item]
-        
-        let buttonImageURL = URL(string: bookmark.imageURL)
-        let placeholderImage = UIImage(systemName: "photo")
-        cell.thumnailImageView.kf.setImage(with: buttonImageURL, placeholder: placeholderImage)
-        cell.nameLabel.text = bookmark.title
-        
-        cell.bookmarkIconButton.tag = indexPath.item
-        cell.bookmarkIconButton.addTarget(self, action: #selector(bookmarkIconButtonTapped), for: .touchUpInside)
-        return cell
-    }
-}
-
-extension BookmarkViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-        isSearchingMode = true
-        
-        let updatedLayout = configureCollectionViewLayout()
-        updatedLayout.headerReferenceSize = .zero
-        collectionView.collectionViewLayout = updatedLayout
-            
-        guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        collectionViewUpdate(with: searchText)
-        
-        collectionView.reloadData()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        collectionViewUpdate(with: searchText)
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearchingMode = false
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        view.endEditing(true)
-        
-        isSearchingMode = false
     }
 }

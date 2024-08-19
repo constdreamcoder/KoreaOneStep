@@ -8,6 +8,9 @@
 import Foundation
 
 protocol UICollectionViewCellConfiguration {
+    associatedtype BindElementType
+    
     func configureConstraints()
     func configureUI()
+    func bind(element: BindElementType)
 }

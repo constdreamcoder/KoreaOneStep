@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class BookmarkCollectionViewCell: UICollectionViewCell {
     
@@ -55,6 +57,10 @@ final class BookmarkCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    weak var viewModel: BookmarkViewModel?
+    
+    private var disposeBag = DisposeBag()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -71,6 +77,12 @@ final class BookmarkCollectionViewCell: UICollectionViewCell {
         
         layer.cornerRadius = 16.0
         clipsToBounds = true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
     }
 }
 
@@ -102,5 +114,14 @@ extension BookmarkCollectionViewCell: UICollectionViewCellConfiguration {
     
     func configureUI() {
         
+    }
+    
+    func bind(element: Bookmark) {
+        bookmarkIconButton.rx.tap
+            .bind(with: self) { owner, _ in
+                guard let viewModel = owner.viewModel else { return }
+                viewModel.bookmarkIconButtonTapped.onNext(element)
+            }
+            .disposed(by: disposeBag)
     }
 }

@@ -31,6 +31,8 @@ final class ServiceProvidedInternalCollectionViewCell: UICollectionViewCell {
 }
 
 extension ServiceProvidedInternalCollectionViewCell: UICollectionViewCellConfiguration {
+    
+   
     func configureConstraints() {
         contentView.addSubview(serviceImageView)
         
@@ -40,6 +42,12 @@ extension ServiceProvidedInternalCollectionViewCell: UICollectionViewCellConfigu
     }
     
     func configureUI() {
+        
+    }
+    
+    typealias BindElementType = Bookmark
+    
+    func bind(element: Bookmark) {
         
     }
 }
