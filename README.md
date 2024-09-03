@@ -50,7 +50,18 @@
 
 <br/>
 
-## 💻 구현 내용
+## 💻 기술 적용
+- Custom Obervable 구성을 기반으로 반응형 MVVM Input/Ouput 패턴 구성
+- TableView를 활용한 Accordion UI 구성
+- Enum을 통한 API 호출의 Endpoint 중앙화 관리
+- Protocol 명세 기반 코드 베이스 UI 구성
+- Toast 라이브러리를 통한 네트워크 상태 메세지 표시
+- Firebase Analytics과 Firebase Crashlytics 구성을 통한 앱의 성능 모니터링과 안정성 향상
+- ATS 설정을 통한 공공데이터 API HTTP 통신 대응
+
+<br/>
+
+## 💾 구현 내용
 
 ### 1. TableView를 활용한 Accordion UI
 
