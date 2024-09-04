@@ -39,6 +39,16 @@
 
 <br/>
 
+## 📷 스크린샷
+
+|메인 화면|상세 화면(상단)|상세 화면(하단)|
+|:---:|:---:|:---:|
+|<img src="https://github.com/user-attachments/assets/cebd0b59-11e9-4760-bbd5-2f0065d47086" width="200" height="390"/>|<img src="https://github.com/user-attachments/assets/380d3bda-6edf-4759-86f6-22aea37b0ca5" width="200" height="390"/>|<img src="https://github.com/user-attachments/assets/64255cfd-e0ff-4620-9636-70090c355a87" width="200" height="390"/>|
+
+|관광지 검색 화면|검색 지역 선택 화면|즐겨찾기 화면|
+|:---:|:---:|:---:|
+|<img src="https://github.com/user-attachments/assets/1661b4c6-abcb-461f-85ba-8e4d0b0c8150" width="200" height="390"/>|<img src="https://github.com/user-attachments/assets/9f3accc5-de77-46e1-aae5-ba98faf77b3f" width="200" height="390"/>|<img src="https://github.com/user-attachments/assets/29d8e992-192d-459a-9c87-d3bea7fc8f3b" width="200" height="390"/>|
+
 ## 🛠 기술 소개
 
 - UIKit, SnapKit, Custom Observable
