@@ -341,21 +341,30 @@ extension MainViewController: UIViewControllerConfiguration {
             }
         }
         
-        viewModel.outputActivityIndicatorStopTrigger.bind { [weak self] trigger in
-            guard let weakSelf = self else { return }
-            
-            guard let trigger = trigger else { return }
-            
-            weakSelf.view.hideToastActivity()
-        }
+        viewModel2.indicatorTriggerRelay.asDriver()
+            .drive(with: self) { owner, indicatorTrigger in
+                if indicatorTrigger {
+                    owner.view.makeToastActivity(.center)
+                } else {
+                    owner.view.hideToastActivity()
+                }
+            }
+            .disposed(by: disposeBag)
         
-        viewModel.outputActivityIndicatorStartTrigger.bind { [weak self] trigger in
-            guard let weakSelf = self else { return }
-            
-            guard let trigger = trigger else { return }
-            
-            weakSelf.view.makeToastActivity(.center)
-        }
+//        viewModel.outputActivityIndicatorStopTrigger.bind { [weak self] trigger in
+//            guard let weakSelf = self else { return }
+//            
+//            guard let trigger = trigger else { return }
+//            
+//        }
+//        
+//        viewModel.outputActivityIndicatorStartTrigger.bind { [weak self] trigger in
+//            guard let weakSelf = self else { return }
+//            
+//            guard let trigger = trigger else { return }
+//            
+//            weakSelf.view.makeToastActivity(.center)
+//        }
         
 //        viewModel.outputShowAlertTriggerForAuthorization.bind { [weak self] isDenied in
 //            guard let weakSelf = self else { return }

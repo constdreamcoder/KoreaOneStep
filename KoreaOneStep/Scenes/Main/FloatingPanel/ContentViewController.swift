@@ -75,16 +75,6 @@ final class ContentViewController: UIViewController {
         bind()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = true
-
-        mainViewModel.inputActivityIndicatorStartTrigger.value = ()
-        
-        mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
-    }
-    
     private func selectFilteringDistance(slider: UISlider) -> FilteringOrder.FilteringDistance {
         let value = slider.value
         
@@ -201,6 +191,16 @@ extension ContentViewController: UIViewControllerConfiguration {
     
     func bind() {
         
+        rx.viewWillAppear
+            .bind(with: self) { owner, _ in
+                owner.navigationController?.navigationBar.isHidden = true
+
+                owner.mainViewModel2.indicatorTriggerRelay.accept(true)
+                
+                owner.mainViewModel.inputForTableViewUpdate.value = (self.userLocationInfo, self.selectedFilteringDistance, self.selectedFilteringCategory)
+            }
+            .disposed(by: disposeBag)
+        
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
@@ -212,7 +212,7 @@ extension ContentViewController: UIViewControllerConfiguration {
             .drive(with: self) { owner, locationBasedTouristDestinationList in
                 owner.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
                 
-                owner.mainViewModel.inputActivityIndicatorStopTrigger.value = ()
+                owner.mainViewModel2.indicatorTriggerRelay.accept(false)
                 
                 if locationBasedTouristDestinationList.count < 1 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {

@@ -11,7 +11,8 @@ import RxCocoa
 import CoreLocation
 
 final class MainViewModel2: ViewModelType {
-        
+    
+    let indicatorTriggerRelay = BehaviorRelay<Bool>(value: false)
     let locationBasedTouristDestinationListRelay = BehaviorRelay<[SearchResulData]>(value: [])
     let userLocationInfoRelay = BehaviorRelay<CLLocationCoordinate2D?>(value: nil)
     
@@ -45,24 +46,7 @@ final class MainViewModel2: ViewModelType {
                 owner.locationBasedTouristDestinationListRelay.accept(owner.generateSearchResulDataList(touristDestinationList))
             }
             .disposed(by: disposeBag)
-            
-//                KoreaTravelingManager.shared.fetchLocationBasedTourismInformation(
-//                    api: .locationBasedTourismInformation(
-//                        latitude: coordinate.latitude,
-//                        longitude: coordinate.longitude,
-//                        radius: KoreaTravelingAPI.radiusDefaultValue,
-//                        arrange: KoreaTravelingAPI.arrageDefaultValue,
-//                        contentTypeId: KoreaTravelingAPI.contentTypeIdDefaultValue
-//                    )
-//                ) { [weak self] touristDestinationList in
-//                    guard let weakSelf = self else { return }
-//                    
-//                    let searchResulDataList = weakSelf.generateSearchResulDataList(touristDestinationList)
-//                    
-//                    weakSelf.outputLocationBasedTouristDestinationList.value = searchResulDataList
-//                }
        
-            
         input.viewDidLoad
             .subscribe(with: self) { owner, _ in
                 LocationManager.shared.fetchLocation { [weak self] coordinate, error, isDenied in
@@ -75,8 +59,7 @@ final class MainViewModel2: ViewModelType {
                     
                     guard !isDenied else {
                         print("Denied")
-//                        weakSelf.outputShowAlertTriggerForAuthorization.value = isDenied
-                        owner.userLocationInfoRelay.accept(nil)
+                        weakSelf.userLocationInfoRelay.accept(nil)
                         showAlertTriggerForAuthorizationRelay.accept(isDenied)
                         return
                     }
@@ -85,8 +68,7 @@ final class MainViewModel2: ViewModelType {
                         print("Something is wrong.")
                         return
                     }
-//                    weakSelf.outputUserCurrentLocationInfoToMainVC.value = coordinate
-//                    weakSelf.outputUserCurrentLocationInfoToContentVC.value = coordinate
+                    
                     owner.userLocationInfoRelay.accept(coordinate)
                     searchLocationBasedTourismInfosTrigger.onNext(coordinate)
                 }
