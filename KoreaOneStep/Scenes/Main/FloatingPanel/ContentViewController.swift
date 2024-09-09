@@ -9,14 +9,13 @@ import UIKit
 import SnapKit
 import Kingfisher
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 final class ContentViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
         
         tableView.register(AmbientSettingsTableViewCell.self, forCellReuseIdentifier: AmbientSettingsTableViewCell.identifier) 
         tableView.register(AccordionTableViewCell.self, forCellReuseIdentifier: AccordionTableViewCell.identifier)
@@ -44,18 +43,21 @@ final class ContentViewController: UIViewController {
     private var filteringButtonList: [UIButton] = []
     
     private var mainViewModel: MainViewModel
+    private var mainViewModel2: MainViewModel2
     
-    private var locationBasedTouristDestinationList: [SearchResulData] = []
+    private let disposeBag = DisposeBag()
     
     var selectedFilteringDistance: FilteringOrder.FilteringDistance = FilteringOrder.FilteringDistance.allCases[3]
     var selectedFilteringCategory: FilteringOrder = FilteringOrder.allCases[0]
     var userLocationInfo: CLLocationCoordinate2D?
     var selectedTourType: TourType?
-    
-    var initialTriggerFlag: Bool = false
-    
-    init(mainViewModel: MainViewModel) {
+            
+    init(
+        mainViewModel: MainViewModel,
+        mainViewModel2: MainViewModel2
+    ) {
         self.mainViewModel = mainViewModel
+        self.mainViewModel2 = mainViewModel2
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -70,7 +72,6 @@ final class ContentViewController: UIViewController {
         configureNavigationBar()
         configureConstraints()
         configureUI()
-        configureOthers()
         bind()
     }
     
@@ -106,10 +107,6 @@ final class ContentViewController: UIViewController {
             slider.value = 10.0
             return FilteringOrder.FilteringDistance.allCases[5]
         }
-    }
-    
-    private func configureOthers() {
-        initialTriggerFlag = true
     }
 }
 
@@ -162,7 +159,7 @@ extension ContentViewController {
     @objc func bookmarkIconButtonTapped(_ button: UIButton) {
         guard let cell = tableView.cellForRow(at: IndexPath(row: button.tag, section: ContentTableViewSection.searchResultList.rawValue)) as? SearchResultListTableViewCell else { return }
         
-        let locationBasedTouristDestination = locationBasedTouristDestinationList[button.tag].locationBasedTouristDestination
+        let locationBasedTouristDestination = mainViewModel2.locationBasedTouristDestinationListRelay.value[button.tag].locationBasedTouristDestination
         
         if cell.isBookmarked {
             mainViewModel.inputRemoveBookmark.value = locationBasedTouristDestination
@@ -203,44 +200,42 @@ extension ContentViewController: UIViewControllerConfiguration {
     }
     
     func bind() {
-        mainViewModel.outputLocationBasedTouristDestinationList.bind { [weak self] locationBasedTouristDestinationList in
-            guard let weakSelf = self else { return }
-            
-            guard let locationBasedTouristDestinationList = locationBasedTouristDestinationList else { return }
-            
-            weakSelf.locationBasedTouristDestinationList = locationBasedTouristDestinationList
-            weakSelf.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
-            
-            weakSelf.mainViewModel.inputActivityIndicatorStopTrigger.value = ()
-            
-            if locationBasedTouristDestinationList.count < 1 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                    weakSelf.noContentLabel.isHidden = false
-                }
-            } else {
-                weakSelf.noContentLabel.isHidden = true
-            }
-        }
         
-        mainViewModel.outputUserCurrentLocationInfoToContentVC.bind { [weak self] coordinate in
-            guard let weakSelf = self else { return }
-            
-            weakSelf.userLocationInfo = coordinate
-            
-            guard let coordinate = coordinate else { return }
-            
-            if weakSelf.initialTriggerFlag {
-                weakSelf.mainViewModel.inputSearchLocationBasedTourismInformationTrigger.value = coordinate
-                weakSelf.initialTriggerFlag = false
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        tableView.rx.setDataSource(self)
+            .disposed(by: disposeBag)
+        
+        mainViewModel2
+            .locationBasedTouristDestinationListRelay.asDriver()
+            .drive(with: self) { owner, locationBasedTouristDestinationList in
+                owner.tableView.reloadSections([ContentTableViewSection.searchResultList.rawValue], with: .none)
+                
+                owner.mainViewModel.inputActivityIndicatorStopTrigger.value = ()
+                
+                if locationBasedTouristDestinationList.count < 1 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        owner.noContentLabel.isHidden = false
+                    }
+                } else {
+                    owner.noContentLabel.isHidden = true
+                }
             }
-        }
+            .disposed(by: disposeBag)
+        
+        mainViewModel2.userLocationInfoRelay.asDriver()
+            .drive(with: self) { owner, coordinate in
+                owner.userLocationInfo = coordinate
+            }
+            .disposed(by: disposeBag)
     }
 }
 
 extension ContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if ContentTableViewSection.allCases[indexPath.section] == .searchResultList {
-            let touristDestination = locationBasedTouristDestinationList[indexPath.row].locationBasedTouristDestination
+            let touristDestination = mainViewModel2.locationBasedTouristDestinationListRelay.value[indexPath.row].locationBasedTouristDestination
             
             mainViewModel.inputContentVCTableViewDidSelectRowAtTrigger.value = touristDestination
             
@@ -273,7 +268,7 @@ extension ContentViewController: UITableViewDataSource {
                 return 1
             }
         }
-        return locationBasedTouristDestinationList.count
+        return mainViewModel2.locationBasedTouristDestinationListRelay.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -309,9 +304,9 @@ extension ContentViewController: UITableViewDataSource {
         cell.bookmarkIconButton.addTarget(self, action: #selector(bookmarkIconButtonTapped), for: .touchUpInside)
         cell.bookmarkIconButton.tag = indexPath.row
         
-        let locationBasedTouristDestination = locationBasedTouristDestinationList[indexPath.row].locationBasedTouristDestination
+        let locationBasedTouristDestination = mainViewModel2.locationBasedTouristDestinationListRelay.value[indexPath.row].locationBasedTouristDestination
         
-        let isBookmarked = locationBasedTouristDestinationList[indexPath.row].isBookmarked
+        let isBookmarked = mainViewModel2.locationBasedTouristDestinationListRelay.value[indexPath.row].isBookmarked
         
         let regionImageURL = URL(string: locationBasedTouristDestination.firstimage)
         let placeholderImage = UIImage(systemName: "photo")

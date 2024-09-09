@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 final class KoreaTravelingManager {
     static let shared = KoreaTravelingManager()
@@ -120,4 +121,26 @@ final class KoreaTravelingManager {
         }
     }
     
+}
+
+
+extension KoreaTravelingManager {
+    func fetchLocationBasedTourismInformation(api: KoreaTravelingAPI) -> Single<[LBItem]>{
+        return Single<[LBItem]>.create { singleObserver in
+            AF.request(
+                api.endpoint,
+                method: api.method,
+                parameters: api.parameters,
+                encoder: URLEncodedFormParameterEncoder(destination: .queryString)
+            ).responseDecodable(of: LocationBasedTourismInformationModel.self) { response in
+                switch response.result {
+                case .success(let success):
+                    singleObserver(.success(success.response.body.items.item))
+                case .failure(let failure):
+                    singleObserver(.failure(failure))
+                }
+            }
+            return Disposables.create()
+        }
+    }
 }

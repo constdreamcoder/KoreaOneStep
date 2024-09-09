@@ -69,7 +69,6 @@ final class MainViewModel {
                weakSelf.outputUserCurrentLocationInfoToMainVC.value = coordinate
                weakSelf.outputUserCurrentLocationInfoToContentVC.value = coordinate
            }
-           
        }
        
        inputSearchLocationBasedTourismInformationTrigger.bind { coordinate in

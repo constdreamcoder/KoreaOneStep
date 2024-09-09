@@ -10,6 +10,8 @@ import SnapKit
 import FloatingPanel
 import TTGTags
 import NMapsMap
+import RxSwift
+import RxCocoa
 
 final class MainViewController: UIViewController {
     
@@ -52,7 +54,7 @@ final class MainViewController: UIViewController {
         
         floatingPC.delegate = self
         
-        let contentVC = ContentViewController(mainViewModel: viewModel)
+        let contentVC = ContentViewController(mainViewModel: viewModel, mainViewModel2: viewModel2)
         let contentNav = UINavigationController(rootViewController: contentVC)
         floatingPC.set(contentViewController: contentNav)
         floatingPC.track(scrollView: contentVC.tableView)
@@ -80,6 +82,9 @@ final class MainViewController: UIViewController {
     }()
     
     private let viewModel = MainViewModel()
+    private let viewModel2 = MainViewModel2()
+    
+    private let disposeBag = DisposeBag()
     
     private var userLocationInfo: CLLocationCoordinate2D?
     
@@ -201,20 +206,57 @@ extension MainViewController: UIViewControllerConfiguration {
     }
     
     func bind() {
-        viewModel.inputSearchUserCurrentLocationTrigger.value = ()
         
-        viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in
-            guard let weakSelf = self else { return }
-            
-            weakSelf.userLocationInfo = coordinate
-            
-            guard let coordinate = coordinate else { return }
-            
-            weakSelf.mapView.locationOverlay.location = NMGLatLng(lat: coordinate.latitude, lng: coordinate.longitude)
-            weakSelf.mapView.locationOverlay.hidden = false
-            
-            weakSelf.configureCamera(lat: coordinate.latitude, lng: coordinate.longitude)
-        }
+        let input = MainViewModel2.Input(
+            viewDidLoad: Observable.just(())
+        )
+        
+        let output = viewModel2.transform(input: input)
+        
+        output.showAlertTriggerForAuthorization
+            .drive(with: self) { owner, isDenied in
+                if isDenied {
+                    owner.showLocationSettingAlert()
+                    
+                    owner.mapView.locationOverlay.location = NMGLatLng()
+                    owner.mapView.locationOverlay.hidden = true
+                    
+                    // TODO: - mainViewModel2에서 작업 예정
+//                    owner.viewModel.outputUserCurrentLocationInfoToMainVC.value = nil
+//                    owner.viewModel.outputUserCurrentLocationInfoToContentVC.value = nil
+//                    
+//                    owner.viewModel.outputLocationBasedTouristDestinationList.value = []
+                }
+                
+//                weakSelf.viewModel.outputActivityIndicatorStopTrigger.value = ()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel2.userLocationInfoRelay.asDriver()
+            .drive(with: self) { owner, coordinate in
+                guard let coordinate = coordinate else { return }
+                
+                owner.mapView.locationOverlay.location = NMGLatLng(lat: coordinate.latitude, lng: coordinate.longitude)
+                owner.mapView.locationOverlay.hidden = false
+                
+                owner.configureCamera(lat: coordinate.latitude, lng: coordinate.longitude)
+            }
+            .disposed(by: disposeBag)
+        
+//        viewModel.inputSearchUserCurrentLocationTrigger.value = ()
+        
+//        viewModel.outputUserCurrentLocationInfoToMainVC.bind { [weak self] coordinate in
+//            guard let weakSelf = self else { return }
+//            
+//            weakSelf.userLocationInfo = coordinate
+//            
+//            guard let coordinate = coordinate else { return }
+//            
+//            weakSelf.mapView.locationOverlay.location = NMGLatLng(lat: coordinate.latitude, lng: coordinate.longitude)
+//            weakSelf.mapView.locationOverlay.hidden = false
+//            
+//            weakSelf.configureCamera(lat: coordinate.latitude, lng: coordinate.longitude)
+//        }
         
         viewModel.outputSelectedTouristDestination.bind { [weak self] touristDestination in
             guard let weakSelf = self else { return }
@@ -315,23 +357,23 @@ extension MainViewController: UIViewControllerConfiguration {
             weakSelf.view.makeToastActivity(.center)
         }
         
-        viewModel.outputShowAlertTriggerForAuthorization.bind { [weak self] isDenied in
-            guard let weakSelf = self else { return }
-            
-            if isDenied {
-                weakSelf.showLocationSettingAlert()
-                
-                weakSelf.mapView.locationOverlay.location = NMGLatLng()
-                weakSelf.mapView.locationOverlay.hidden = true
-                
-                weakSelf.viewModel.outputUserCurrentLocationInfoToMainVC.value = nil
-                weakSelf.viewModel.outputUserCurrentLocationInfoToContentVC.value = nil
-                
-                weakSelf.viewModel.outputLocationBasedTouristDestinationList.value = []
-            }
-            
-            weakSelf.viewModel.outputActivityIndicatorStopTrigger.value = ()
-        }
+//        viewModel.outputShowAlertTriggerForAuthorization.bind { [weak self] isDenied in
+//            guard let weakSelf = self else { return }
+//            
+//            if isDenied {
+//                weakSelf.showLocationSettingAlert()
+//                
+//                weakSelf.mapView.locationOverlay.location = NMGLatLng()
+//                weakSelf.mapView.locationOverlay.hidden = true
+//                
+//                weakSelf.viewModel.outputUserCurrentLocationInfoToMainVC.value = nil
+//                weakSelf.viewModel.outputUserCurrentLocationInfoToContentVC.value = nil
+//                
+//                weakSelf.viewModel.outputLocationBasedTouristDestinationList.value = []
+//            }
+//            
+//            weakSelf.viewModel.outputActivityIndicatorStopTrigger.value = ()
+//        }
     }
 }
 
