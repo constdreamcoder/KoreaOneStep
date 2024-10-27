@@ -26,6 +26,7 @@
 		00E9F8A32CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F89E2CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift */; };
 		00E9F8A42CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F89D2CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift */; };
 		00E9F8A52CCE891500E07A8A /* AreaCodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F89F2CCE891500E07A8A /* AreaCodeDTO.swift */; };
+		00E9F8AF2CCE8BB200E07A8A /* KoreaTravelingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8AE2CCE8BB200E07A8A /* KoreaTravelingAPI.swift */; };
 		00EB3B242BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B232BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		00EB3B262BAD68DC0073A52A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B252BAD68DC0073A52A /* FirebaseCrashlytics */; };
 		00ED3FF52C708EEC00B50FB2 /* RxAppState in Frameworks */ = {isa = PBXBuildFile; productRef = 00ED3FF42C708EEC00B50FB2 /* RxAppState */; };
@@ -59,6 +60,7 @@
 		00E9F89E2CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidedImpairmentAidServicesDTO.swift; sourceTree = "<group>"; };
 		00E9F89F2CCE891500E07A8A /* AreaCodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCodeDTO.swift; sourceTree = "<group>"; };
 		00E9F8A02CCE891500E07A8A /* KeywordBasedSearchingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordBasedSearchingDTO.swift; sourceTree = "<group>"; };
+		00E9F8AE2CCE8BB200E07A8A /* KoreaTravelingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KoreaTravelingAPI.swift; path = /Users/suchanchang/Documents/KoreaTravelingAPI.swift; sourceTree = "<absolute>"; };
 		00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreaOneStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FD1C3D2B99840900C2A76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,30 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		00E9F8A92CCE8B7D00E07A8A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				00E9F8AA2CCE8B9200E07A8A /* Repository */,
+				00E9F8AB2CCE8B9800E07A8A /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		00E9F8AA2CCE8B9200E07A8A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		00E9F8AB2CCE8B9800E07A8A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				00E9F8AE2CCE8BB200E07A8A /* KoreaTravelingAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		00FD1C312B99840900C2A76E = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +180,7 @@
 				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
 				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
 				00E9F88D2CCE889400E07A8A /* Domain */,
+				00E9F8A92CCE8B7D00E07A8A /* Data */,
 				00FD1C432B99840900C2A76E /* Main.storyboard */,
 				00FD1C462B99840A00C2A76E /* Assets.xcassets */,
 				00FD1C482B99840A00C2A76E /* LaunchScreen.storyboard */,
@@ -358,6 +385,7 @@
 				00E9F8A52CCE891500E07A8A /* AreaCodeDTO.swift in Sources */,
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
+				00E9F8AF2CCE8BB200E07A8A /* KoreaTravelingAPI.swift in Sources */,
 				007324012BA613D2001B0A2E /* APIKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
