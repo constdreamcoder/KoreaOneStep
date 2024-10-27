@@ -27,16 +27,16 @@ protocol HeaderType: Decodable {
 }
 
 protocol BodyType: Decodable {
-    associatedtype T: ItemType
+    associatedtype Items : ItemType
     
-    var items: T { get }
+    var items: Items { get }
     var numOfRows: Int { get }
     var pageNo: Int { get }
     var totalCount: Int { get }
 }
 
 protocol ItemType: Decodable {
-    associatedtype T: Decodable
+    associatedtype Item: Decodable
     
-    var item: [T] { get }
+    var item: [Item] { get }
 }
