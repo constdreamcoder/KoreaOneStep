@@ -1,34 +1,34 @@
 //
-//  ProvidedImpairmentAidServicesModel.swift
+//  ProvidedImpairmentAidServicesDTO.swift
 //  KoreaOneStep
 //
-//  Created by SUCHAN CHANG on 3/17/24.
+//  Created by SUCHAN CHANG on 10/27/24.
 //
 
 import Foundation
 
-struct ProvidedImpairmentAidServicesModel: Decodable {
+struct ProvidedImpairmentAidServicesDTO: DTOModelType {
     let response: IASResponse
 }
 
-struct IASResponse: Decodable {
+struct IASResponse: ResponseType {
     let header: IASHeader
     let body: IASBody
 }
 
-struct IASHeader: Decodable {
+struct IASHeader: HeaderType {
     let resultCode: String
     let resultMsg: String
 }
 
-struct IASBody: Decodable {
+struct IASBody: BodyType {
     let items: IASItems
     let numOfRows: Int
     let pageNo: Int
     let totalCount: Int
 }
 
-struct IASItems: Decodable {
+struct IASItems: ItemType {
     let item: [IASItem]
 }
 

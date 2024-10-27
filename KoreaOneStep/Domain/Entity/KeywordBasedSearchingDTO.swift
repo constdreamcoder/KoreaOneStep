@@ -1,38 +1,37 @@
 //
-//  KeywordBasedSearchgingModel.swift
+//  KeywordBasedSearchingDTO.swift
 //  KoreaOneStep
 //
-//  Created by SUCHAN CHANG on 3/19/24.
+//  Created by SUCHAN CHANG on 10/27/24.
 //
 
 import Foundation
 
-struct KeywordBasedSearchgingModel: Decodable {
+struct KeywordBasedSearchingDTO: DTOModelType {
     let response: KSResponse
 }
 
-struct KSResponse: Decodable {
+struct KSResponse: ResponseType {
     let header: KSHeader
     let body: KSBody
 }
 
-struct KSHeader: Decodable {
+struct KSHeader: HeaderType {
     let resultCode: String
     let resultMsg: String
 }
 
-struct KSBody: Decodable {
+struct KSBody: BodyType {
     let items: KSItems
     let numOfRows: Int
     let pageNo: Int
     let totalCount: Int
 }
 
-struct KSItems: Decodable {
+struct KSItems: ItemType {
     let item: [KSItem]
 }
 
-// TODO: - 모델 공통부분 통합 처리
 struct KSItem: Decodable {
     let addr1: String // 주소
     let addr2: String // 상세주소

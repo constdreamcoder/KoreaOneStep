@@ -1,34 +1,34 @@
 //
-//  TouristDestionationCommonInformationModel.swift
+//  TouristDestionationCommonInformationDTO.swift
 //  KoreaOneStep
 //
-//  Created by SUCHAN CHANG on 3/17/24.
+//  Created by SUCHAN CHANG on 10/27/24.
 //
 
 import Foundation
 
-struct TouristDestionationCommonInformationModel: Decodable {
+struct TouristDestionationCommonInformationDTO: DTOModelType {
     let response: CIResponse
 }
 
-struct CIResponse: Decodable {
+struct CIResponse: ResponseType {
     let header: CIHeader
     let body: CIBody
 }
 
-struct CIHeader: Decodable {
+struct CIHeader: HeaderType {
     let resultCode: String
     let resultMsg: String
 }
 
-struct CIBody: Decodable {
+struct CIBody: BodyType {
     let items: CIItems
     let numOfRows: Int
     let pageNo: Int
     let totalCount: Int
 }
 
-struct CIItems: Decodable {
+struct CIItems: ItemType {
     let item: [CIItem]
 }
 

@@ -1,34 +1,34 @@
 //
-//  LocationBasedTourismInformationModel.swift
+//  LocationBasedTourismInformationDTO.swift
 //  KoreaOneStep
 //
-//  Created by SUCHAN CHANG on 3/16/24.
+//  Created by SUCHAN CHANG on 10/27/24.
 //
 
 import Foundation
 
-struct LocationBasedTourismInformationModel: Decodable {
+struct LocationBasedTourismInformationDTO: DTOModelType {
     let response: LBResponse
 }
 
-struct LBResponse: Decodable {
+struct LBResponse: ResponseType {
     let header: LBHeader
     let body: LBBody
 }
 
-struct LBHeader: Decodable {
+struct LBHeader: HeaderType {
     let resultCode: String
     let resultMsg: String
 }
 
-struct LBBody: Decodable {
+struct LBBody: BodyType {
     let items: LBItems
     let numOfRows: Int
     let pageNo: Int
     let totalCount: Int
 }
 
-struct LBItems: Decodable {
+struct LBItems: ItemType {
     let item: [LBItem]
 }
 

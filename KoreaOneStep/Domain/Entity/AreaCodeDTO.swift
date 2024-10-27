@@ -1,34 +1,34 @@
 //
-//  AreaCodeModel.swift
+//  AreaCodeDTO.swift
 //  KoreaOneStep
 //
-//  Created by SUCHAN CHANG on 3/18/24.
+//  Created by SUCHAN CHANG on 10/27/24.
 //
 
 import Foundation
 
-struct AreaCodeModel: Decodable {
+struct AreaCodeDTO: DTOModelType {
     let response: ACResponse
 }
 
-struct ACResponse: Decodable {
+struct ACResponse: ResponseType {
     let header: ACHeader
     let body: ACBody
 }
 
-struct ACHeader: Decodable {
+struct ACHeader: HeaderType {
     let resultCode: String
     let resultMsg: String
 }
 
-struct ACBody: Decodable {
+struct ACBody: BodyType {
     let items: ACItems
     let numOfRows: Int
     let pageNo: Int
     let totalCount: Int
 }
 
-struct ACItems: Decodable {
+struct ACItems: ItemType {
     let item: [ACItem]
 }
 
