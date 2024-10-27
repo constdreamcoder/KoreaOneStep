@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,10 +26,12 @@
 		00E9F8A32CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F89E2CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift */; };
 		00E9F8A42CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F89D2CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift */; };
 		00E9F8A52CCE891500E07A8A /* AreaCodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F89F2CCE891500E07A8A /* AreaCodeDTO.swift */; };
+		00E9F8A72CCE893000E07A8A /* DTOModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8A62CCE893000E07A8A /* DTOModelType.swift */; };
 		00E9F8AF2CCE8BB200E07A8A /* KoreaTravelingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8AE2CCE8BB200E07A8A /* KoreaTravelingAPI.swift */; };
 		00E9F8B12CCE8C3B00E07A8A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8B02CCE8C3B00E07A8A /* NetworkManager.swift */; };
 		00E9F8B32CCE8C6E00E07A8A /* KoreaTravelingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8B22CCE8C6E00E07A8A /* KoreaTravelingRepository.swift */; };
 		00E9F8B52CCE8CA900E07A8A /* KoreaTravelingUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8B42CCE8CA900E07A8A /* KoreaTravelingUsecase.swift */; };
+		00E9F8B82CCE8CE400E07A8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8B72CCE8CE400E07A8A /* ViewController.swift */; };
 		00EB3B242BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B232BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		00EB3B262BAD68DC0073A52A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B252BAD68DC0073A52A /* FirebaseCrashlytics */; };
 		00ED3FF52C708EEC00B50FB2 /* RxAppState in Frameworks */ = {isa = PBXBuildFile; productRef = 00ED3FF42C708EEC00B50FB2 /* RxAppState */; };
@@ -63,10 +65,12 @@
 		00E9F89E2CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidedImpairmentAidServicesDTO.swift; sourceTree = "<group>"; };
 		00E9F89F2CCE891500E07A8A /* AreaCodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCodeDTO.swift; sourceTree = "<group>"; };
 		00E9F8A02CCE891500E07A8A /* KeywordBasedSearchingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordBasedSearchingDTO.swift; sourceTree = "<group>"; };
+		00E9F8A62CCE893000E07A8A /* DTOModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOModelType.swift; sourceTree = "<group>"; };
 		00E9F8AE2CCE8BB200E07A8A /* KoreaTravelingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KoreaTravelingAPI.swift; path = /Users/suchanchang/Documents/KoreaTravelingAPI.swift; sourceTree = "<absolute>"; };
 		00E9F8B02CCE8C3B00E07A8A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = /Users/suchanchang/Documents/NetworkManager.swift; sourceTree = "<absolute>"; };
 		00E9F8B22CCE8C6E00E07A8A /* KoreaTravelingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KoreaTravelingRepository.swift; path = /Users/suchanchang/Documents/KoreaTravelingRepository.swift; sourceTree = "<absolute>"; };
 		00E9F8B42CCE8CA900E07A8A /* KoreaTravelingUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KoreaTravelingUsecase.swift; path = /Users/suchanchang/Documents/KoreaTravelingUsecase.swift; sourceTree = "<absolute>"; };
+		00E9F8B72CCE8CE400E07A8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreaOneStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FD1C3D2B99840900C2A76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,10 +83,6 @@
 		B5826F4DC7AFCBCC2980E97A /* Pods_KoreaOneStep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KoreaOneStep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8313C61497266102198AFD0 /* Pods-KoreaOneStep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KoreaOneStep.release.xcconfig"; path = "Target Support Files/Pods-KoreaOneStep/Pods-KoreaOneStep.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		00E9F8A82CCE893400E07A8A /* Interfaces */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Interfaces; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		00FD1C372B99840900C2A76E /* Frameworks */ = {
@@ -127,7 +127,6 @@
 		00E9F88F2CCE88B700E07A8A /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				00E9F8A82CCE893400E07A8A /* Interfaces */,
 				00E9F89C2CCE891500E07A8A /* LocationBasedTourismInformationDTO.swift */,
 				00E9F89D2CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift */,
 				00E9F89E2CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift */,
@@ -163,6 +162,32 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		00E9F8B62CCE8CD600E07A8A /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				00E9F8B72CCE8CE400E07A8A /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		00E9F8BA2CCE8D1D00E07A8A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
+				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
+				00E9F8BB2CCE8D2600E07A8A /* Common */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		00E9F8BB2CCE8D2600E07A8A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				00E9F8A62CCE893000E07A8A /* DTOModelType.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		00FD1C312B99840900C2A76E = {
 			isa = PBXGroup;
 			children = (
@@ -186,8 +211,8 @@
 		00FD1C3C2B99840900C2A76E /* KoreaOneStep */ = {
 			isa = PBXGroup;
 			children = (
-				00FD1C3D2B99840900C2A76E /* AppDelegate.swift */,
-				00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */,
+				00E9F8BA2CCE8D1D00E07A8A /* Application */,
+				00E9F8B62CCE8CD600E07A8A /* Presentation */,
 				00E9F88D2CCE889400E07A8A /* Domain */,
 				00E9F8A92CCE8B7D00E07A8A /* Data */,
 				00FD1C432B99840900C2A76E /* Main.storyboard */,
@@ -235,9 +260,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				00E9F8A82CCE893400E07A8A /* Interfaces */,
 			);
 			name = KoreaOneStep;
 			packageProductDependencies = (
@@ -391,8 +413,10 @@
 				00E9F8A22CCE891500E07A8A /* KeywordBasedSearchingDTO.swift in Sources */,
 				00E9F8A32CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift in Sources */,
 				00E9F8B32CCE8C6E00E07A8A /* KoreaTravelingRepository.swift in Sources */,
+				00E9F8B82CCE8CE400E07A8A /* ViewController.swift in Sources */,
 				00E9F8A42CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift in Sources */,
 				00E9F8B12CCE8C3B00E07A8A /* NetworkManager.swift in Sources */,
+				00E9F8A72CCE893000E07A8A /* DTOModelType.swift in Sources */,
 				00E9F8A52CCE891500E07A8A /* AreaCodeDTO.swift in Sources */,
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
