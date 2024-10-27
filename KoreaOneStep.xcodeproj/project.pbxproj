@@ -29,6 +29,7 @@
 		00E9F8AF2CCE8BB200E07A8A /* KoreaTravelingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8AE2CCE8BB200E07A8A /* KoreaTravelingAPI.swift */; };
 		00E9F8B12CCE8C3B00E07A8A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8B02CCE8C3B00E07A8A /* NetworkManager.swift */; };
 		00E9F8B32CCE8C6E00E07A8A /* KoreaTravelingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8B22CCE8C6E00E07A8A /* KoreaTravelingRepository.swift */; };
+		00E9F8B52CCE8CA900E07A8A /* KoreaTravelingUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8B42CCE8CA900E07A8A /* KoreaTravelingUsecase.swift */; };
 		00EB3B242BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B232BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		00EB3B262BAD68DC0073A52A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B252BAD68DC0073A52A /* FirebaseCrashlytics */; };
 		00ED3FF52C708EEC00B50FB2 /* RxAppState in Frameworks */ = {isa = PBXBuildFile; productRef = 00ED3FF42C708EEC00B50FB2 /* RxAppState */; };
@@ -65,6 +66,7 @@
 		00E9F8AE2CCE8BB200E07A8A /* KoreaTravelingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KoreaTravelingAPI.swift; path = /Users/suchanchang/Documents/KoreaTravelingAPI.swift; sourceTree = "<absolute>"; };
 		00E9F8B02CCE8C3B00E07A8A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = /Users/suchanchang/Documents/NetworkManager.swift; sourceTree = "<absolute>"; };
 		00E9F8B22CCE8C6E00E07A8A /* KoreaTravelingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KoreaTravelingRepository.swift; path = /Users/suchanchang/Documents/KoreaTravelingRepository.swift; sourceTree = "<absolute>"; };
+		00E9F8B42CCE8CA900E07A8A /* KoreaTravelingUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KoreaTravelingUsecase.swift; path = /Users/suchanchang/Documents/KoreaTravelingUsecase.swift; sourceTree = "<absolute>"; };
 		00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreaOneStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FD1C3D2B99840900C2A76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		00E9F88E2CCE88A100E07A8A /* Usecase */ = {
 			isa = PBXGroup;
 			children = (
+				00E9F8B42CCE8CA900E07A8A /* KoreaTravelingUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				00FD1C3E2B99840900C2A76E /* AppDelegate.swift in Sources */,
 				00FD1C402B99840900C2A76E /* SceneDelegate.swift in Sources */,
 				00E9F8AF2CCE8BB200E07A8A /* KoreaTravelingAPI.swift in Sources */,
+				00E9F8B52CCE8CA900E07A8A /* KoreaTravelingUsecase.swift in Sources */,
 				007324012BA613D2001B0A2E /* APIKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
