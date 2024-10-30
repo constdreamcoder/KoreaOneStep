@@ -11,6 +11,7 @@
 		000103AF2CCF35C1008DD062 /* KoreaTravelingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000103AE2CCF35C1008DD062 /* KoreaTravelingRepository.swift */; };
 		000103B12CCF35D3008DD062 /* KoreaTravelingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000103B02CCF35D3008DD062 /* KoreaTravelingAPI.swift */; };
 		000103B32CCF35F6008DD062 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000103B22CCF35F6008DD062 /* NetworkManager.swift */; };
+		001C2A9F2CD2543D003EC431 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001C2A9E2CD2543D003EC431 /* ViewController.swift */; };
 		001DD5C32BFA3C4E00825DAA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 001DD5C22BFA3C4E00825DAA /* Kingfisher */; };
 		001DD5D32BFA497400825DAA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 001DD5D22BFA497400825DAA /* RealmSwift */; };
 		001DD5D42BFA49AD00825DAA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 001DD5D22BFA497400825DAA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -31,7 +32,6 @@
 		00E9F8A42CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F89D2CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift */; };
 		00E9F8A52CCE891500E07A8A /* AreaCodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F89F2CCE891500E07A8A /* AreaCodeDTO.swift */; };
 		00E9F8A72CCE893000E07A8A /* DTOModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8A62CCE893000E07A8A /* DTOModelType.swift */; };
-		00E9F8B82CCE8CE400E07A8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F8B72CCE8CE400E07A8A /* ViewController.swift */; };
 		00EB3B242BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B232BAD68DC0073A52A /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		00EB3B262BAD68DC0073A52A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 00EB3B252BAD68DC0073A52A /* FirebaseCrashlytics */; };
 		00ED3FF52C708EEC00B50FB2 /* RxAppState in Frameworks */ = {isa = PBXBuildFile; productRef = 00ED3FF42C708EEC00B50FB2 /* RxAppState */; };
@@ -61,6 +61,7 @@
 		000103AE2CCF35C1008DD062 /* KoreaTravelingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaTravelingRepository.swift; sourceTree = "<group>"; };
 		000103B02CCF35D3008DD062 /* KoreaTravelingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreaTravelingAPI.swift; sourceTree = "<group>"; };
 		000103B22CCF35F6008DD062 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		001C2A9E2CD2543D003EC431 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		003CE0462C087D66003B92FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		007324002BA613D2001B0A2E /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		00A3D6212BAEE47700632748 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		00E9F89F2CCE891500E07A8A /* AreaCodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCodeDTO.swift; sourceTree = "<group>"; };
 		00E9F8A02CCE891500E07A8A /* KeywordBasedSearchingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordBasedSearchingDTO.swift; sourceTree = "<group>"; };
 		00E9F8A62CCE893000E07A8A /* DTOModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOModelType.swift; sourceTree = "<group>"; };
-		00E9F8B72CCE8CE400E07A8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		00FD1C3A2B99840900C2A76E /* KoreaOneStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoreaOneStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FD1C3D2B99840900C2A76E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00FD1C3F2B99840900C2A76E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		00E9F8B62CCE8CD600E07A8A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				00E9F8B72CCE8CE400E07A8A /* ViewController.swift */,
+				001C2A9E2CD2543D003EC431 /* ViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -410,11 +410,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E9F8A12CCE891500E07A8A /* LocationBasedTourismInformationDTO.swift in Sources */,
+				001C2A9F2CD2543D003EC431 /* ViewController.swift in Sources */,
 				000103AD2CCF3592008DD062 /* KoreaTravelingUsecase.swift in Sources */,
 				000103B32CCF35F6008DD062 /* NetworkManager.swift in Sources */,
 				00E9F8A22CCE891500E07A8A /* KeywordBasedSearchingDTO.swift in Sources */,
 				00E9F8A32CCE891500E07A8A /* ProvidedImpairmentAidServicesDTO.swift in Sources */,
-				00E9F8B82CCE8CE400E07A8A /* ViewController.swift in Sources */,
 				00E9F8A42CCE891500E07A8A /* TouristDestionationCommonInformationDTO.swift in Sources */,
 				00E9F8A72CCE893000E07A8A /* DTOModelType.swift in Sources */,
 				00E9F8A52CCE891500E07A8A /* AreaCodeDTO.swift in Sources */,
